@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<record_update table="sys_module">
+  <sys_module action="INSERT_OR_UPDATE">
+    <sys_id>efc922bbc665454eb547934b5122af6d</sys_id>
+    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
+    <sys_update_name>sys_module_efc922bbc665454eb547934b5122af6d</sys_update_name>
+    <content><![CDATA[{
+  "name": "ai-discovery-claude",
+  "version": "0.0.1",
+  "description": "AI Discovery plugin for Anthropic Claude - discovers models and tracks usage via sn_ai_disc framework",
+  "license": "UNLICENSED",
+  "imports": {
+    "#now:*": "./@types/servicenow/fluent/*/index.js"
+  },
+  "scripts": {
+    "build": "now-sdk build",
+    "deploy": "now-sdk install",
+    "transform": "now-sdk transform",
+    "types": "now-sdk dependencies"
+  },
+  "devDependencies": {
+    "@servicenow/sdk": "4.5.0",
+    "@servicenow/glide": "27.0.5",
+    "typescript": "5.5.4"
+  }
+}]]></content>
+    <external_source>false</external_source>
+    <path>x_agiro_ai_disc_cl/ai-discovery-claude/0.0.1/package.json</path>
+    <sys_name>x_agiro_ai_disc_cl/ai-discovery-claude/0.0.1/package.json</sys_name>
+  </sys_module>
+</record_update>

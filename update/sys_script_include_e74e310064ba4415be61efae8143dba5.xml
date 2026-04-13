@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+<record_update table="sys_script_include">
+  <sys_script_include action="INSERT_OR_UPDATE">
+    <sys_id>e74e310064ba4415be61efae8143dba5</sys_id>
+    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
+    <sys_update_name>sys_script_include_e74e310064ba4415be61efae8143dba5</sys_update_name>
+    <access>package_private</access>
+    <active>true</active>
+    <api_name>x_agiro_ai_disc_cl.ClaudeDiscoveryUtil</api_name>
+    <caller_access/>
+    <client_callable>false</client_callable>
+    <description/>
+    <mobile_callable>false</mobile_callable>
+    <name>ClaudeDiscoveryUtil</name>
+    <sandbox_callable>false</sandbox_callable>
+    <script><![CDATA[var ClaudeDiscoveryUtil = Class.create();
+ClaudeDiscoveryUtil.prototype = {
+    initialize: function() {
+        this.constants = new x_agiro_ai_disc_cl.ClaudeDiscoveryConstants();
+        this.apiClient = new x_agiro_ai_disc_cl.ClaudeApiClient();
+        this._useOobImportSet = this._checkCrossScopeAccess();
+    },
+
+    // ========== Discovery Orchestrator ==========
+
+    /**
+     * Run full model discovery and load results into CMDB via sn_ai_disc staging.
+     * @returns {{ success: boolean, modelsFound: number, message: string }}
+     */
+    discoverAll: function() {
+        var startTime = new Date().getTime();
+        var result = { success: false, modelsFound: 0, message: '' };
+
+        try {
+            // 1. Discover models
+            var models = this.discoverModels();
+            result.modelsFound = Object.keys(models).length;
+
+            if (result.modelsFound === 0) {
+                result.message = 'No models discovered';
+                this._logRun('discovery', 'partial', result.message, result.modelsFound, 0, 0, startTime);
+                return result;
+            }
+
+            // 2. Build the sn_ai_disc result DTO
+            var discoveryResult = this._buildResultDto(models, {}, {}, {});
+
+            // 3. Load into staging and transform to CMDB
+            this._loadToStaging(discoveryResult);
+
+            result.success = true;
+            result.message = 'Discovered ' + result.modelsFound + ' Claude models';
+            this._logRun('discovery', 'success', result.message, result.modelsFound, 0, 0, startTime);
+
+        } catch (e) {
+            result.message = 'Discovery failed: ' + e.message;
+            gs.error('[ClaudeDiscoveryUtil] ' + result.message);
+            this._logRun('discovery', 'error', result.message, result.modelsFound, 0, 0, startTime);
+        }
+
+        return result;
+    },
+
+    // ========== Model Discovery ==========
+
+    /**
+     * Discover Claude models from the hardcoded catalog, enriched with
+     * actually-used models from the messages usage API.
+     * @returns {object} Map of model id -> model DTO
+     */
+    discoverModels: function() {
+        var models = {};
+
+        // Start with the known model catalog
+        var catalog = this.constants.MODEL_CATALOG;
+        for (var i = 0; i < catalog.length; i++) {
+            var cm = catalog[i];
+            models[cm.id] = this._buildModelDto(cm.id, cm.name, cm.version, cm.description);
+        }
+
+        // Enrich with models seen in usage data (catches new models not in catalog)
+        this._enrichModelsFromUsage(models);
+
+        gs.info('[ClaudeDiscoveryUtil] Discovered ' + Object.keys(models).length + ' models');
+        return models;
+    },
+
+    /**
+     * Check messages usage API for models actually being used.
+     * Any model found in usage that isn't in the catalog gets added.
+     */
+    _enrichModelsFromUsage: function(models) {
+        try {
+            var yesterday = this._getYesterdayISO();
+            var response = this.apiClient.getMessagesUsage(yesterday, null, '1d');
+
+            if (!response.success) {
+                gs.warn('[ClaudeDiscoveryUtil] Could not enrich models from usage: ' + response.error);
+                return;
+            }
+
+            var data = response.data;
+            if (!data.data) return;
+
+            for (var i = 0; i < data.data.length; i++) {
+                var bucket = data.data[i];
+                if (!bucket.results) continue;
+
+                for (var j = 0; j < bucket.results.length; j++) {
+                    var modelId = bucket.results[j].model;
+                    if (modelId && !models[modelId]) {
+                        models[modelId] = this._buildModelDto(
+                            modelId,
+                            this._formatModelName(modelId),
+                            this._extractVersion(modelId),
+                            'Discovered from usage data'
+                        );
+                        gs.info('[ClaudeDiscoveryUtil] Found new model from usage: ' + modelId);
+                    }
+                }
+            }
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Usage enrichment error: ' + e.message);
+        }
+    },
+
+    // ========== DTO Builders ==========
+
+    /**
+     * Build a model DTO matching the sn_ai_disc initializeModelsObject() shape.
+     */
+    _buildModelDto: function(id, name, version, description) {
+        return {
+            id: id,
+            name: name,
+            version: version || '',
+            description: description || '',
+            short_description: description || '',
+            vendor: this.constants.VENDOR,
+            manufacturer: this.constants.MANUFACTURER,
+            install_status: String(this.constants.INSTALL_STATUS.DEPLOYED),
+        };
+    },
+
+    /**
+     * Build the top-level result DTO expected by sn_ai_disc.AiDiscoveryImportSetUtil.
+     */
+    _buildResultDto: function(models, agents, tools, prompts) {
+        return {
+            models: models,
+            agents: agents || {},
+            tools: tools || {},
+            prompts: prompts || {},
+            agent_subcomponent_m2m: [],
+            additional_attributes: [],
+        };
+    },
+
+    // ========== Staging / Import Set Loading ==========
+
+    /**
+     * Load discovery results into sn_ai_disc staging tables.
+     * Tries OOB AiDiscoveryImportSetUtil first; falls back to direct staging writes.
+     */
+    _loadToStaging: function(result) {
+        if (this._useOobImportSet) {
+            this._loadViaOobImportSetUtil(result);
+        } else {
+            this._loadDirectToStaging(result);
+        }
+    },
+
+    /**
+     * Use the OOB sn_ai_disc.AiDiscoveryImportSetUtil to load and transform.
+     */
+    _loadViaOobImportSetUtil: function(result) {
+        try {
+            var importSetUtil = new sn_ai_disc.AiDiscoveryImportSetUtil();
+            var importResult = importSetUtil.transformAIAssetImportSet(result, this.constants.SOURCE_NAME);
+            gs.info('[ClaudeDiscoveryUtil] OOB import set transform complete: ' + JSON.stringify(importResult));
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] OOB ImportSetUtil failed, falling back to direct load: ' + e.message);
+            this._useOobImportSet = false;
+            this._loadDirectToStaging(result);
+        }
+    },
+
+    /**
+     * Fallback: write directly to sn_ai_disc staging tables and trigger transform.
+     */
+    _loadDirectToStaging: function(result) {
+        var stagingTable = 'sn_ai_disc_ai_model_asset_staging';
+
+        // Create an import set record
+        var importSetGr = new GlideRecord('sys_import_set');
+        importSetGr.initialize();
+        importSetGr.setValue('table_name', stagingTable);
+        importSetGr.setValue('state', 'loading');
+        importSetGr.setValue('mode', 'asynchronous');
+        var importSetSysId = importSetGr.insert();
+
+        if (!importSetSysId) {
+            gs.error('[ClaudeDiscoveryUtil] Failed to create import set');
+            return;
+        }
+
+        // Load model records into staging
+        var modelCount = 0;
+        for (var modelId in result.models) {
+            if (!result.models.hasOwnProperty(modelId)) continue;
+            var model = result.models[modelId];
+
+            var stagingGr = new GlideRecord(stagingTable);
+            stagingGr.initialize();
+            stagingGr.setValue('u_id', model.id);
+            stagingGr.setValue('u_name', model.name);
+            stagingGr.setValue('u_version', model.version);
+            stagingGr.setValue('u_description', model.description);
+            stagingGr.setValue('u_short_description', model.short_description);
+            stagingGr.setValue('u_vendor', model.vendor);
+            stagingGr.setValue('u_manufacturer', model.manufacturer);
+            stagingGr.setValue('u_install_status', model.install_status);
+            stagingGr.setValue('sys_import_set', importSetSysId);
+            stagingGr.insert();
+            modelCount++;
+        }
+
+        // Mark import set as loaded
+        importSetGr.get(importSetSysId);
+        importSetGr.setValue('state', 'loaded');
+        importSetGr.update();
+
+        // Trigger transform
+        var transformer = new GlideImportSetTransformer();
+        transformer.transformAllMaps(importSetSysId);
+
+        gs.info('[ClaudeDiscoveryUtil] Direct staging load complete: ' + modelCount + ' models, import set ' + importSetSysId);
+    },
+
+    // ========== Cross-Scope Access Check ==========
+
+    /**
+     * Check if we can access sn_ai_disc.AiDiscoveryImportSetUtil.
+     * @returns {boolean}
+     */
+    _checkCrossScopeAccess: function() {
+        try {
+            if (typeof sn_ai_disc !== 'undefined' && sn_ai_disc.AiDiscoveryImportSetUtil) {
+                return true;
+            }
+        } catch (e) {
+            // Cross-scope access denied
+        }
+        gs.info('[ClaudeDiscoveryUtil] sn_ai_disc cross-scope access not available, will use direct staging');
+        return false;
+    },
+
+    // ========== Run Log ==========
+
+    /**
+     * Write a record to the discovery run log.
+     */
+    _logRun: function(runType, status, message, modelsFound, toolsFound, usageRecords, startTime) {
+        var duration = new Date().getTime() - startTime;
+
+        var gr = new GlideRecord(this.constants.RUN_LOG_TABLE);
+        gr.initialize();
+        gr.setValue('x_agiro_ai_disc_cl_run_type', runType);
+        gr.setValue('x_agiro_ai_disc_cl_status', status);
+        gr.setValue('x_agiro_ai_disc_cl_message', (message || '').substring(0, 4000));
+        gr.setValue('x_agiro_ai_disc_cl_models_found', modelsFound || 0);
+        gr.setValue('x_agiro_ai_disc_cl_tools_found', toolsFound || 0);
+        gr.setValue('x_agiro_ai_disc_cl_usage_records', usageRecords || 0);
+        gr.setValue('x_agiro_ai_disc_cl_duration_ms', duration);
+        gr.insert();
+    },
+
+    // ========== Utility ==========
+
+    /**
+     * Get yesterday's date as an ISO 8601 string (YYYY-MM-DDT00:00:00Z).
+     */
+    _getYesterdayISO: function() {
+        var gdt = new GlideDateTime();
+        gdt.addDaysUTC(-1);
+        return gdt.getValue().substring(0, 10) + 'T00:00:00Z';
+    },
+
+    /**
+     * Format a model ID into a human-readable name.
+     * e.g. 'claude-3-5-sonnet-20241022' -> 'Claude 3.5 Sonnet'
+     */
+    _formatModelName: function(modelId) {
+        if (!modelId) return '';
+
+        // Remove date suffix (e.g. -20241022)
+        var name = modelId.replace(/-\d{8}$/, '');
+
+        // Replace hyphens with spaces and capitalise
+        var parts = name.split('-');
+        for (var i = 0; i < parts.length; i++) {
+            parts[i] = parts[i].charAt(0).toUpperCase() + parts[i].substring(1);
+        }
+
+        // Rejoin, fixing version numbers like "3 5" -> "3.5"
+        var result = parts.join(' ');
+        result = result.replace(/(\d) (\d)/g, '$1.$2');
+
+        return result;
+    },
+
+    /**
+     * Extract a version string from a model ID.
+     * e.g. 'claude-3-5-sonnet-20241022' -> '3.5'
+     */
+    _extractVersion: function(modelId) {
+        if (!modelId) return '';
+        var match = modelId.match(/claude-(\d+(?:-\d+)?)/);
+        if (match) {
+            return match[1].replace('-', '.');
+        }
+        return '';
+    },
+
+    type: 'ClaudeDiscoveryUtil'
+};
+]]></script>
+    <sys_policy/>
+  </sys_script_include>
+</record_update>

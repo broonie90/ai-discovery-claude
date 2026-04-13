@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="sys_properties">
+  <sys_properties action="INSERT_OR_UPDATE">
+    <sys_id>f6ccfaf0b82544fea32474b003110edb</sys_id>
+    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
+    <sys_update_name>sys_properties_f6ccfaf0b82544fea32474b003110edb</sys_update_name>
+    <choices/>
+    <description>Enable Claude model discovery</description>
+    <ignore_cache>false</ignore_cache>
+    <is_private>false</is_private>
+    <name>x_agiro_ai_disc_cl.discovery_enabled</name>
+    <read_roles/>
+    <suffix>discovery_enabled</suffix>
+    <type>boolean</type>
+    <value>true</value>
+    <write_roles/>
+  </sys_properties>
+</record_update>

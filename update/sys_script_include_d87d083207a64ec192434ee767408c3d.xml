@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<record_update table="sys_script_include">
+  <sys_script_include action="INSERT_OR_UPDATE">
+    <sys_id>d87d083207a64ec192434ee767408c3d</sys_id>
+    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
+    <sys_update_name>sys_script_include_d87d083207a64ec192434ee767408c3d</sys_update_name>
+    <access>package_private</access>
+    <active>true</active>
+    <api_name>x_agiro_ai_disc_cl.ClaudeDiscoveryConstants</api_name>
+    <caller_access/>
+    <client_callable>false</client_callable>
+    <description/>
+    <mobile_callable>false</mobile_callable>
+    <name>ClaudeDiscoveryConstants</name>
+    <sandbox_callable>false</sandbox_callable>
+    <script><![CDATA[var ClaudeDiscoveryConstants = Class.create();
+ClaudeDiscoveryConstants.prototype = {
+    initialize: function() {},
+
+    VENDOR: 'Anthropic',
+    MANUFACTURER: 'Anthropic',
+    SOURCE_NAME: 'Anthropic Claude',
+    BASE_URL: 'https://api.anthropic.com',
+    API_VERSION: '2023-06-01',
+
+    /**
+     * Connection & Credential Alias ID for Anthropic Claude.
+     * Configured via Connections & Credentials module.
+     * The alias binds to an api_key_credentials record via a sys_connection.
+     */
+    CONNECTION_ALIAS_ID: 'x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT',
+
+    PROPERTY: {
+        CONNECTION_ALIAS: 'x_agiro_ai_disc_cl.connection_alias',
+        DISCOVERY_ENABLED: 'x_agiro_ai_disc_cl.discovery_enabled',
+        USAGE_ENABLED: 'x_agiro_ai_disc_cl.usage_enabled',
+        ANALYTICS_ENABLED: 'x_agiro_ai_disc_cl.analytics_enabled',
+    },
+
+    ENDPOINTS: {
+        ORG_INFO: '/v1/organizations/me',
+        MEMBERS: '/v1/organizations/members',
+        WORKSPACES: '/v1/organizations/workspaces',
+        API_KEYS: '/v1/organizations/api_keys',
+        CC_USAGE: '/v1/organizations/usage_report/claude_code',
+        MSG_USAGE: '/v1/organizations/usage_report/messages',
+        COST_REPORT: '/v1/organizations/cost_report',
+        ANALYTICS_USERS: '/v1/organizations/analytics/users',
+        ANALYTICS_SUMMARIES: '/v1/organizations/analytics/summaries',
+        ANALYTICS_SKILLS: '/v1/organizations/analytics/skills',
+        ANALYTICS_CONNECTORS: '/v1/organizations/analytics/connectors',
+    },
+
+    /**
+     * Known Claude model catalog.
+     * Used as the baseline for discovery — enriched at runtime with
+     * actually-used models from the messages usage report.
+     */
+    MODEL_CATALOG: [
+        { id: 'claude-opus-4-20250514', name: 'Claude Opus 4', family: 'opus', version: '4.0', description: 'Most capable model for complex reasoning and analysis' },
+        { id: 'claude-sonnet-4-20250514', name: 'Claude Sonnet 4', family: 'sonnet', version: '4.0', description: 'Best balance of speed and intelligence' },
+        { id: 'claude-3-5-haiku-20241022', name: 'Claude 3.5 Haiku', family: 'haiku', version: '3.5', description: 'Fastest and most cost-effective model' },
+        { id: 'claude-3-5-sonnet-20241022', name: 'Claude 3.5 Sonnet', family: 'sonnet', version: '3.5', description: 'Previous generation balanced model' },
+        { id: 'claude-3-opus-20240229', name: 'Claude 3 Opus', family: 'opus', version: '3.0', description: 'Previous generation advanced model' },
+        { id: 'claude-3-haiku-20240307', name: 'Claude 3 Haiku', family: 'haiku', version: '3.0', description: 'Previous generation fast model' },
+    ],
+
+    /**
+     * sn_ai_disc install status codes for CMDB digital assets.
+     */
+    INSTALL_STATUS: {
+        DEPLOYED: 31,
+        RETIRED: 32,
+        DEVELOPMENT: 33,
+        UNKNOWN: 34,
+        NOT_APPLICABLE: 35,
+    },
+
+    RUN_LOG_TABLE: 'x_agiro_ai_disc_cl_run_log',
+
+    type: 'ClaudeDiscoveryConstants'
+};
+]]></script>
+    <sys_policy/>
+  </sys_script_include>
+</record_update>

@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<record_update table="sys_script_include">
+  <sys_script_include action="INSERT_OR_UPDATE">
+    <sys_id>8dc6ca26466e45beb8cc37fa69ac76ce</sys_id>
+    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
+    <sys_update_name>sys_script_include_8dc6ca26466e45beb8cc37fa69ac76ce</sys_update_name>
+    <access>package_private</access>
+    <active>true</active>
+    <api_name>x_agiro_ai_disc_cl.ClaudeApiClient</api_name>
+    <caller_access/>
+    <client_callable>false</client_callable>
+    <description/>
+    <mobile_callable>false</mobile_callable>
+    <name>ClaudeApiClient</name>
+    <sandbox_callable>false</sandbox_callable>
+    <script><![CDATA[var ClaudeApiClient = Class.create();
+ClaudeApiClient.prototype = {
+    initialize: function() {
+        this.constants = new x_agiro_ai_disc_cl.ClaudeDiscoveryConstants();
+        this.baseUrl = this.constants.BASE_URL;
+        this.apiVersion = this.constants.API_VERSION;
+    },
+
+    // ========== Admin API Methods ==========
+
+    /**
+     * Get organization info.
+     * @returns {{ success: boolean, data?: object, error?: string }}
+     */
+    getOrgInfo: function() {
+        return this._makeAdminRequest(this.constants.ENDPOINTS.ORG_INFO);
+    },
+
+    /**
+     * Get organization members with pagination.
+     * @param {number} [limit] - Max records per page
+     * @param {string} [afterId] - Cursor for pagination
+     * @returns {{ success: boolean, data?: object, error?: string }}
+     */
+    getMembers: function(limit, afterId) {
+        var params = {};
+        if (limit) params.limit = limit;
+        if (afterId) params.after_id = afterId;
+        return this._makeAdminRequest(this.constants.ENDPOINTS.MEMBERS, params);
+    },
+
+    /**
+     * Get Claude Code usage report for a single day.
+     * @param {string} startDate - YYYY-MM-DD format
+     * @param {string} [page] - Pagination cursor
+     * @returns {{ success: boolean, data?: object, error?: string }}
+     */
+    getClaudeCodeUsage: function(startDate, page) {
+        var params = { starting_at: this._toDateOnly(startDate) };
+        if (page) params.page = page;
+        return this._makeAdminRequest(this.constants.ENDPOINTS.CC_USAGE, params);
+    },
+
+    /**
+     * Get Messages API usage report.
+     * @param {string} startDate - RFC 3339 timestamp
+     * @param {string} [endDate] - RFC 3339 timestamp
+     * @param {string} [bucketWidth] - '1d', '1h', or '1m' (default '1d')
+     * @param {string} [page] - Pagination cursor
+     * @returns {{ success: boolean, data?: object, error?: string }}
+     */
+    getMessagesUsage: function(startDate, endDate, bucketWidth, page) {
+        var params = {
+            starting_at: startDate,
+            bucket_width: bucketWidth || '1d',
+            'group_by[]': 'model',
+        };
+        if (endDate) params.ending_at = endDate;
+        if (page) params.page = page;
+        return this._makeAdminRequest(this.constants.ENDPOINTS.MSG_USAGE, params);
+    },
+
+    /**
+     * Get cost report.
+     * @param {string} startDate - RFC 3339 timestamp
+     * @param {string} [endDate] - RFC 3339 timestamp
+     * @returns {{ success: boolean, data?: object, error?: string }}
+     */
+    getCostReport: function(startDate, endDate) {
+        var params = { starting_at: startDate };
+        if (endDate) params.ending_at = endDate;
+        return this._makeAdminRequest(this.constants.ENDPOINTS.COST_REPORT, params);
+    },
+
+    // ========== Enterprise Analytics Methods ==========
+
+    /**
+     * Get per-user analytics data.
+     * @param {string} date - YYYY-MM-DD format
+     * @param {string} [page] - Pagination cursor
+     * @returns {{ success: boolean, data?: object, error?: string }}
+     */
+    getAnalyticsUsers: function(date, page) {
+        var params = { date: this._toDateOnly(date), limit: 1000 };
+        if (page) params.page = page;
+        return this._makeAnalyticsRequest(this.constants.ENDPOINTS.ANALYTICS_USERS, params);
+    },
+
+    /**
+     * Get activity summaries (DAU/WAU/MAU).
+     * @param {string} startDate - YYYY-MM-DD
+     * @param {string} [endDate] - YYYY-MM-DD
+     * @returns {{ success: boolean, data?: object, error?: string }}
+     */
+    getAnalyticsSummaries: function(startDate, endDate) {
+        var params = { starting_date: this._toDateOnly(startDate) };
+        if (endDate) params.ending_date = this._toDateOnly(endDate);
+        return this._makeAnalyticsRequest(this.constants.ENDPOINTS.ANALYTICS_SUMMARIES, params);
+    },
+
+    /**
+     * Get skill adoption data.
+     * @param {string} date - YYYY-MM-DD
+     * @param {string} [page] - Pagination cursor
+     * @returns {{ success: boolean, data?: object, error?: string }}
+     */
+    getAnalyticsSkills: function(date, page) {
+        var params = { date: this._toDateOnly(date), limit: 1000 };
+        if (page) params.page = page;
+        return this._makeAnalyticsRequest(this.constants.ENDPOINTS.ANALYTICS_SKILLS, params);
+    },
+
+    /**
+     * Get connector/MCP adoption data.
+     * @param {string} date - YYYY-MM-DD
+     * @param {string} [page] - Pagination cursor
+     * @returns {{ success: boolean, data?: object, error?: string }}
+     */
+    getAnalyticsConnectors: function(date, page) {
+        var params = { date: this._toDateOnly(date), limit: 1000 };
+        if (page) params.page = page;
+        return this._makeAnalyticsRequest(this.constants.ENDPOINTS.ANALYTICS_CONNECTORS, params);
+    },
+
+    // ========== Pagination Helper ==========
+
+    /**
+     * Auto-paginate through all results for a given request function.
+     * @param {function} requestFn - Function(page) that returns { success, data: { data: [], has_more, next_page } }
+     * @returns {Array} All data items concatenated
+     */
+    paginateAll: function(requestFn) {
+        var allData = [];
+        var page = null;
+        var hasMore = true;
+
+        while (hasMore) {
+            var response = requestFn.call(this, page);
+            if (!response.success) {
+                gs.error('[ClaudeApiClient] Pagination failed: ' + response.error);
+                break;
+            }
+
+            var data = response.data;
+            if (data.data && data.data.length > 0) {
+                allData = allData.concat(data.data);
+            }
+
+            hasMore = data.has_more === true;
+            page = data.next_page || null;
+        }
+
+        return allData;
+    },
+
+    // ========== HTTP Request Methods ==========
+
+    /**
+     * Make an authenticated GET request to the Anthropic Admin API.
+     * Resolves credentials via the Connection & Credential Alias.
+     */
+    _makeAdminRequest: function(endpoint, params) {
+        var apiKey = this._resolveCredentialFromAlias();
+        if (!apiKey) {
+            return { success: false, error: 'Anthropic credential not configured. Create a Connection record binding the "' + this.constants.CONNECTION_ALIAS_ID + '" alias to an api_key_credentials record via Connections & Credentials module.' };
+        }
+        return this._doRequest(endpoint, params, apiKey);
+    },
+
+    /**
+     * Make an authenticated GET request to the Enterprise Analytics API.
+     * Uses the same connection alias — the credential should hold the analytics key
+     * or a separate alias can be configured in future.
+     */
+    _makeAnalyticsRequest: function(endpoint, params) {
+        var apiKey = this._resolveCredentialFromAlias();
+        if (!apiKey) {
+            return { success: false, error: 'Anthropic credential not configured. Create a Connection record binding the "' + this.constants.CONNECTION_ALIAS_ID + '" alias to an api_key_credentials record via Connections & Credentials module.' };
+        }
+        return this._doRequest(endpoint, params, apiKey);
+    },
+
+    /**
+     * Resolve the API key from the Connection & Credential Alias.
+     *
+     * Resolution order:
+     * 1. sn_cc.ConnectionInfoProvider — resolves via the alias binding (preferred)
+     * 2. Fallback: look up sys_connection record directly and read the credential
+     *
+     * @returns {string|null} The API key, or null if not configured
+     */
+    _resolveCredentialFromAlias: function() {
+        // Return cached key if already resolved this session
+        if (this._cachedApiKey) return this._cachedApiKey;
+
+        var aliasSysId = this._getAliasSysId();
+        if (!aliasSysId) return null;
+
+        // Method 1: Use ConnectionInfoProvider (standard sn_cc pattern)
+        try {
+            var provider = new sn_cc.ConnectionInfoProvider();
+            var connectionInfo = provider.getConnectionInfoByAlias(aliasSysId);
+            if (connectionInfo) {
+                var apiKey = connectionInfo.getCredentialAttribute('api_key');
+                if (apiKey) {
+                    this._cachedApiKey = apiKey;
+                    return apiKey;
+                }
+            }
+        } catch (e) {
+            gs.warn('[ClaudeApiClient] sn_cc.ConnectionInfoProvider failed: ' + e.message);
+        }
+
+        // Method 2: Fallback — resolve via sys_connection GlideRecord
+        try {
+            var connGr = new GlideRecord('sys_connection');
+            connGr.addQuery('connection_alias', aliasSysId);
+            connGr.setLimit(1);
+            connGr.query();
+            if (connGr.next()) {
+                var credSysId = connGr.getValue('credential');
+                if (credSysId) {
+                    var credGr = new GlideRecord('api_key_credentials');
+                    if (credGr.get(credSysId)) {
+                        var key = credGr.getValue('api_key');
+                        if (key) {
+                            this._cachedApiKey = key;
+                            return key;
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+            gs.warn('[ClaudeApiClient] sys_connection fallback failed: ' + e.message);
+        }
+
+        gs.error('[ClaudeApiClient] No credential found for alias: ' + this.constants.CONNECTION_ALIAS_ID);
+        return null;
+    },
+
+    /**
+     * Get the sys_id of the Connection & Credential Alias.
+     * Looks up by the alias ID string defined in constants.
+     * @returns {string|null}
+     */
+    _getAliasSysId: function() {
+        if (this._aliasSysId) return this._aliasSysId;
+
+        // Check if a sys_id override is set in system properties
+        var override = gs.getProperty(this.constants.PROPERTY.CONNECTION_ALIAS);
+        if (override) {
+            this._aliasSysId = override;
+            return override;
+        }
+
+        // Look up alias by its ID string
+        var gr = new GlideRecord('sys_alias');
+        gr.addQuery('id', this.constants.CONNECTION_ALIAS_ID);
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) {
+            this._aliasSysId = gr.getUniqueValue();
+            return this._aliasSysId;
+        }
+
+        gs.error('[ClaudeApiClient] Connection alias not found: ' + this.constants.CONNECTION_ALIAS_ID);
+        return null;
+    },
+
+    /**
+     * Core HTTP GET request.
+     */
+    _doRequest: function(endpoint, params, apiKey) {
+        try {
+            var url = this._buildUrl(endpoint, params);
+
+            var rm = new sn_ws.RESTMessageV2();
+            rm.setEndpoint(url);
+            rm.setHttpMethod('GET');
+            rm.setRequestHeader('x-api-key', apiKey);
+            rm.setRequestHeader('anthropic-version', this.apiVersion);
+            rm.setRequestHeader('Content-Type', 'application/json');
+
+            var response = rm.execute();
+            var statusCode = response.getStatusCode();
+            var body = response.getBody();
+
+            if (statusCode == 200) {
+                return { success: true, data: JSON.parse(body) };
+            } else {
+                gs.error('[ClaudeApiClient] HTTP ' + statusCode + ': ' + body);
+                return { success: false, error: 'HTTP ' + statusCode + ': ' + body };
+            }
+        } catch (e) {
+            gs.error('[ClaudeApiClient] Request failed: ' + e.message);
+            return { success: false, error: 'Exception: ' + e.message };
+        }
+    },
+
+    /**
+     * Build a full URL with query string parameters.
+     */
+    _buildUrl: function(endpoint, params) {
+        var url = this.baseUrl + endpoint;
+        if (params) {
+            var parts = [];
+            for (var key in params) {
+                if (params.hasOwnProperty(key)) {
+                    parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(params[key]));
+                }
+            }
+            if (parts.length > 0) {
+                url += '?' + parts.join('&');
+            }
+        }
+        return url;
+    },
+
+    /**
+     * Strip time portion from a date string, returning YYYY-MM-DD.
+     */
+    _toDateOnly: function(dateStr) {
+        if (!dateStr) return '';
+        return dateStr.substring(0, 10);
+    },
+
+    type: 'ClaudeApiClient'
+};
+]]></script>
+    <sys_policy/>
+  </sys_script_include>
+</record_update>
