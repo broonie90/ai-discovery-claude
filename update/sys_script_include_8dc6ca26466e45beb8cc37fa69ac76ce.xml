@@ -214,7 +214,14 @@ ClaudeApiClient.prototype = {
         // Method 1: Use ConnectionInfoProvider (standard sn_cc pattern)
         try {
             var provider = new sn_cc.ConnectionInfoProvider();
-            var connectionInfo = provider.getConnectionInfoByAlias(aliasSysId);
+            // Try all known method signatures across SN versions
+            var connectionInfo = null;
+            if (typeof provider.getConnectionInfo === 'function') {
+                connectionInfo = provider.getConnectionInfo(this.constants.CONNECTION_ALIAS_ID);
+            } else if (typeof provider.getConnectionInfos === 'function') {
+                var infos = provider.getConnectionInfos(this.constants.CONNECTION_ALIAS_ID);
+                if (infos && infos.length > 0) connectionInfo = infos[0];
+            }
             if (connectionInfo) {
                 var apiKey = connectionInfo.getCredentialAttribute('api_key');
                 if (apiKey) {
