@@ -77,15 +77,9 @@ ClaudeDiscoveryUtil.prototype = {
         var startTime = new Date().getTime();
 
         try {
-            // Discover models
             var models = this.discoverModels();
-
-            // Discover tools (skills + connectors from Enterprise Analytics)
             var tools = this.discoverTools();
-
-            // Build the full result DTO
             var resultDto = this._buildResultDto(models, {}, tools, {});
-
             var modelCount = Object.keys(models).length;
             var toolCount = Object.keys(tools).length;
 
@@ -98,17 +92,143 @@ ClaudeDiscoveryUtil.prototype = {
                 result: JSON.stringify(resultDto),
                 error_message: ''
             };
-
         } catch (e) {
             var errMsg = 'Claude flow discovery failed: ' + e.message;
             gs.error('[ClaudeDiscoveryUtil] ' + errMsg);
             this._logRun('discovery', 'error', errMsg, 0, 0, 0, startTime);
+            return { agents: [], result: '{}', error_message: errMsg };
+        }
+    },
 
-            return {
-                agents: [],
-                result: '{}',
-                error_message: errMsg
-            };
+    /**
+     * Full discovery + CMDB write + execution record update.
+     * Called from the Flow Designer subflow action step.
+     * Replaces the need for the OOB "Process AI Agents" action.
+     *
+     * @param {string} executionSysId - sys_id of sn_ai_discovery_data_execution record
+     * @returns {{ records_created: number, records_updated: number, records_failed: number, error_message: string }}
+     */
+    discoverAndLoad: function(executionSysId) {
+        var startTime = new Date().getTime();
+        var counts = { records_created: 0, records_updated: 0, records_failed: 0, error_message: '' };
+
+        try {
+            // 1. Discover models + tools
+            var models = this.discoverModels();
+            var tools = this.discoverTools();
+            var result = this._buildResultDto(models, {}, tools, {});
+
+            // 2. Write to CMDB and track counts
+            counts = this._loadToCmdbWithCounts(result);
+
+            var modelCount = Object.keys(models).length;
+            var toolCount = Object.keys(tools).length;
+            this._logRun('discovery', 'success',
+                'Created: ' + counts.records_created + ', Updated: ' + counts.records_updated + ', Failed: ' + counts.records_failed,
+                modelCount, toolCount, 0, startTime);
+
+        } catch (e) {
+            counts.error_message = 'Discovery failed: ' + e.message;
+            gs.error('[ClaudeDiscoveryUtil] ' + counts.error_message);
+            this._logRun('discovery', 'error', counts.error_message, 0, 0, 0, startTime);
+        }
+
+        // 3. Update execution record
+        if (executionSysId) {
+            this._updateExecutionRecord(executionSysId, counts);
+        }
+
+        return counts;
+    },
+
+    /**
+     * Write to CMDB and return created/updated/failed counts.
+     */
+    _loadToCmdbWithCounts: function(result) {
+        var counts = { records_created: 0, records_updated: 0, records_failed: 0, error_message: '' };
+
+        // Models
+        if (!this._modelCategorySysId) {
+            this._modelCategorySysId = this._lookupModelCategory('AI model');
+        }
+
+        for (var modelId in result.models) {
+            if (!result.models.hasOwnProperty(modelId)) continue;
+            var model = result.models[modelId];
+            try {
+                var gr = new GlideRecord('alm_ai_model_digital_asset');
+                gr.addQuery('external_ref_id', model.id);
+                gr.query();
+                var isNew = !gr.next();
+                if (isNew) gr.initialize();
+
+                gr.setValue('display_name', model.name);
+                gr.setValue('external_ref_id', model.id);
+                gr.setValue('vendor', model.vendor);
+                gr.setValue('install_status', model.install_status);
+                gr.setValue('quantity', 1);
+                if (this._modelCategorySysId) {
+                    gr.setValue('model_category', this._modelCategorySysId);
+                }
+
+                if (isNew) {
+                    gr.insert();
+                    counts.records_created++;
+                } else {
+                    gr.update();
+                    counts.records_updated++;
+                }
+            } catch (e) {
+                counts.records_failed++;
+                gs.warn('[ClaudeDiscoveryUtil] Model write failed for ' + model.id + ': ' + e.message);
+            }
+        }
+
+        // Tools
+        for (var toolId in result.tools) {
+            if (!result.tools.hasOwnProperty(toolId)) continue;
+            var tool = result.tools[toolId];
+            try {
+                var tGr = new GlideRecord('sn_ent_ai_tool');
+                tGr.addQuery('name', tool.name);
+                tGr.query();
+                var isNewTool = !tGr.next();
+                if (isNewTool) tGr.initialize();
+
+                tGr.setValue('name', tool.name);
+                tGr.setValue('description', tool.description);
+                tGr.setValue('active', tool.active);
+                tGr.setValue('type', tool.id.indexOf('connector') > -1 ? 'MCP Connector' : 'Claude Skill');
+
+                if (isNewTool) {
+                    tGr.insert();
+                    counts.records_created++;
+                } else {
+                    tGr.update();
+                    counts.records_updated++;
+                }
+            } catch (e) {
+                counts.records_failed++;
+                gs.warn('[ClaudeDiscoveryUtil] Tool write failed for ' + tool.name + ': ' + e.message);
+            }
+        }
+
+        return counts;
+    },
+
+    /**
+     * Update the sn_ai_discovery_data_execution record with results.
+     */
+    _updateExecutionRecord: function(executionSysId, counts) {
+        var gr = new GlideRecord('sn_ai_discovery_data_execution');
+        if (gr.get(executionSysId)) {
+            gr.setValue('state', counts.error_message ? 'failed' : 'successful');
+            gr.setValue('records_created', counts.records_created);
+            gr.setValue('records_updated', counts.records_updated);
+            gr.setValue('records_failed', counts.records_failed);
+            gr.setValue('error_message', counts.error_message || '');
+            gr.setValue('last_execution_time', new GlideDateTime());
+            gr.update();
         }
     },
 
