@@ -65,6 +65,101 @@ ClaudeDiscoveryUtil.prototype = {
         return result;
     },
 
+    // ========== Usage Logging For Flow ==========
+
+    /**
+     * Fetch Enterprise Analytics usage and return agent_usage_logs array
+     * matching the shape the OOB "Log AI Usage" subflow expects.
+     * Also writes directly to sn_ai_disc_ai_usage as fallback.
+     *
+     * @param {string} [executionSysId] - execution record to update
+     * @returns {{ agent_usage_logs: Array, records_created: number, records_updated: number, records_failed: number, error_message: string }}
+     */
+    logUsageForFlow: function(executionSysId) {
+        var startTime = new Date().getTime();
+        var result = {
+            agent_usage_logs: [],
+            records_created: 0,
+            records_updated: 0,
+            records_failed: 0,
+            error_message: ''
+        };
+
+        try {
+            var systemSysId = this._ensureClaudeSystem();
+            if (!systemSysId) {
+                result.error_message = 'Could not create Claude AI Platform system record';
+                if (executionSysId) this._updateExecutionRecord(executionSysId, result);
+                return result;
+            }
+
+            var lagDays = 4;
+            var date = this._getDateDaysAgo(lagDays);
+            var usageTime = date + ' 00:00:00';
+
+            var page = null;
+            var hasMore = true;
+
+            while (hasMore) {
+                var response = this.apiClient.getAnalyticsUsers(date, page);
+                if (!response.success) {
+                    result.error_message = 'Analytics users API failed: ' + response.error;
+                    break;
+                }
+
+                var data = response.data;
+                if (data.data && data.data.length > 0) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        var userRecord = data.data[i];
+                        var email = (userRecord.user && userRecord.user.email_address) || '';
+
+                        // Calculate total activity
+                        var count = 0;
+                        var chat = userRecord.chat_metrics || {};
+                        count += (chat.message_count || 0);
+                        var cc = (userRecord.claude_code_metrics && userRecord.claude_code_metrics.core_metrics) || {};
+                        count += (cc.distinct_session_count || 0);
+                        var cowork = userRecord.cowork_metrics || {};
+                        count += (cowork.message_count || 0);
+                        count += (userRecord.web_search_count || 0);
+
+                        // Build agent_usage_log matching OOB shape
+                        result.agent_usage_logs.push({
+                            asset_id: systemSysId,
+                            asset_type: 'ai_system',
+                            time: usageTime,
+                            count: count,
+                            session_id: email,
+                            user_id: email
+                        });
+
+                        // Also write directly to sn_ai_disc_ai_usage
+                        var writeResult = this._upsertUsageRecord(systemSysId, userRecord, usageTime);
+                        if (writeResult === 'created') result.records_created++;
+                        else if (writeResult === 'updated') result.records_updated++;
+                        else result.records_failed++;
+                    }
+                }
+
+                hasMore = data.has_more === true;
+                page = data.next_page || null;
+            }
+
+            var total = result.records_created + result.records_updated;
+            this._logRun('usage', result.error_message ? 'partial' : 'success',
+                'Usage: ' + total + ' records (' + result.records_created + ' new, ' + result.records_updated + ' updated)',
+                0, 0, total, startTime);
+
+        } catch (e) {
+            result.error_message = 'Usage logging failed: ' + e.message;
+            gs.error('[ClaudeDiscoveryUtil] ' + result.error_message);
+            this._logRun('usage', 'error', result.error_message, 0, 0, 0, startTime);
+        }
+
+        if (executionSysId) this._updateExecutionRecord(executionSysId, result);
+        return result;
+    },
+
     // ========== Flow Designer Integration ==========
 
     /**
