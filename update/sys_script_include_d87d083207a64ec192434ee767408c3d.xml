@@ -1,19 +1,15 @@
-<?xml version="1.0"?>
-<record_update table="sys_script_include">
-  <sys_script_include action="INSERT_OR_UPDATE">
-    <sys_id>d87d083207a64ec192434ee767408c3d</sys_id>
-    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
-    <sys_update_name>sys_script_include_d87d083207a64ec192434ee767408c3d</sys_update_name>
-    <access>package_private</access>
-    <active>true</active>
-    <api_name>x_agiro_ai_disc_cl.ClaudeDiscoveryConstants</api_name>
-    <caller_access/>
-    <client_callable>false</client_callable>
-    <description/>
-    <mobile_callable>false</mobile_callable>
-    <name>ClaudeDiscoveryConstants</name>
-    <sandbox_callable>false</sandbox_callable>
-    <script><![CDATA[var ClaudeDiscoveryConstants = Class.create();
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_agiro_ai_disc_cl.ClaudeDiscoveryConstants</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>ClaudeDiscoveryConstants</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var ClaudeDiscoveryConstants = Class.create();
 ClaudeDiscoveryConstants.prototype = {
     initialize: function() {},
 
@@ -81,6 +77,17 @@ ClaudeDiscoveryConstants.prototype = {
     type: 'ClaudeDiscoveryConstants'
 };
 ]]></script>
-    <sys_policy/>
-  </sys_script_include>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-13 06:26:18</sys_created_on>
+        <sys_id>d87d083207a64ec192434ee767408c3d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ClaudeDiscoveryConstants</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sys_script_include_d87d083207a64ec192434ee767408c3d</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-13 06:26:18</sys_updated_on>
+    </sys_script_include>
 </record_update>
