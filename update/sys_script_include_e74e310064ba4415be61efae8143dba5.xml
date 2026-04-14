@@ -839,16 +839,24 @@ ClaudeDiscoveryUtil.prototype = {
     _logRun: function(runType, status, message, modelsFound, toolsFound, usageRecords, startTime) {
         var duration = new Date().getTime() - startTime;
 
-        var gr = new GlideRecord(this.constants.RUN_LOG_TABLE);
-        gr.initialize();
-        gr.setValue('x_agiro_ai_disc_cl_run_type', runType);
-        gr.setValue('x_agiro_ai_disc_cl_status', status);
-        gr.setValue('x_agiro_ai_disc_cl_message', (message || '').substring(0, 4000));
-        gr.setValue('x_agiro_ai_disc_cl_models_found', modelsFound || 0);
-        gr.setValue('x_agiro_ai_disc_cl_tools_found', toolsFound || 0);
-        gr.setValue('x_agiro_ai_disc_cl_usage_records', usageRecords || 0);
-        gr.setValue('x_agiro_ai_disc_cl_duration_ms', duration);
-        gr.insert();
+        try {
+            var gr = new GlideRecord(this.constants.RUN_LOG_TABLE);
+            if (!gr.isValid()) {
+                gs.info('[ClaudeDiscoveryUtil] Run log table not found, skipping log');
+                return;
+            }
+            gr.initialize();
+            gr.setValue('x_agiro_ai_disc_cl_run_type', runType);
+            gr.setValue('x_agiro_ai_disc_cl_status', status);
+            gr.setValue('x_agiro_ai_disc_cl_message', (message || '').substring(0, 4000));
+            gr.setValue('x_agiro_ai_disc_cl_models_found', modelsFound || 0);
+            gr.setValue('x_agiro_ai_disc_cl_tools_found', toolsFound || 0);
+            gr.setValue('x_agiro_ai_disc_cl_usage_records', usageRecords || 0);
+            gr.setValue('x_agiro_ai_disc_cl_duration_ms', duration);
+            gr.insert();
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Could not write to run log: ' + e.message);
+        }
     },
 
     // ========== Utility ==========
