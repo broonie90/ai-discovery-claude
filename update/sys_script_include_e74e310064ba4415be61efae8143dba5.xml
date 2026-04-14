@@ -172,7 +172,16 @@ ClaudeDiscoveryUtil.prototype = {
                 }
 
                 if (isNew) {
-                    gr.insert();
+                    var newSysId = gr.insert();
+                    // display_name can get dropped on insert in scoped apps
+                    // re-read and set it explicitly via update
+                    if (newSysId) {
+                        var updateGr = new GlideRecord('alm_ai_model_digital_asset');
+                        if (updateGr.get(newSysId)) {
+                            updateGr.setValue('display_name', model.name);
+                            updateGr.update();
+                        }
+                    }
                     counts.records_created++;
                 } else {
                     gr.update();
