@@ -1,16 +1,26 @@
-<?xml version="1.0"?>
-<record_update table="sys_user_role">
-  <sys_user_role action="INSERT_OR_UPDATE">
-    <sys_id>408cdd76e2a8471197a84bf9fac9a7ae</sys_id>
-    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
-    <sys_update_name>sys_user_role_408cdd76e2a8471197a84bf9fac9a7ae</sys_update_name>
-    <assignable_by/>
-    <can_delegate>true</can_delegate>
-    <description/>
-    <elevated_privilege>false</elevated_privilege>
-    <grantable>true</grantable>
-    <name>x_agiro_ai_disc_cl.discovery_admin</name>
-    <scoped_admin>false</scoped_admin>
-    <suffix>discovery_admin</suffix>
-  </sys_user_role>
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description/>
+        <elevated_privilege>false</elevated_privilege>
+        <federated_id>E3rQQ5/uCFChV78+9tgrdLXX5pzWdsyUTaTRTMD8Twc=</federated_id>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_agiro_ai_disc_cl.discovery_admin</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>discovery_admin</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-13 06:26:19</sys_created_on>
+        <sys_id>408cdd76e2a8471197a84bf9fac9a7ae</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_agiro_ai_disc_cl.discovery_admin</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sys_user_role_408cdd76e2a8471197a84bf9fac9a7ae</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-13 06:26:19</sys_updated_on>
+    </sys_user_role>
 </record_update>

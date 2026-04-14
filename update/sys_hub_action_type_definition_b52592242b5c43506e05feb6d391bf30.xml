@@ -39,7 +39,7 @@
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name>sys_hub_action_type_definition_b52592242b5c43506e05feb6d391bf30</sys_update_name>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-14 01:05:24</sys_updated_on>
+        <sys_updated_on>2026-04-14 01:54:11</sys_updated_on>
         <system_level>false</system_level>
         <type/>
     </sys_hub_action_type_definition>
@@ -1638,6 +1638,52 @@
         <sys_update_name>sys_documentation_var__m_sys_hub_action_input_b52592242b5c43506e05feb6d391bf30_connection_alias_en</sys_update_name>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
         <sys_updated_on>2026-04-13 23:36:36</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>variable</element>
+        <help/>
+        <hint/>
+        <label>variable</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_b52592242b5c43506e05feb6d391bf30</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-14 01:53:11</sys_created_on>
+        <sys_id>5a64faa42b9083506e05feb6d391bf0f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 01:53:11</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>ai_data_execution</element>
+        <help/>
+        <hint/>
+        <label>ai_data_execution</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_b52592242b5c43506e05feb6d391bf30</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-14 01:53:11</sys_created_on>
+        <sys_id>d664faa42b9083506e05feb6d391bf15</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 01:53:11</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -3417,6 +3463,52 @@
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
         <sys_updated_on>2026-04-13 23:55:38</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>ai_data_execution</element>
+        <help/>
+        <hint/>
+        <label>ai_data_execution</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_2c899aec2b5c43506e05feb6d391bfdd</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-14 01:53:15</sys_created_on>
+        <sys_id>93643ea42b9083506e05feb6d391bf53</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 01:53:15</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>variable</element>
+        <help/>
+        <hint/>
+        <label>variable</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_2c899aec2b5c43506e05feb6d391bfdd</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-14 01:53:15</sys_created_on>
+        <sys_id>97643ea42b9083506e05feb6d391bf41</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 01:53:15</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
