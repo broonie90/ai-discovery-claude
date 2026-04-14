@@ -162,6 +162,14 @@ ClaudeDiscoveryUtil.prototype = {
                 var isNew = !gr.next();
                 if (isNew) gr.initialize();
 
+                // Ensure manufacturer (core_company) exists
+                if (!this._manufacturerSysId) {
+                    this._manufacturerSysId = this._ensureManufacturer(this.constants.VENDOR);
+                }
+
+                // Ensure cmdb_model (product model) exists for this model
+                var productModelSysId = this._ensureProductModel(model);
+
                 gr.setValue('display_name', model.name);
                 gr.setValue('external_ref_id', model.id);
                 gr.setValue('vendor', model.vendor);
@@ -169,6 +177,9 @@ ClaudeDiscoveryUtil.prototype = {
                 gr.setValue('quantity', 1);
                 if (this._modelCategorySysId) {
                     gr.setValue('model_category', this._modelCategorySysId);
+                }
+                if (productModelSysId) {
+                    gr.setValue('model', productModelSysId);
                 }
 
                 if (isNew) {
@@ -657,6 +668,56 @@ ClaudeDiscoveryUtil.prototype = {
         var gdt = new GlideDateTime();
         gdt.addDaysUTC(-1);
         return gdt.getValue().substring(0, 10) + 'T00:00:00Z';
+    },
+
+    /**
+     * Find or create the manufacturer (core_company) record.
+     * @param {string} name - e.g. 'Anthropic'
+     * @returns {string|null} sys_id of the core_company record
+     */
+    _ensureManufacturer: function(name) {
+        var gr = new GlideRecord('core_company');
+        gr.addQuery('name', name);
+        gr.addQuery('manufacturer', true);
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) return gr.getUniqueValue();
+
+        // Create it
+        gr.initialize();
+        gr.setValue('name', name);
+        gr.setValue('manufacturer', true);
+        var sysId = gr.insert();
+        gs.info('[ClaudeDiscoveryUtil] Created manufacturer: ' + name + ' (' + sysId + ')');
+        return sysId;
+    },
+
+    /**
+     * Find or create a cmdb_ai_model_product_model record for a Claude model.
+     * This is the product model that the digital asset references.
+     * @param {object} model - model DTO with id, name, vendor, etc.
+     * @returns {string|null} sys_id of the cmdb_model record
+     */
+    _ensureProductModel: function(model) {
+        // Check if it exists by name + manufacturer
+        var gr = new GlideRecord('cmdb_ai_model_product_model');
+        gr.addQuery('name', model.name);
+        gr.addQuery('manufacturer', this._manufacturerSysId);
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) return gr.getUniqueValue();
+
+        // Create it
+        gr.initialize();
+        gr.setValue('name', model.name);
+        gr.setValue('manufacturer', this._manufacturerSysId);
+        if (this._modelCategorySysId) {
+            gr.setValue('cmdb_model_category', this._modelCategorySysId);
+        }
+        gr.setValue('sys_class_name', 'cmdb_ai_model_product_model');
+        var sysId = gr.insert();
+        gs.info('[ClaudeDiscoveryUtil] Created product model: ' + model.name + ' (' + sysId + ')');
+        return sysId;
     },
 
     /**
