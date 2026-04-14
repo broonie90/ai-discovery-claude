@@ -435,7 +435,14 @@ ClaudeDiscoveryUtil.prototype = {
             gr.setValue('external_ref_id', model.id);
             gr.setValue('vendor', model.vendor);
             gr.setValue('install_status', model.install_status);
-            gr.setValue('life_cycle_stage', 'production');
+            // model_category: "AI model" — look up sys_id dynamically
+            if (!this._modelCategorySysId) {
+                this._modelCategorySysId = this._lookupModelCategory('AI model');
+            }
+            if (this._modelCategorySysId) {
+                gr.setValue('model_category', this._modelCategorySysId);
+            }
+            gr.setValue('quantity', 1);
             gr.update() || gr.insert();
             modelCount++;
         }
@@ -521,6 +528,21 @@ ClaudeDiscoveryUtil.prototype = {
         var gdt = new GlideDateTime();
         gdt.addDaysUTC(-1);
         return gdt.getValue().substring(0, 10) + 'T00:00:00Z';
+    },
+
+    /**
+     * Look up the sys_id of a model_category by name.
+     * @param {string} categoryName - e.g. 'AI model'
+     * @returns {string|null} sys_id of the cmdb_model_category record
+     */
+    _lookupModelCategory: function(categoryName) {
+        var gr = new GlideRecord('cmdb_model_category');
+        gr.addQuery('name', categoryName);
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) return gr.getUniqueValue();
+        gs.warn('[ClaudeDiscoveryUtil] Model category not found: ' + categoryName);
+        return null;
     },
 
     /**
