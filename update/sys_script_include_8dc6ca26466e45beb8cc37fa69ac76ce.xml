@@ -217,9 +217,10 @@ ClaudeApiClient.prototype = {
             // Try all known method signatures across SN versions
             var connectionInfo = null;
             if (typeof provider.getConnectionInfo === 'function') {
-                connectionInfo = provider.getConnectionInfo(this.constants.CONNECTION_ALIAS_ID);
+                // getConnectionInfo requires the alias sys_id, not the alias ID string
+                connectionInfo = provider.getConnectionInfo(aliasSysId);
             } else if (typeof provider.getConnectionInfos === 'function') {
-                var infos = provider.getConnectionInfos(this.constants.CONNECTION_ALIAS_ID);
+                var infos = provider.getConnectionInfos(aliasSysId);
                 if (infos && infos.length > 0) connectionInfo = infos[0];
             }
             if (connectionInfo) {
