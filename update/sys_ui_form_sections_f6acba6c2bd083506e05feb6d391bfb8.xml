@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="f6acba6c2bd083506e05feb6d391bfb8" sys_domain="global" table="alm_ai_system_digital_asset" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+            <sys_created_on>2026-04-14 02:29:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>03ac36ac2bd083506e05feb6d391bff1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="alm_ai_system_digital_asset" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">f6acba6c2bd083506e05feb6d391bfb8</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">4bac36ac2bd083506e05feb6d391bfbe</sys_ui_section>
+            <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+            <sys_updated_on>2026-04-14 02:29:16</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+            <sys_created_on>2026-04-14 02:29:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8fac76ac2bd083506e05feb6d391bf05</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="alm_ai_system_digital_asset" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">f6acba6c2bd083506e05feb6d391bfb8</sys_ui_form>
+            <sys_ui_section caption="General" display_value="General" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">4bac36ac2bd083506e05feb6d391bff1</sys_ui_section>
+            <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+            <sys_updated_on>2026-04-14 02:29:16</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+            <sys_created_on>2026-04-14 02:29:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>43ac36ac2bd083506e05feb6d391bfa7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="alm_ai_system_digital_asset" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">f6acba6c2bd083506e05feb6d391bfb8</sys_ui_form>
+            <sys_ui_section caption="Financial" display_value="Financial" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">43ac36ac2bd083506e05feb6d391bf9d</sys_ui_section>
+            <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+            <sys_updated_on>2026-04-14 02:29:16</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+            <sys_created_on>2026-04-14 02:29:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4bac36ac2bd083506e05feb6d391bfb1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="alm_ai_system_digital_asset" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">f6acba6c2bd083506e05feb6d391bfb8</sys_ui_form>
+            <sys_ui_section caption="Contracts" display_value="Contracts" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">8bac36ac2bd083506e05feb6d391bfa7</sys_ui_section>
+            <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+            <sys_updated_on>2026-04-14 02:29:16</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>4</position>
+            <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+            <sys_created_on>2026-04-14 02:29:17</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8fac76ac2bd083506e05feb6d391bf18</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="alm_ai_system_digital_asset" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">f6acba6c2bd083506e05feb6d391bfb8</sys_ui_form>
+            <sys_ui_section caption="Activities" display_value="Activities" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">c7ac76ac2bd083506e05feb6d391bf06</sys_ui_section>
+            <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+            <sys_updated_on>2026-04-14 02:29:17</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>5</position>
+            <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+            <sys_created_on>2026-04-14 02:29:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c3ac36ac2bd083506e05feb6d391bf9c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="alm_ai_system_digital_asset" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">f6acba6c2bd083506e05feb6d391bfb8</sys_ui_form>
+            <sys_ui_section caption="Depreciation" display_value="Depreciation" name="alm_ai_system_digital_asset" sys_domain="global" view="Default view">03ac36ac2bd083506e05feb6d391bf82</sys_ui_section>
+            <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+            <sys_updated_on>2026-04-14 02:29:16</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>alm_ai_system_digital_asset</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+            <sys_created_on>2026-04-14 02:29:15</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f6acba6c2bd083506e05feb6d391bfb8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>alm_ai_system_digital_asset</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+            <sys_update_name>sys_ui_form_sections_f6acba6c2bd083506e05feb6d391bfb8</sys_update_name>
+            <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+            <sys_updated_on>2026-04-14 02:29:15</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>
