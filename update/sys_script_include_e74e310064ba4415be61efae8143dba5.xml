@@ -334,8 +334,10 @@ ClaudeDiscoveryUtil.prototype = {
     _loadToStaging: function(result) {
         if (this._useOobImportSet) {
             this._loadViaOobImportSetUtil(result);
-        } else {
+        } else if (this._hasStagingTables()) {
             this._loadDirectToStaging(result);
+        } else {
+            this._loadDirectToCmdb(result);
         }
     },
 
@@ -404,6 +406,71 @@ ClaudeDiscoveryUtil.prototype = {
         transformer.transformAllMaps(importSetSysId);
 
         gs.info('[ClaudeDiscoveryUtil] Direct staging load complete: ' + modelCount + ' models, import set ' + importSetSysId);
+    },
+
+    /**
+     * Write models and tools directly to CMDB tables, bypassing staging.
+     * Used when sn_ai_disc v2 staging tables don't exist (v1.1.x instances).
+     */
+    _loadDirectToCmdb: function(result) {
+        var modelCount = 0;
+        var toolCount = 0;
+
+        // Upsert models to alm_ai_model_digital_asset
+        for (var modelId in result.models) {
+            if (!result.models.hasOwnProperty(modelId)) continue;
+            var model = result.models[modelId];
+
+            var gr = new GlideRecord('alm_ai_model_digital_asset');
+            gr.addQuery('name', model.name);
+            gr.addQuery('vendor', model.vendor);
+            gr.query();
+
+            if (!gr.next()) {
+                gr.initialize();
+            }
+
+            gr.setValue('name', model.name);
+            gr.setValue('short_description', model.short_description || model.description);
+            gr.setValue('description', model.description);
+            gr.setValue('vendor', model.vendor);
+            gr.setValue('manufacturer', model.manufacturer);
+            gr.setValue('version', model.version);
+            gr.setValue('install_status', model.install_status);
+            gr.update() || gr.insert();
+            modelCount++;
+        }
+
+        // Upsert tools to sn_ent_ai_tool
+        for (var toolId in result.tools) {
+            if (!result.tools.hasOwnProperty(toolId)) continue;
+            var tool = result.tools[toolId];
+
+            var tGr = new GlideRecord('sn_ent_ai_tool');
+            tGr.addQuery('name', tool.name);
+            tGr.addQuery('vendor', tool.vendor);
+            tGr.query();
+
+            if (!tGr.next()) {
+                tGr.initialize();
+            }
+
+            tGr.setValue('name', tool.name);
+            tGr.setValue('short_description', tool.description);
+            tGr.setValue('vendor', tool.vendor);
+            tGr.update() || tGr.insert();
+            toolCount++;
+        }
+
+        gs.info('[ClaudeDiscoveryUtil] Direct CMDB write: ' + modelCount + ' models, ' + toolCount + ' tools');
+    },
+
+    /**
+     * Check if sn_ai_disc v2 staging tables exist.
+     */
+    _hasStagingTables: function() {
+        var gr = new GlideRecord('sn_ai_disc_ai_model_asset_staging');
+        return gr.isValid();
     },
 
     // ========== Cross-Scope Access Check ==========
