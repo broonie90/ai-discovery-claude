@@ -1,18 +1,27 @@
-<?xml version="1.0"?>
-<record_update table="sys_properties">
-  <sys_properties action="INSERT_OR_UPDATE">
-    <sys_id>b2bdf0c8023d4b0facbecc957f4ce96d</sys_id>
-    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
-    <sys_update_name>sys_properties_b2bdf0c8023d4b0facbecc957f4ce96d</sys_update_name>
-    <choices/>
-    <description>Optional: sys_id of Connection &amp; Credential Alias for Anthropic Claude API</description>
-    <ignore_cache>false</ignore_cache>
-    <is_private>false</is_private>
-    <name>x_agiro_ai_disc_cl.connection_alias</name>
-    <read_roles/>
-    <suffix>connection_alias</suffix>
-    <type>string</type>
-    <value/>
-    <write_roles/>
-  </sys_properties>
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Optional: sys_id of Connection &amp; Credential Alias for Anthropic Claude API</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_agiro_ai_disc_cl.connection_alias</name>
+        <read_roles/>
+        <suffix>connection_alias</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-13 06:26:17</sys_created_on>
+        <sys_id>b2bdf0c8023d4b0facbecc957f4ce96d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_agiro_ai_disc_cl.connection_alias</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sys_properties_b2bdf0c8023d4b0facbecc957f4ce96d</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-13 06:26:17</sys_updated_on>
+        <type>string</type>
+        <value/>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=b2bdf0c8023d4b0facbecc957f4ce96d"/>
 </record_update>
