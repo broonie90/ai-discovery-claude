@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sn_ai_discovery_data_source_configuration">
+    <sn_ai_discovery_data_source_configuration action="INSERT_OR_UPDATE">
+        <source>AWS</source>
+        <sub_flow display_value="Discover AWS Bedrock Agents">7dad2906ff7d62106758ffffffffff50</sub_flow>
+        <sys_class_name>sn_ai_discovery_data_source_configuration</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-14 01:22:31</sys_created_on>
+        <sys_id>d96de6242b5083506e05feb6d391bf67</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AWS</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sn_ai_discovery_data_source_configuration_d96de6242b5083506e05feb6d391bf67</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 01:22:31</sys_updated_on>
+        <usage_sub_flow display_value="Log AWS Agent Usage Data">fe35a8629f05a2106758acdeba0a1c19</usage_sub_flow>
+    </sn_ai_discovery_data_source_configuration>
+</record_update>
