@@ -417,38 +417,38 @@ ClaudeDiscoveryUtil.prototype = {
         var toolCount = 0;
 
         // Upsert models to alm_ai_model_digital_asset
+        // Field mapping (v1.1.x schema):
+        //   display_name (not 'name'), vendor, install_status, external_ref_id
         for (var modelId in result.models) {
             if (!result.models.hasOwnProperty(modelId)) continue;
             var model = result.models[modelId];
 
             var gr = new GlideRecord('alm_ai_model_digital_asset');
-            gr.addQuery('name', model.name);
-            gr.addQuery('vendor', model.vendor);
+            gr.addQuery('external_ref_id', model.id);
             gr.query();
 
             if (!gr.next()) {
                 gr.initialize();
             }
 
-            gr.setValue('name', model.name);
-            gr.setValue('short_description', model.short_description || model.description);
-            gr.setValue('description', model.description);
+            gr.setValue('display_name', model.name);
+            gr.setValue('external_ref_id', model.id);
             gr.setValue('vendor', model.vendor);
-            gr.setValue('manufacturer', model.manufacturer);
-            gr.setValue('version', model.version);
             gr.setValue('install_status', model.install_status);
+            gr.setValue('life_cycle_stage', 'production');
             gr.update() || gr.insert();
             modelCount++;
         }
 
         // Upsert tools to sn_ent_ai_tool
+        // Field mapping (v1.1.x schema):
+        //   name, description, type, active (no 'vendor' field)
         for (var toolId in result.tools) {
             if (!result.tools.hasOwnProperty(toolId)) continue;
             var tool = result.tools[toolId];
 
             var tGr = new GlideRecord('sn_ent_ai_tool');
             tGr.addQuery('name', tool.name);
-            tGr.addQuery('vendor', tool.vendor);
             tGr.query();
 
             if (!tGr.next()) {
@@ -456,8 +456,9 @@ ClaudeDiscoveryUtil.prototype = {
             }
 
             tGr.setValue('name', tool.name);
-            tGr.setValue('short_description', tool.description);
-            tGr.setValue('vendor', tool.vendor);
+            tGr.setValue('description', tool.description);
+            tGr.setValue('active', tool.active);
+            tGr.setValue('type', tool.id.indexOf('connector') > -1 ? 'MCP Connector' : 'Claude Skill');
             tGr.update() || tGr.insert();
             toolCount++;
         }
