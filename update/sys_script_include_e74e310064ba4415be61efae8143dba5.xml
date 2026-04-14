@@ -277,7 +277,7 @@ ClaudeDiscoveryUtil.prototype = {
             }
 
             // Fetch per-user analytics (3+ days ago due to data lag)
-            var lagDays = 3;
+            var lagDays = 4;
             var date = this._getDateDaysAgo(lagDays);
             var usageTime = date + ' 00:00:00';
 
@@ -524,7 +524,7 @@ ClaudeDiscoveryUtil.prototype = {
             return tools;
         }
 
-        var lagDays = 3;
+        var lagDays = 4;
         var date = this._getDateDaysAgo(lagDays);
 
         // Discover skills
