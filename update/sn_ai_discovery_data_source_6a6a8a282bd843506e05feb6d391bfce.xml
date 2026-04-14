@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sn_ai_discovery_data_source">
+    <sn_ai_discovery_data_source action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <alias display_value="sn_aws_integ.SG_AWS_CredentialAlias_Org">c3f0b8c453b32010c23bddeeff7b12ee</alias>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_daysofweek>sunday</run_daysofweek>
+        <run_frequency>daily</run_frequency>
+        <run_hourofday>0</run_hourofday>
+        <source_configuration display_value="AWS">61757875ff3922106758ffffffffffcb</source_configuration>
+        <sys_class_name>sn_ai_discovery_data_source</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-13 22:49:55</sys_created_on>
+        <sys_id>6a6a8a282bd843506e05feb6d391bfce</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>c3f0b8c453b32010c23bddeeff7b12ee</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sn_ai_discovery_data_source_6a6a8a282bd843506e05feb6d391bfce</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-13 22:49:55</sys_updated_on>
+        <type>discovery</type>
+    </sn_ai_discovery_data_source>
+</record_update>
