@@ -36,21 +36,25 @@ ClaudeDiscoveryUtil.prototype = {
             var models = this.discoverModels();
             result.modelsFound = Object.keys(models).length;
 
-            if (result.modelsFound === 0) {
-                result.message = 'No models discovered';
-                this._logRun('discovery', 'partial', result.message, result.modelsFound, 0, 0, startTime);
+            // 2. Discover tools (skills + connectors)
+            var tools = this.discoverTools();
+            var toolsFound = Object.keys(tools).length;
+
+            if (result.modelsFound === 0 && toolsFound === 0) {
+                result.message = 'No models or tools discovered';
+                this._logRun('discovery', 'partial', result.message, 0, 0, 0, startTime);
                 return result;
             }
 
-            // 2. Build the sn_ai_disc result DTO
-            var discoveryResult = this._buildResultDto(models, {}, {}, {});
+            // 3. Build the sn_ai_disc result DTO
+            var discoveryResult = this._buildResultDto(models, {}, tools, {});
 
-            // 3. Load into staging and transform to CMDB
+            // 4. Load into staging and transform to CMDB
             this._loadToStaging(discoveryResult);
 
             result.success = true;
-            result.message = 'Discovered ' + result.modelsFound + ' Claude models';
-            this._logRun('discovery', 'success', result.message, result.modelsFound, 0, 0, startTime);
+            result.message = 'Discovered ' + result.modelsFound + ' models, ' + toolsFound + ' tools';
+            this._logRun('discovery', 'success', result.message, result.modelsFound, toolsFound, 0, startTime);
 
         } catch (e) {
             result.message = 'Discovery failed: ' + e.message;
@@ -59,6 +63,53 @@ ClaudeDiscoveryUtil.prototype = {
         }
 
         return result;
+    },
+
+    // ========== Flow Designer Integration ==========
+
+    /**
+     * Discover models + tools and return result in the shape the OOB
+     * "Discover Data Source" subflow and "Process AI Agents" action expect.
+     * Called from Flow Designer, NOT from background scripts.
+     * @returns {{ agents: Array, result: string, error_message: string }}
+     */
+    discoverForFlow: function() {
+        var startTime = new Date().getTime();
+
+        try {
+            // Discover models
+            var models = this.discoverModels();
+
+            // Discover tools (skills + connectors from Enterprise Analytics)
+            var tools = this.discoverTools();
+
+            // Build the full result DTO
+            var resultDto = this._buildResultDto(models, {}, tools, {});
+
+            var modelCount = Object.keys(models).length;
+            var toolCount = Object.keys(tools).length;
+
+            this._logRun('discovery', 'success',
+                'Flow discovery: ' + modelCount + ' models, ' + toolCount + ' tools',
+                modelCount, toolCount, 0, startTime);
+
+            return {
+                agents: [],
+                result: JSON.stringify(resultDto),
+                error_message: ''
+            };
+
+        } catch (e) {
+            var errMsg = 'Claude flow discovery failed: ' + e.message;
+            gs.error('[ClaudeDiscoveryUtil] ' + errMsg);
+            this._logRun('discovery', 'error', errMsg, 0, 0, 0, startTime);
+
+            return {
+                agents: [],
+                result: '{}',
+                error_message: errMsg
+            };
+        }
     },
 
     // ========== Model Discovery ==========
@@ -124,6 +175,110 @@ ClaudeDiscoveryUtil.prototype = {
         }
     },
 
+    // ========== Tool Discovery (Skills + Connectors) ==========
+
+    /**
+     * Discover tools from Enterprise Analytics API.
+     * Skills and MCP connectors both map to sn_ent_ai_tool.
+     * Requires Enterprise plan + analytics API key configured.
+     * @returns {object} Map of tool id -> tool DTO
+     */
+    discoverTools: function() {
+        var tools = {};
+
+        var analyticsEnabled = gs.getProperty(this.constants.PROPERTY.ANALYTICS_ENABLED) === 'true';
+        if (!analyticsEnabled) {
+            gs.info('[ClaudeDiscoveryUtil] Analytics not enabled, skipping tool discovery');
+            return tools;
+        }
+
+        var lagDays = 3;
+        var date = this._getDateDaysAgo(lagDays);
+
+        // Discover skills
+        this._discoverSkills(tools, date);
+
+        // Discover connectors
+        this._discoverConnectors(tools, date);
+
+        gs.info('[ClaudeDiscoveryUtil] Discovered ' + Object.keys(tools).length + ' tools (skills + connectors)');
+        return tools;
+    },
+
+    /**
+     * Fetch skills from Enterprise Analytics and add to tools map.
+     */
+    _discoverSkills: function(tools, date) {
+        try {
+            var page = null;
+            var hasMore = true;
+
+            while (hasMore) {
+                var response = this.apiClient.getAnalyticsSkills(date, page);
+                if (!response.success) {
+                    gs.warn('[ClaudeDiscoveryUtil] Skills API failed: ' + response.error);
+                    return;
+                }
+
+                var data = response.data;
+                if (data.data && data.data.length > 0) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        var skill = data.data[i];
+                        var skillId = 'claude-skill-' + skill.skill_name;
+                        tools[skillId] = this._buildToolDto(
+                            skillId,
+                            skill.skill_name,
+                            'Claude Skill — ' + (skill.distinct_user_count || 0) + ' users',
+                            true
+                        );
+                    }
+                }
+
+                hasMore = data.has_more === true;
+                page = data.next_page || null;
+            }
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Skills discovery error: ' + e.message);
+        }
+    },
+
+    /**
+     * Fetch MCP connectors from Enterprise Analytics and add to tools map.
+     */
+    _discoverConnectors: function(tools, date) {
+        try {
+            var page = null;
+            var hasMore = true;
+
+            while (hasMore) {
+                var response = this.apiClient.getAnalyticsConnectors(date, page);
+                if (!response.success) {
+                    gs.warn('[ClaudeDiscoveryUtil] Connectors API failed: ' + response.error);
+                    return;
+                }
+
+                var data = response.data;
+                if (data.data && data.data.length > 0) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        var connector = data.data[i];
+                        var connectorId = 'claude-connector-' + connector.connector_name;
+                        tools[connectorId] = this._buildToolDto(
+                            connectorId,
+                            connector.connector_name,
+                            'MCP Connector — ' + (connector.distinct_user_count || 0) + ' users',
+                            true
+                        );
+                    }
+                }
+
+                hasMore = data.has_more === true;
+                page = data.next_page || null;
+            }
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Connectors discovery error: ' + e.message);
+        }
+    },
+
     // ========== DTO Builders ==========
 
     /**
@@ -139,6 +294,20 @@ ClaudeDiscoveryUtil.prototype = {
             vendor: this.constants.VENDOR,
             manufacturer: this.constants.MANUFACTURER,
             install_status: String(this.constants.INSTALL_STATUS.DEPLOYED),
+        };
+    },
+
+    /**
+     * Build a tool DTO matching the sn_ai_disc initializeToolsObject() shape.
+     * Maps to sn_ent_ai_tool in CMDB.
+     */
+    _buildToolDto: function(id, name, description, active) {
+        return {
+            id: id,
+            name: name,
+            description: description || '',
+            vendor: this.constants.VENDOR,
+            active: active !== false,
         };
     },
 
@@ -284,6 +453,17 @@ ClaudeDiscoveryUtil.prototype = {
         var gdt = new GlideDateTime();
         gdt.addDaysUTC(-1);
         return gdt.getValue().substring(0, 10) + 'T00:00:00Z';
+    },
+
+    /**
+     * Get a date N days ago as YYYY-MM-DD string.
+     * @param {number} days - Number of days to go back
+     * @returns {string} Date in YYYY-MM-DD format
+     */
+    _getDateDaysAgo: function(days) {
+        var gdt = new GlideDateTime();
+        gdt.addDaysUTC(-1 * days);
+        return gdt.getValue().substring(0, 10);
     },
 
     /**
