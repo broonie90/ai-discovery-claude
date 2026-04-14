@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<record_update table="sys_script_include">
+  <sys_script_include action="INSERT_OR_UPDATE">
+    <sys_id>827e140d3244488cba8526c76a0851c3</sys_id>
+    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
+    <sys_update_name>sys_script_include_827e140d3244488cba8526c76a0851c3</sys_update_name>
+    <access>package_private</access>
+    <active>true</active>
+    <api_name>x_agiro_ai_disc_cl.ClaudeDiscoverySetup</api_name>
+    <caller_access/>
+    <client_callable>false</client_callable>
+    <description/>
+    <mobile_callable>false</mobile_callable>
+    <name>ClaudeDiscoverySetup</name>
+    <sandbox_callable>false</sandbox_callable>
+    <script><![CDATA[/**
+ * ClaudeDiscoverySetup — Post-install configuration for AI Discovery Claude.
+ *
+ * Creates the required records in sn_ai_disc tables that can't be shipped
+ * as application files (they belong to the sn_ai_disc scope).
+ *
+ * Run after install:
+ *   new x_agiro_ai_disc_cl.ClaudeDiscoverySetup().install();
+ *
+ * Safe to re-run — checks for existing records before creating.
+ */
+var ClaudeDiscoverySetup = Class.create();
+ClaudeDiscoverySetup.prototype = {
+    initialize: function() {
+        this.constants = new x_agiro_ai_disc_cl.ClaudeDiscoveryConstants();
+    },
+
+    /**
+     * Run full post-install setup.
+     * Creates data source configuration + data source records if they don't exist.
+     * @returns {{ success: boolean, message: string }}
+     */
+    install: function() {
+        var messages = [];
+
+        // 1. Find or create the data source configuration
+        var configSysId = this._ensureDataSourceConfig();
+        if (configSysId) {
+            messages.push('Data source config: ' + configSysId);
+        } else {
+            return { success: false, message: 'Failed to create data source configuration' };
+        }
+
+        // 2. Find or create the discovery data source
+        var dsSysId = this._ensureDataSource(configSysId, 'discovery');
+        if (dsSysId) {
+            messages.push('Discovery data source: ' + dsSysId);
+        }
+
+        return { success: true, message: messages.join('; ') };
+    },
+
+    /**
+     * Find or create the sn_ai_discovery_data_source_configuration record.
+     */
+    _ensureDataSourceConfig: function() {
+        // Check if it already exists
+        var gr = new GlideRecord('sn_ai_discovery_data_source_configuration');
+        gr.addQuery('source', this.constants.SOURCE_NAME);
+        gr.query();
+        if (gr.next()) {
+            gs.info('[ClaudeDiscoverySetup] Config already exists: ' + gr.getUniqueValue());
+            return gr.getUniqueValue();
+        }
+
+        // Look up the discovery subflow
+        var subflowSysId = this._findSubflow('Discover Claude AI Assets');
+        // Also try alternate names
+        if (!subflowSysId) subflowSysId = this._findSubflow('Discover Claude Models');
+        if (!subflowSysId) subflowSysId = this._findSubflow('Claude AI Discovery');
+
+        // Create the config
+        gr.initialize();
+        gr.setValue('source', this.constants.SOURCE_NAME);
+        if (subflowSysId) {
+            gr.setValue('sub_flow', subflowSysId);
+        }
+        var sysId = gr.insert();
+        gs.info('[ClaudeDiscoverySetup] Created config: ' + sysId + (subflowSysId ? ' (subflow: ' + subflowSysId + ')' : ' (no subflow found - link manually)'));
+        return sysId;
+    },
+
+    /**
+     * Find or create a sn_ai_discovery_data_source record.
+     */
+    _ensureDataSource: function(configSysId, type) {
+        var aliasSysId = this._findAlias();
+        if (!aliasSysId) {
+            gs.warn('[ClaudeDiscoverySetup] Connection alias not found: ' + this.constants.CONNECTION_ALIAS_ID);
+            return null;
+        }
+
+        // Check if it already exists
+        var gr = new GlideRecord('sn_ai_discovery_data_source');
+        gr.addQuery('source_configuration', configSysId);
+        gr.addQuery('type', type);
+        gr.query();
+        if (gr.next()) {
+            gs.info('[ClaudeDiscoverySetup] Data source already exists: ' + gr.getUniqueValue());
+            return gr.getUniqueValue();
+        }
+
+        // Create it
+        gr.initialize();
+        gr.setValue('source_configuration', configSysId);
+        gr.setValue('alias', aliasSysId);
+        gr.setValue('type', type);
+        gr.setValue('active', true);
+        gr.setValue('run_frequency', 'daily');
+        gr.setValue('run_hourofday', 1);
+        var sysId = gr.insert();
+        gs.info('[ClaudeDiscoverySetup] Created ' + type + ' data source: ' + sysId);
+        return sysId;
+    },
+
+    /**
+     * Find a subflow by name.
+     */
+    _findSubflow: function(name) {
+        var gr = new GlideRecord('sys_hub_flow');
+        gr.addQuery('name', name);
+        gr.addQuery('type', 'subflow');
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) return gr.getUniqueValue();
+        return null;
+    },
+
+    /**
+     * Find the connection alias by ID string.
+     */
+    _findAlias: function() {
+        var gr = new GlideRecord('sys_alias');
+        gr.addQuery('id', this.constants.CONNECTION_ALIAS_ID);
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) return gr.getUniqueValue();
+        return null;
+    },
+
+    type: 'ClaudeDiscoverySetup'
+};
+]]></script>
+    <sys_policy/>
+  </sys_script_include>
+</record_update>
