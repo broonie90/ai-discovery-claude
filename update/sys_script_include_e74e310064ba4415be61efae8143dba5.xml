@@ -252,6 +252,198 @@ ClaudeDiscoveryUtil.prototype = {
         }
     },
 
+    // ========== Usage Logging ==========
+
+    /**
+     * Fetch Enterprise Analytics per-user activity and log to sn_ai_disc_ai_usage.
+     * Creates a "Claude AI Platform" system record if it doesn't exist.
+     * Each user's daily total activity becomes one usage record.
+     *
+     * @param {string} [executionSysId] - optional execution record to update
+     * @returns {{ records_created: number, records_updated: number, error_message: string }}
+     */
+    logUsage: function(executionSysId) {
+        var startTime = new Date().getTime();
+        var counts = { records_created: 0, records_updated: 0, records_failed: 0, error_message: '' };
+
+        try {
+            // Ensure the Claude AI Platform system record exists
+            var systemSysId = this._ensureClaudeSystem();
+            if (!systemSysId) {
+                counts.error_message = 'Could not create Claude AI Platform system record';
+                this._logRun('usage', 'error', counts.error_message, 0, 0, 0, startTime);
+                if (executionSysId) this._updateExecutionRecord(executionSysId, counts);
+                return counts;
+            }
+
+            // Fetch per-user analytics (3+ days ago due to data lag)
+            var lagDays = 3;
+            var date = this._getDateDaysAgo(lagDays);
+            var usageTime = date + ' 00:00:00';
+
+            var page = null;
+            var hasMore = true;
+
+            while (hasMore) {
+                var response = this.apiClient.getAnalyticsUsers(date, page);
+                if (!response.success) {
+                    counts.error_message = 'Analytics users API failed: ' + response.error;
+                    gs.warn('[ClaudeDiscoveryUtil] ' + counts.error_message);
+                    break;
+                }
+
+                var data = response.data;
+                if (data.data && data.data.length > 0) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        var userRecord = data.data[i];
+                        var result = this._upsertUsageRecord(systemSysId, userRecord, usageTime);
+                        if (result === 'created') counts.records_created++;
+                        else if (result === 'updated') counts.records_updated++;
+                        else counts.records_failed++;
+                    }
+                }
+
+                hasMore = data.has_more === true;
+                page = data.next_page || null;
+            }
+
+            var total = counts.records_created + counts.records_updated;
+            this._logRun('usage', counts.error_message ? 'partial' : 'success',
+                'Usage: ' + total + ' records (' + counts.records_created + ' new, ' + counts.records_updated + ' updated)',
+                0, 0, total, startTime);
+
+        } catch (e) {
+            counts.error_message = 'Usage logging failed: ' + e.message;
+            gs.error('[ClaudeDiscoveryUtil] ' + counts.error_message);
+            this._logRun('usage', 'error', counts.error_message, 0, 0, 0, startTime);
+        }
+
+        if (executionSysId) this._updateExecutionRecord(executionSysId, counts);
+        return counts;
+    },
+
+    /**
+     * Upsert a single usage record from Enterprise Analytics user data.
+     * Calculates total activity count across all channels.
+     */
+    _upsertUsageRecord: function(systemSysId, userRecord, usageTime) {
+        try {
+            var email = '';
+            if (userRecord.user) {
+                email = userRecord.user.email_address || '';
+            }
+
+            // Calculate total activity count
+            var count = 0;
+            var chat = userRecord.chat_metrics || {};
+            count += (chat.message_count || 0);
+
+            var cc = (userRecord.claude_code_metrics && userRecord.claude_code_metrics.core_metrics) || {};
+            count += (cc.distinct_session_count || 0);
+
+            var cowork = userRecord.cowork_metrics || {};
+            count += (cowork.message_count || 0);
+
+            count += (userRecord.web_search_count || 0);
+
+            // Look up ServiceNow user by email
+            var userSysId = this._lookupUser(email);
+
+            // Upsert: match on ai_system + time + user (or session_id for email)
+            var gr = new GlideRecord('sn_ai_disc_ai_usage');
+            gr.addQuery('ai_system', systemSysId);
+            gr.addQuery('time', usageTime);
+            if (userSysId) {
+                gr.addQuery('user', userSysId);
+            } else {
+                gr.addQuery('session_id', email);
+            }
+            gr.query();
+
+            var isNew = !gr.next();
+            if (isNew) gr.initialize();
+
+            gr.setValue('ai_system', systemSysId);
+            gr.setValue('count', count);
+            gr.setValue('time', usageTime);
+            gr.setValue('type', 'daily_activity');
+            if (userSysId) {
+                gr.setValue('user', userSysId);
+            }
+            gr.setValue('session_id', email);
+
+            if (isNew) {
+                gr.insert();
+                return 'created';
+            } else {
+                gr.update();
+                return 'updated';
+            }
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Usage record failed for ' + (email || 'unknown') + ': ' + e.message);
+            return 'failed';
+        }
+    },
+
+    /**
+     * Find or create the "Claude AI Platform" system record on alm_ai_system_digital_asset.
+     */
+    _ensureClaudeSystem: function() {
+        if (this._claudeSystemSysId) return this._claudeSystemSysId;
+
+        var gr = new GlideRecord('alm_ai_system_digital_asset');
+        gr.addQuery('display_name', 'Claude AI Platform');
+        gr.addQuery('vendor', this.constants.VENDOR);
+        gr.query();
+
+        if (gr.next()) {
+            this._claudeSystemSysId = gr.getUniqueValue();
+            return this._claudeSystemSysId;
+        }
+
+        // Create it
+        gr.initialize();
+        gr.setValue('display_name', 'Claude AI Platform');
+        gr.setValue('vendor', this.constants.VENDOR);
+        gr.setValue('install_status', this.constants.INSTALL_STATUS.DEPLOYED);
+        gr.setValue('quantity', 1);
+        var sysId = gr.insert();
+
+        // display_name may get dropped on insert from scoped app
+        if (sysId) {
+            var updateGr = new GlideRecord('alm_ai_system_digital_asset');
+            if (updateGr.get(sysId)) {
+                updateGr.setValue('display_name', 'Claude AI Platform');
+                updateGr.update();
+            }
+        }
+
+        gs.info('[ClaudeDiscoveryUtil] Created Claude AI Platform system: ' + sysId);
+        this._claudeSystemSysId = sysId;
+        return sysId;
+    },
+
+    /**
+     * Look up a sys_user by email address.
+     * @returns {string|null} sys_id of the user, or null
+     */
+    _lookupUser: function(email) {
+        if (!email) return null;
+        if (!this._userCache) this._userCache = {};
+        if (this._userCache[email] !== undefined) return this._userCache[email];
+
+        var gr = new GlideRecord('sys_user');
+        gr.addQuery('email', email);
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) {
+            this._userCache[email] = gr.getUniqueValue();
+            return this._userCache[email];
+        }
+        this._userCache[email] = null;
+        return null;
+    },
+
     // ========== Model Discovery ==========
 
     /**
@@ -368,7 +560,7 @@ ClaudeDiscoveryUtil.prototype = {
                         tools[skillId] = this._buildToolDto(
                             skillId,
                             skill.skill_name,
-                            'Claude Skill — ' + (skill.distinct_user_count || 0) + ' users',
+                            'Claude Skill',
                             true
                         );
                     }
@@ -405,7 +597,7 @@ ClaudeDiscoveryUtil.prototype = {
                         tools[connectorId] = this._buildToolDto(
                             connectorId,
                             connector.connector_name,
-                            'MCP Connector — ' + (connector.distinct_user_count || 0) + ' users',
+                            'MCP Connector',
                             true
                         );
                     }
