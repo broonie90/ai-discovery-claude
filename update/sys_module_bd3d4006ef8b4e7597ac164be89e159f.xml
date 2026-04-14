@@ -1,11 +1,6 @@
-<?xml version="1.0"?>
-<record_update>
-  <sys_module action="INSERT_OR_UPDATE">
-    <sys_id>bd3d4006ef8b4e7597ac164be89e159f</sys_id>
-    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
-    <path>x_agiro_ai_disc_cl/ai-discovery-claude/0.0.1/bom.json</path>
-    <external_source>false</external_source>
-    <content><![CDATA[{
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_module">
+    <sys_module action="INSERT_OR_UPDATE">
+        <content><![CDATA[{
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
@@ -47,5 +42,19 @@
     }
   ]
 }]]></content>
-  </sys_module>
+        <external_source>false</external_source>
+        <path>x_agiro_ai_disc_cl/ai-discovery-claude/0.0.1/bom.json</path>
+        <sys_class_name>sys_module</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-13 06:26:17</sys_created_on>
+        <sys_id>bd3d4006ef8b4e7597ac164be89e159f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_agiro_ai_disc_cl/ai-discovery-claude/0.0.1/bom.json</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sys_module_bd3d4006ef8b4e7597ac164be89e159f</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-13 06:26:17</sys_updated_on>
+    </sys_module>
 </record_update>
