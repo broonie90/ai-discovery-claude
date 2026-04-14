@@ -1,10 +1,18 @@
-<?xml version="1.0"?>
-<record_update table="sys_security_acl_role">
-  <sys_security_acl_role action="INSERT_OR_UPDATE">
-    <sys_id>a996e22c1886450fb9f014a552a2e135</sys_id>
-    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
-    <sys_update_name>sys_security_acl_role_a996e22c1886450fb9f014a552a2e135</sys_update_name>
-    <sys_security_acl>e12e153db366493ab98684db156543b8</sys_security_acl>
-    <sys_user_role name="admin">54274725d6d648f5875ea78ca73ef7dd</sys_user_role>
-  </sys_security_acl_role>
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-13 06:26:18</sys_created_on>
+        <sys_id>a996e22c1886450fb9f014a552a2e135</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_agiro_ai_disc_cl_run_log.admin</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_security_acl display_value="x_agiro_ai_disc_cl_run_log">e12e153db366493ab98684db156543b8</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_a996e22c1886450fb9f014a552a2e135</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-13 06:26:18</sys_updated_on>
+        <sys_user_role display_value="admin" name="admin">2831a114c611228501d4ea6c309d626d</sys_user_role>
+    </sys_security_acl_role>
 </record_update>
