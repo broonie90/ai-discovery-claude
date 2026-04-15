@@ -337,14 +337,23 @@ ClaudeDiscoveryUtil.prototype = {
 
     /**
      * Ensure a governance record exists for an AI asset.
-     * Sets lifecycle phase to "Assess" for newly discovered assets
-     * (per business requirement — discovered assets need review before deploy).
+     *
+     * Sets:
+     *   - lifecycle_phase = "New" (Intake) — marks asset as pending review
+     *   - status = 5 (AI Steward Review) — required for the "Start review"
+     *     UI action button to display on the asset form. Without status=5
+     *     the AIAssetUtils.canDisplayStartReview() check returns false and
+     *     reviewers cannot kick off the assessment playbook.
+     *
      * @param {string} assetSysId - sys_id from alm_ai_model_digital_asset or alm_ai_system_digital_asset
      */
     _ensureGovernanceRecord: function(assetSysId) {
         if (!assetSysId) return;
         try {
-            // Look up "Assess" phase sys_id once
+            // AIAssetUtils.STATUS_AI_STEWARD_REVIEW = 5
+            var STATUS_AI_STEWARD_REVIEW = 5;
+
+            // Look up "New" phase sys_id once
             if (!this._assessPhaseSysId) {
                 this._assessPhaseSysId = this._lookupLifecyclePhase(this.constants.LIFECYCLE_PHASE_NEW_ASSET);
             }
@@ -355,11 +364,18 @@ ClaudeDiscoveryUtil.prototype = {
             gr.query();
 
             if (gr.next()) {
-                // Existing record — only update if phase is empty
+                // Existing record — backfill phase and/or status if missing so
+                // previously-discovered assets get the Start review button too.
+                var dirty = false;
                 if (!gr.getValue('lifecycle_phase') && this._assessPhaseSysId) {
                     gr.setValue('lifecycle_phase', this._assessPhaseSysId);
-                    gr.update();
+                    dirty = true;
                 }
+                if (!gr.getValue('status')) {
+                    gr.setValue('status', STATUS_AI_STEWARD_REVIEW);
+                    dirty = true;
+                }
+                if (dirty) gr.update();
                 return;
             }
 
@@ -369,6 +385,7 @@ ClaudeDiscoveryUtil.prototype = {
             if (this._assessPhaseSysId) {
                 gr.setValue('lifecycle_phase', this._assessPhaseSysId);
             }
+            gr.setValue('status', STATUS_AI_STEWARD_REVIEW);
             gr.insert();
         } catch (e) {
             gs.warn('[ClaudeDiscoveryUtil] Governance record creation failed for ' + assetSysId + ': ' + e.message);
