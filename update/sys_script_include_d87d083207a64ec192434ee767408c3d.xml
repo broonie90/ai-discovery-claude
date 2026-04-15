@@ -76,6 +76,12 @@ ClaudeDiscoveryConstants.prototype = {
         NOT_APPLICABLE: 35,
     },
 
+    /**
+     * Governance lifecycle phase name to set on newly discovered assets.
+     * sys_ids are looked up dynamically so the app is portable across instances.
+     */
+    LIFECYCLE_PHASE_NEW_ASSET: 'Assess',
+
     RUN_LOG_TABLE: 'x_agiro_ai_disc_cl_run_log',
 
     type: 'ClaudeDiscoveryConstants'

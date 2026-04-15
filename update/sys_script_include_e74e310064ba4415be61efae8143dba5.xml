@@ -287,10 +287,14 @@ ClaudeDiscoveryUtil.prototype = {
                             updateGr.setValue('display_name', model.name);
                             updateGr.update();
                         }
+                        // Create governance record with "Assess" lifecycle phase
+                        this._ensureGovernanceRecord(newSysId);
                     }
                     counts.records_created++;
                 } else {
                     gr.update();
+                    // Ensure governance record exists for existing assets too
+                    this._ensureGovernanceRecord(gr.getUniqueValue());
                     counts.records_updated++;
                 }
             } catch (e) {
@@ -329,6 +333,61 @@ ClaudeDiscoveryUtil.prototype = {
         }
 
         return counts;
+    },
+
+    /**
+     * Ensure a governance record exists for an AI asset.
+     * Sets lifecycle phase to "Assess" for newly discovered assets
+     * (per business requirement — discovered assets need review before deploy).
+     * @param {string} assetSysId - sys_id from alm_ai_model_digital_asset or alm_ai_system_digital_asset
+     */
+    _ensureGovernanceRecord: function(assetSysId) {
+        if (!assetSysId) return;
+        try {
+            // Look up "Assess" phase sys_id once
+            if (!this._assessPhaseSysId) {
+                this._assessPhaseSysId = this._lookupLifecyclePhase(this.constants.LIFECYCLE_PHASE_NEW_ASSET);
+            }
+
+            var gr = new GlideRecord('sn_ai_governance_asset_governance_details');
+            gr.addQuery('asset', assetSysId);
+            gr.setLimit(1);
+            gr.query();
+
+            if (gr.next()) {
+                // Existing record — only update if phase is empty
+                if (!gr.getValue('lifecycle_phase') && this._assessPhaseSysId) {
+                    gr.setValue('lifecycle_phase', this._assessPhaseSysId);
+                    gr.update();
+                }
+                return;
+            }
+
+            // Create new governance record
+            gr.initialize();
+            gr.setValue('asset', assetSysId);
+            if (this._assessPhaseSysId) {
+                gr.setValue('lifecycle_phase', this._assessPhaseSysId);
+            }
+            gr.insert();
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Governance record creation failed for ' + assetSysId + ': ' + e.message);
+        }
+    },
+
+    /**
+     * Look up a lifecycle phase sys_id by name.
+     * @param {string} name - e.g. 'Assess', 'Deploy'
+     * @returns {string|null}
+     */
+    _lookupLifecyclePhase: function(name) {
+        var gr = new GlideRecord('sn_ai_governance_lifecycle');
+        gr.addQuery('name', name);
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) return gr.getUniqueValue();
+        gs.warn('[ClaudeDiscoveryUtil] Lifecycle phase not found: ' + name);
+        return null;
     },
 
     /**
@@ -511,6 +570,8 @@ ClaudeDiscoveryUtil.prototype = {
                 updateGr.setValue('display_name', 'Claude AI Platform');
                 updateGr.update();
             }
+            // Create governance record with "Assess" lifecycle phase
+            this._ensureGovernanceRecord(sysId);
         }
 
         gs.info('[ClaudeDiscoveryUtil] Created Claude AI Platform system: ' + sysId);
