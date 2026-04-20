@@ -364,7 +364,7 @@ ClaudeDiscoveryUtil.prototype = {
                 gr.setValue('x_agiro_ai_disc_cl_skill', toolSysId);
                 gr.setValue('x_agiro_ai_disc_cl_usage_date', date);
             }
-            gr.setValue('x_agiro_ai_disc_cl_invocation_count', skill.invocation_count || skill.count || 0);
+            gr.setValue('x_agiro_ai_disc_cl_invocation_count', this._sumUsageCounts(skill));
             gr.setValue('x_agiro_ai_disc_cl_distinct_users', skill.distinct_user_count || 0);
             gr.setValue('x_agiro_ai_disc_cl_source', 'anthropic_analytics_skills');
             if (isNew) { gr.insert(); return 'created'; }
@@ -392,7 +392,7 @@ ClaudeDiscoveryUtil.prototype = {
                 gr.setValue('x_agiro_ai_disc_cl_connector', toolSysId);
                 gr.setValue('x_agiro_ai_disc_cl_usage_date', date);
             }
-            gr.setValue('x_agiro_ai_disc_cl_invocation_count', connector.invocation_count || connector.count || 0);
+            gr.setValue('x_agiro_ai_disc_cl_invocation_count', this._sumUsageCounts(connector));
             gr.setValue('x_agiro_ai_disc_cl_distinct_users', connector.distinct_user_count || 0);
             gr.setValue('x_agiro_ai_disc_cl_source', 'anthropic_analytics_connectors');
             if (isNew) { gr.insert(); return 'created'; }
@@ -433,6 +433,39 @@ ClaudeDiscoveryUtil.prototype = {
         gr.query();
         this._toolCache[key] = gr.next() ? gr.getUniqueValue() : null;
         return this._toolCache[key];
+    },
+
+    /**
+     * Recursively sum any leaf value whose key ends in "_used_count" — a rollup
+     * of per-channel invocation counts for a skill or connector.
+     *
+     * Anthropic's /analytics/skills + /analytics/connectors responses split
+     * counts across channels (chat_metrics, claude_code_metrics, office_metrics.*,
+     * cowork_metrics...). The API may add new channels over time; walking the
+     * object and summing *_used_count leaves means we stay correct without
+     * hand-mapping each channel.
+     *
+     * Excludes `distinct_user_count` (top-level total, already captured separately).
+     *
+     * @param {object} row - single skill or connector row from the API
+     * @returns {number} total invocations across all channels
+     */
+    _sumUsageCounts: function(row) {
+        var total = 0;
+        function walk(obj) {
+            if (!obj || typeof obj !== 'object') return;
+            for (var k in obj) {
+                if (!obj.hasOwnProperty(k)) continue;
+                var v = obj[k];
+                if (v !== null && typeof v === 'object') {
+                    walk(v);
+                } else if (typeof v === 'number' && k.indexOf('_used_count') !== -1) {
+                    total += v;
+                }
+            }
+        }
+        walk(row);
+        return total;
     },
 
     // ========== Flow Designer Integration ==========
