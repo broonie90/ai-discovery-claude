@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="x_agiro_ai_disc_cl_ai_model" label="AI Model" language="en" table="x_agiro_ai_disc_cl_model_usage">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>x_agiro_ai_disc_cl_ai_model</element>
+            <help/>
+            <hint/>
+            <label>AI Model</label>
+            <language>en</language>
+            <name>x_agiro_ai_disc_cl_model_usage</name>
+            <plural>AI Models</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+            <sys_created_on>2026-04-20 05:54:03</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>AI Model</sys_name>
+            <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+            <sys_update_name>sys_documentation_x_agiro_ai_disc_cl_model_usage_x_agiro_ai_disc_cl_ai_model_en</sys_update_name>
+            <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+            <sys_updated_on>2026-04-20 05:54:03</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
