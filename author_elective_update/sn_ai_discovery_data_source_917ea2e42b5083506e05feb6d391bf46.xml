@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sn_ai_discovery_data_source">
+    <sn_ai_discovery_data_source action="DELETE">
+        <active>true</active>
+        <alias display_value="x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT">a314cad88394431006e3bfc6feaad39d</alias>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_daysofweek>sunday</run_daysofweek>
+        <run_frequency>daily</run_frequency>
+        <run_hourofday>6</run_hourofday>
+        <source_configuration/>
+        <sys_class_name>sn_ai_discovery_data_source</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-14 01:27:46</sys_created_on>
+        <sys_id>917ea2e42b5083506e05feb6d391bf46</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>a314cad88394431006e3bfc6feaad39d</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sn_ai_discovery_data_source_917ea2e42b5083506e05feb6d391bf46</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 01:27:46</sys_updated_on>
+        <type>discovery</type>
+    </sn_ai_discovery_data_source>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</application>
+        <file_path/>
+        <instance_id>4c65f783db9441107527d7c8f496195e</instance_id>
+        <instance_name>hestanonprod</instance_name>
+        <name>sn_ai_discovery_data_source_917ea2e42b5083506e05feb6d391bf46</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sn_ai_discovery_data_source"><sn_ai_discovery_data_source action="INSERT_OR_UPDATE"><active>true</active><alias display_value="x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT">a314cad88394431006e3bfc6feaad39d</alias><run_dayofmonth>1</run_dayofmonth><run_daysofweek>sunday</run_daysofweek><run_frequency>daily</run_frequency><run_hourofday>6</run_hourofday><source_configuration/><sys_class_name>sn_ai_discovery_data_source</sys_class_name><sys_created_by>rbrown@hesta.com.au</sys_created_by><sys_created_on>2026-04-14 01:27:46</sys_created_on><sys_id>917ea2e42b5083506e05feb6d391bf46</sys_id><sys_mod_count>0</sys_mod_count><sys_name>a314cad88394431006e3bfc6feaad39d</sys_name><sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package><sys_policy/><sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope><sys_update_name>sn_ai_discovery_data_source_917ea2e42b5083506e05feb6d391bf46</sys_update_name><sys_updated_by>rbrown@hesta.com.au</sys_updated_by><sys_updated_on>2026-04-14 01:27:46</sys_updated_on><type>discovery</type></sn_ai_discovery_data_source></record_update>]]></payload>
+        <payload_hash>-1922935733</payload_hash>
+        <record_name>a314cad88394431006e3bfc6feaad39d</record_name>
+        <reverted_from/>
+        <source>ff69aa902b18cf106e05feb6d391bfc5</source>
+        <source_table>sys_update_set</source_table>
+        <state>current</state>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-14 03:19:09</sys_created_on>
+        <sys_id>b518cba82b5483506e05feb6d391bf96</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19d8a0001720000001</sys_recorded_at>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 03:19:09</sys_updated_on>
+        <type>AI Data Source</type>
+        <update_guid>b118cba85c548350fd80a39df131b396</update_guid>
+        <update_guid_history>b118cba85c548350fd80a39df131b396:0,ca9ea6e40d5083508f276aacdfa092de:-747878783,40a4b6e4449083507a45e00fd3b8bc47:-190163723,ca9ea6e40d5083508f276aacdfa092de:-747878783</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT">468875eac3d88710f6719d277d013197</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 02:39:24</sys_created_on>
+        <sys_db_object display_value="" name="sn_ai_discovery_data_source">sn_ai_discovery_data_source</sys_db_object>
+        <sys_id>00184a03aed94f08800bbcabe26d4a89</sys_id>
+        <sys_metadata>917ea2e42b5083506e05feb6d391bf46</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>a314cad88394431006e3bfc6feaad39d</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_scope_delete display_value="">004dab4656dc4804800032b9441950c4</sys_scope_delete>
+        <sys_update_name>sn_ai_discovery_data_source_917ea2e42b5083506e05feb6d391bf46</sys_update_name>
+        <sys_update_version display_value="sn_ai_discovery_data_source_917ea2e42b5083506e05feb6d391bf46">b518cba82b5483506e05feb6d391bf96</sys_update_version>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 02:39:24</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

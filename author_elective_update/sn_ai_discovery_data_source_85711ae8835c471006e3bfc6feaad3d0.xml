@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sn_ai_discovery_data_source">
     <sn_ai_discovery_data_source action="DELETE">
         <active>true</active>
-        <alias display_value="Anthropic Claude for AICT">a314cad88394431006e3bfc6feaad39d</alias>
+        <alias display_value="x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT">a314cad88394431006e3bfc6feaad39d</alias>
         <run_dayofmonth/>
         <run_daysofweek/>
         <run_frequency>daily</run_frequency>
         <run_hourofday>1</run_hourofday>
-        <source_configuration display_value="Anthropic Claude">79659d50835c031006e3bfc6feaad353</source_configuration>
+        <source_configuration/>
         <sys_class_name>sn_ai_discovery_data_source</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-04-13 06:00:00</sys_created_on>
         <sys_id>85711ae8835c471006e3bfc6feaad3d0</sys_id>
         <sys_mod_count>0</sys_mod_count>
+        <sys_name>a314cad88394431006e3bfc6feaad39d</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
@@ -27,29 +28,29 @@
         <instance_id>4c65f783db9441107527d7c8f496195e</instance_id>
         <instance_name>hestanonprod</instance_name>
         <name>sn_ai_discovery_data_source_85711ae8835c471006e3bfc6feaad3d0</name>
-        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sn_ai_discovery_data_source"><sn_ai_discovery_data_source action="INSERT_OR_UPDATE"><active>true</active><alias display_value="Anthropic Claude for AICT">a314cad88394431006e3bfc6feaad39d</alias><run_dayofmonth/><run_daysofweek/><run_frequency>daily</run_frequency><run_hourofday>1</run_hourofday><source_configuration display_value="Anthropic Claude">79659d50835c031006e3bfc6feaad353</source_configuration><sys_class_name>sn_ai_discovery_data_source</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-04-13 06:00:00</sys_created_on><sys_id>85711ae8835c471006e3bfc6feaad3d0</sys_id><sys_mod_count>0</sys_mod_count><sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package><sys_policy/><sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope><sys_update_name>sn_ai_discovery_data_source_85711ae8835c471006e3bfc6feaad3d0</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-04-13 06:00:00</sys_updated_on><type>discovery</type></sn_ai_discovery_data_source></record_update>]]></payload>
-        <payload_hash>-1610178497</payload_hash>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sn_ai_discovery_data_source"><sn_ai_discovery_data_source action="INSERT_OR_UPDATE"><active>true</active><alias display_value="x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT">a314cad88394431006e3bfc6feaad39d</alias><run_dayofmonth/><run_daysofweek/><run_frequency>daily</run_frequency><run_hourofday>1</run_hourofday><source_configuration/><sys_class_name>sn_ai_discovery_data_source</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-04-13 06:00:00</sys_created_on><sys_id>85711ae8835c471006e3bfc6feaad3d0</sys_id><sys_mod_count>0</sys_mod_count><sys_name>a314cad88394431006e3bfc6feaad39d</sys_name><sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package><sys_policy/><sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope><sys_update_name>sn_ai_discovery_data_source_85711ae8835c471006e3bfc6feaad3d0</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-04-13 06:00:00</sys_updated_on><type>discovery</type></sn_ai_discovery_data_source></record_update>]]></payload>
+        <payload_hash>83122312</payload_hash>
         <record_name>a314cad88394431006e3bfc6feaad39d</record_name>
         <reverted_from/>
-        <source/>
-        <source_table>sys_upgrade_history</source_table>
+        <source>ff69aa902b18cf106e05feb6d391bfc5</source>
+        <source_table>sys_update_set</source_table>
         <state>current</state>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-14 01:26:47</sys_created_on>
-        <sys_id>fb5eeaa42b5083506e05feb6d391bfe8</sys_id>
+        <sys_created_on>2026-04-20 04:03:52</sys_created_on>
+        <sys_id>17dbcee6c3dc8710f6719d277d01318d</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_recorded_at>19d899922480000001</sys_recorded_at>
+        <sys_recorded_at>19da90f19730000001</sys_recorded_at>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-14 01:26:47</sys_updated_on>
+        <sys_updated_on>2026-04-20 04:03:52</sys_updated_on>
         <type>AI Data Source</type>
-        <update_guid>bb5eeaa4b1508350395c27f283e587e8</update_guid>
-        <update_guid_history>bb5eeaa4b1508350395c27f283e587e8:-1610178497</update_guid_history>
+        <update_guid>9fdbcee6ffdc87109fa551b94994d98c</update_guid>
+        <update_guid_history>9fdbcee6ffdc87109fa551b94994d98c:0,80ce2ee4a6508350c3204569c7cf1ec0:-1295148269,bb5eeaa4b1508350395c27f283e587e8:-1610178497</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT">84ce2ee42b5083506e05feb6d391bf6f</sys_audit_delete>
+        <sys_audit_delete display_value="x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT">76bc4a6ac3dc8710f6719d277d013101</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-04-14 01:28:27</sys_created_on>
+        <sys_created_on>2026-04-20 04:07:40</sys_created_on>
         <sys_db_object display_value="" name="sn_ai_discovery_data_source">sn_ai_discovery_data_source</sys_db_object>
         <sys_id>85715ed51a154fcdb0f29d7a2a7e5479</sys_id>
         <sys_metadata>85711ae8835c471006e3bfc6feaad3d0</sys_metadata>
@@ -61,8 +62,8 @@
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_scope_delete display_value="">004dab4656dc4804800032b9441950c4</sys_scope_delete>
         <sys_update_name>sn_ai_discovery_data_source_85711ae8835c471006e3bfc6feaad3d0</sys_update_name>
-        <sys_update_version display_value="sn_ai_discovery_data_source_85711ae8835c471006e3bfc6feaad3d0">fb5eeaa42b5083506e05feb6d391bfe8</sys_update_version>
+        <sys_update_version display_value="sn_ai_discovery_data_source_85711ae8835c471006e3bfc6feaad3d0">17dbcee6c3dc8710f6719d277d01318d</sys_update_version>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-04-14 01:28:27</sys_updated_on>
+        <sys_updated_on>2026-04-20 04:07:40</sys_updated_on>
     </sys_metadata_delete>
 </record_update>
