@@ -12,7 +12,7 @@
         <map_page/>
         <mobile_title>Run Log</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
-        <name/>
+        <name>x_agiro_ai_disc_cl_run_log</name>
         <order>100</order>
         <override_menu_roles>false</override_menu_roles>
         <query/>
