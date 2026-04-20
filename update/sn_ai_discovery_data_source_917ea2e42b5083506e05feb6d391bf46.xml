@@ -6,7 +6,7 @@
         <run_daysofweek>sunday</run_daysofweek>
         <run_frequency>daily</run_frequency>
         <run_hourofday>6</run_hourofday>
-        <source_configuration display_value="Anthropic Claude">79659d50835c031006e3bfc6feaad353</source_configuration>
+        <source_configuration display_value="">79659d50835c031006e3bfc6feaad353</source_configuration>
         <sys_class_name>sn_ai_discovery_data_source</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-14 01:27:46</sys_created_on>

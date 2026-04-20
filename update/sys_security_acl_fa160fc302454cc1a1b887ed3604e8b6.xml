@@ -1,22 +1,30 @@
-<?xml version="1.0"?>
-<record_update table="sys_security_acl">
-  <sys_security_acl action="INSERT_OR_UPDATE">
-    <sys_id>fa160fc302454cc1a1b887ed3604e8b6</sys_id>
-    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
-    <sys_update_name>sys_security_acl_fa160fc302454cc1a1b887ed3604e8b6</sys_update_name>
-    <active>true</active>
-    <admin_overrides>true</admin_overrides>
-    <advanced>false</advanced>
-    <applies_to/>
-    <condition/>
-    <decision_type>allow</decision_type>
-    <description/>
-    <local_or_existing>Local</local_or_existing>
-    <name>x_agiro_ai_disc_cl_model_usage</name>
-    <operation>read</operation>
-    <script/>
-    <security_attribute/>
-    <sys_policy/>
-    <type>record</type>
-  </sys_security_acl>
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <applies_to/>
+        <condition/>
+        <controlled_by_refs/>
+        <decision_type>allow</decision_type>
+        <description/>
+        <local_or_existing>Local</local_or_existing>
+        <name>x_agiro_ai_disc_cl_model_usage</name>
+        <operation display_value="read">read</operation>
+        <script/>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 02:27:49</sys_created_on>
+        <sys_id>fa160fc302454cc1a1b887ed3604e8b6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_agiro_ai_disc_cl_model_usage</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sys_security_acl_fa160fc302454cc1a1b887ed3604e8b6</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 02:27:49</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
 </record_update>

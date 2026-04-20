@@ -44,7 +44,7 @@
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name>sys_hub_flow_dd059ae02b5c43506e05feb6d391bfe0</sys_update_name>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-14 01:54:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 04:04:00</sys_updated_on>
         <type>subflow</type>
         <updation_source/>
         <version>2</version>
@@ -711,34 +711,7 @@
     </sys_hub_action_instance_v2>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=efda52e02b9c43506e05feb6d391bf19"/>
     <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=dd059ae02b5c43506e05feb6d391bfe0"/>
-    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=dd059ae02b5c43506e05feb6d391bfe0^sys_idNOT INf5051ee02b5c43506e05feb6d391bf0b,bd05dae02b5c43506e05feb6d391bff6,3505dae02b5c43506e05feb6d391bff9,7905dae02b5c43506e05feb6d391bffa,75051ee02b5c43506e05feb6d391bf08,b1051ee02b5c43506e05feb6d391bf0a"/>
-    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes/>
-        <block display_value="">7d051ee02b5c43506e05feb6d391bf0a</block>
-        <comment/>
-        <connected_to/>
-        <decision_table/>
-        <display_text/>
-        <flow display_value="Discover Claude Assest">dd059ae02b5c43506e05feb6d391bfe0</flow>
-        <flow_variables_assigned/>
-        <generation_source/>
-        <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
-        <order>7</order>
-        <outputs_assigned/>
-        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
-        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-13 23:36:04</sys_created_on>
-        <sys_id>f5051ee02b5c43506e05feb6d391bf0b</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-14 01:53:48</sys_updated_on>
-        <ui_id>8e77bdee-38f0-4f1e-a894-3008a2de6e88</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
-        <workflow_reference/>
-    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=dd059ae02b5c43506e05feb6d391bfe0^sys_idNOT INbd05dae02b5c43506e05feb6d391bff6,3505dae02b5c43506e05feb6d391bff9,7905dae02b5c43506e05feb6d391bffa,75051ee02b5c43506e05feb6d391bf08,b1051ee02b5c43506e05feb6d391bf0a,f5051ee02b5c43506e05feb6d391bf0b"/>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
         <attributes/>
         <block display_value="">bd05dae02b5c43506e05feb6d391bff5</block>
@@ -874,6 +847,33 @@
         <values>H4sIAAAAAAAA/61TTWsbMRD9K0Vn77L2fsT2LdAGAk0DjZtLCWJWmrVFtdJG0tpxjf97R961EwyFHnqcp/l4783owGwfuj74lb31Xq0NW/48MCXZkt1Ms1ICZrO6FEVeZhVmZYN1JfPFtG5kwSbMQIuUic5Zx1v0HtZI8BZ0H/HDIa8azDOoE4HzRVKI6TSpb2CeFHWG07KoIJ/NU85BBGUN9wFC7zlPx1bHIzWTynca9s//s6fYKC0dRrEvE9aBIx0BHVserp7CvkOuoUZNo5+CU2ZN5f9qz7nwS/Tn08PFn7/YFocR7M9jrJOR02zC8C2gkUhjG9AeJ6wFIyFYt78gDkE+Gv0ObJQJ1I3F5DevflPreZZlMbNBEihweL2EfHR6gMXGKoGPXTRxQALUeqwRVvet+TbIiDvCBnodzjsipPfUD7vIOtIYOTVPG7v7fh54p8xJ4PiorQB9iSCQDXUf0Met9Gp1Zc6AfL1eDWpsaSJvoesI4Z2zW3WaQqTbdK0pSBttd8Qunns6nElKbkJ6R/jnE/wMTkW5D9SGiuO4H0a99nh/Wn2TF01Fd1eKWiRFNa0TwFmZYFHMG4BFVYqMHU/W8tc+ihpMGu3gg6OU4IVTXbglClsclR/p6pSJP3K4wO3IZAwlCuWJ8Cpi9x/y5J6uSomP0M66X1HqO3b8A9G1MP/vAwAA</values>
         <workflow_reference/>
     </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">7d051ee02b5c43506e05feb6d391bf0a</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Discover Claude Assest">dd059ae02b5c43506e05feb6d391bfe0</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
+        <order>7</order>
+        <outputs_assigned/>
+        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-13 23:36:04</sys_created_on>
+        <sys_id>f5051ee02b5c43506e05feb6d391bf0b</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 01:53:48</sys_updated_on>
+        <ui_id>8e77bdee-38f0-4f1e-a894-3008a2de6e88</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=dd059ae02b5c43506e05feb6d391bfe0"/>
     <sys_hub_flow_variable action="delete_multiple" query="model=dd059ae02b5c43506e05feb6d391bfe0"/>
     <sys_documentation action="INSERT_OR_UPDATE">
@@ -970,6 +970,29 @@
         <url_target/>
     </sys_documentation>
     <sys_documentation action="INSERT_OR_UPDATE">
+        <element>agents</element>
+        <help/>
+        <hint/>
+        <label>Agents</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_dd059ae02b5c43506e05feb6d391bfe0</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-13 23:36:04</sys_created_on>
+        <sys_id>cb8a06e2c3dc8710f6719d277d01312a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Agents</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-13 23:36:04</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
         <element>result</element>
         <help/>
         <hint/>
@@ -1006,29 +1029,6 @@
         <sys_id>f105dae02b5c43506e05feb6d391bfde</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Next Iterator</sys_name>
-        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_update_name/>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-13 23:36:04</sys_updated_on>
-        <url/>
-        <url_target/>
-    </sys_documentation>
-    <sys_documentation action="INSERT_OR_UPDATE">
-        <element>agents</element>
-        <help/>
-        <hint/>
-        <label>Agents</label>
-        <language>en</language>
-        <name>var__m_sys_hub_flow_output_dd059ae02b5c43506e05feb6d391bfe0</name>
-        <plural/>
-        <sys_class_name>sys_documentation</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-13 23:36:04</sys_created_on>
-        <sys_id>f105dae02b5c43506e05feb6d391bff0</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Agents</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
@@ -1744,10 +1744,10 @@
     </sys_hub_action_instance_v2>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=1cea92e02b9c43506e05feb6d391bf0b"/>
     <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=bbda52e02b9c43506e05feb6d391bf8b"/>
-    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=bbda52e02b9c43506e05feb6d391bf8b^sys_idNOT IN10ea92e02b9c43506e05feb6d391bf05,58ea92e02b9c43506e05feb6d391bf03,14ea92e02b9c43506e05feb6d391bf06,18ea92e02b9c43506e05feb6d391bf07,14ea92e02b9c43506e05feb6d391bf09,18ea92e02b9c43506e05feb6d391bf0a"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=bbda52e02b9c43506e05feb6d391bf8b^sys_idNOT IN14ea92e02b9c43506e05feb6d391bf09,18ea92e02b9c43506e05feb6d391bf0a,58ea92e02b9c43506e05feb6d391bf03,14ea92e02b9c43506e05feb6d391bf06,18ea92e02b9c43506e05feb6d391bf07,10ea92e02b9c43506e05feb6d391bf05"/>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
         <attributes/>
-        <block display_value="">b905dae02b5c43506e05feb6d391bff8</block>
+        <block display_value="">39051ee02b5c43506e05feb6d391bf09</block>
         <comment/>
         <connected_to/>
         <decision_table/>
@@ -1756,20 +1756,47 @@
         <flow_variables_assigned/>
         <generation_source/>
         <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
-        <order>3</order>
-        <outputs_assigned>agents,next_iterator,result</outputs_assigned>
-        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
+        <order>6</order>
+        <outputs_assigned>error_message</outputs_assigned>
+        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
         <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-14 00:01:37</sys_created_on>
-        <sys_id>10ea92e02b9c43506e05feb6d391bf05</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_id>14ea92e02b9c43506e05feb6d391bf09</sys_id>
+        <sys_mod_count>6</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
         <sys_updated_on>2026-04-14 01:53:51</sys_updated_on>
-        <ui_id>7c522458-4ffd-4d01-a108-2dffea4842c7</ui_id>
+        <ui_id>a4726d3b-1578-4e3c-8523-ed0e59ce1a5d</ui_id>
         <updation_source/>
-        <values>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</values>
+        <values>H4sIAAAAAAAA/61Ty27bMBD8lYJnS5BsSbF9C5IGCJA0QOPmEhTCilrZRChS4cOOa/jfu7TkBxoU6KE37XAfM7OrHdPedd7Zhb62ViwVm7/umKjZnF2lSV4DJuMq59kkTwpM8garop7M0qqpMzZiClqkTDRGm7JFa2GJBK9B+oDvdpOiwUkCVcRxOosynqZRdQXTKKsSTPOsgMl4GpclcCe0Kq0D521ZxkOr/Z6a1cJ2ErYv/7MnXwlZGwxif45YB4Z0ODRsTtIVfSiQD0K90bhPyf9qjYQKJaV+Dd58eTx58xfL3LYLsHVGqOUQPwwtno+gNnUgOR4x/HCoaiQuDUiLI9aCqsFpsz0hBqF+UvIMrEhar6iFDyt+0bxpkiQhs0HSx7F/PYXlYH0PN7fggKh47rzBozVacLS9MzU24KW7ucT6hKcurKIvcVDJY7WWvlXfekPYqcFx04R4SySwC1ID90FI87zSm+9HlndCHVwZHqXmIE8ROPKu8i7w2TEvFn/Y3COfjEaJLU0sW+g6QsrO6LU4TCHSbbyUFMSN1BtiF36auD+2mFYA8R3htwf4BYwIch+pDRWHcT+UePd4fziiZpI1BV1vziseZUVaRYDjPMIsmzYAsyLnCduPmN3aGwnWno2iDZXvPsjsbRsMKnuPQwk3onPXRGqNgxf7cLsq/On9ZtYDt9PyuLAkYRGw+4u8eksXK/gltNHmLYg/Y/vfnj0hmkcEAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">7d051ee02b5c43506e05feb6d391bf0a</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Discover Claude Assest">bbda52e02b9c43506e05feb6d391bf8b</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
+        <order>7</order>
+        <outputs_assigned/>
+        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-14 00:01:37</sys_created_on>
+        <sys_id>18ea92e02b9c43506e05feb6d391bf0a</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 01:53:51</sys_updated_on>
+        <ui_id>8e77bdee-38f0-4f1e-a894-3008a2de6e88</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
         <workflow_reference/>
     </sys_hub_flow_logic_instance_v2>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
@@ -1855,7 +1882,7 @@
     </sys_hub_flow_logic_instance_v2>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
         <attributes/>
-        <block display_value="">39051ee02b5c43506e05feb6d391bf09</block>
+        <block display_value="">b905dae02b5c43506e05feb6d391bff8</block>
         <comment/>
         <connected_to/>
         <decision_table/>
@@ -1864,47 +1891,20 @@
         <flow_variables_assigned/>
         <generation_source/>
         <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
-        <order>6</order>
-        <outputs_assigned>error_message</outputs_assigned>
-        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
+        <order>3</order>
+        <outputs_assigned>agents,next_iterator,result</outputs_assigned>
+        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
         <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-14 00:01:37</sys_created_on>
-        <sys_id>14ea92e02b9c43506e05feb6d391bf09</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_id>10ea92e02b9c43506e05feb6d391bf05</sys_id>
+        <sys_mod_count>7</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
         <sys_updated_on>2026-04-14 01:53:51</sys_updated_on>
-        <ui_id>a4726d3b-1578-4e3c-8523-ed0e59ce1a5d</ui_id>
+        <ui_id>7c522458-4ffd-4d01-a108-2dffea4842c7</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/61Ty27bMBD8lYJnS5BsSbF9C5IGCJA0QOPmEhTCilrZRChS4cOOa/jfu7TkBxoU6KE37XAfM7OrHdPedd7Zhb62ViwVm7/umKjZnF2lSV4DJuMq59kkTwpM8garop7M0qqpMzZiClqkTDRGm7JFa2GJBK9B+oDvdpOiwUkCVcRxOosynqZRdQXTKKsSTPOsgMl4GpclcCe0Kq0D521ZxkOr/Z6a1cJ2ErYv/7MnXwlZGwxif45YB4Z0ODRsTtIVfSiQD0K90bhPyf9qjYQKJaV+Dd58eTx58xfL3LYLsHVGqOUQPwwtno+gNnUgOR4x/HCoaiQuDUiLI9aCqsFpsz0hBqF+UvIMrEhar6iFDyt+0bxpkiQhs0HSx7F/PYXlYH0PN7fggKh47rzBozVacLS9MzU24KW7ucT6hKcurKIvcVDJY7WWvlXfekPYqcFx04R4SySwC1ID90FI87zSm+9HlndCHVwZHqXmIE8ROPKu8i7w2TEvFn/Y3COfjEaJLU0sW+g6QsrO6LU4TCHSbbyUFMSN1BtiF36auD+2mFYA8R3htwf4BYwIch+pDRWHcT+UePd4fziiZpI1BV1vziseZUVaRYDjPMIsmzYAsyLnCduPmN3aGwnWno2iDZXvPsjsbRsMKnuPQwk3onPXRGqNgxf7cLsq/On9ZtYDt9PyuLAkYRGw+4u8eksXK/gltNHmLYg/Y/vfnj0hmkcEAAA=</values>
-        <workflow_reference/>
-    </sys_hub_flow_logic_instance_v2>
-    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes/>
-        <block display_value="">7d051ee02b5c43506e05feb6d391bf0a</block>
-        <comment/>
-        <connected_to/>
-        <decision_table/>
-        <display_text/>
-        <flow display_value="Discover Claude Assest">bbda52e02b9c43506e05feb6d391bf8b</flow>
-        <flow_variables_assigned/>
-        <generation_source/>
-        <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
-        <order>7</order>
-        <outputs_assigned/>
-        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
-        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-14 00:01:37</sys_created_on>
-        <sys_id>18ea92e02b9c43506e05feb6d391bf0a</sys_id>
-        <sys_mod_count>6</sys_mod_count>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-14 01:53:51</sys_updated_on>
-        <ui_id>8e77bdee-38f0-4f1e-a894-3008a2de6e88</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
+        <values>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</values>
         <workflow_reference/>
     </sys_hub_flow_logic_instance_v2>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=bbda52e02b9c43506e05feb6d391bf8b"/>
@@ -2026,29 +2026,6 @@
         <url_target/>
     </sys_documentation>
     <sys_documentation action="INSERT_OR_UPDATE">
-        <element>agents</element>
-        <help/>
-        <hint/>
-        <label>Agents</label>
-        <language>en</language>
-        <name>var__m_sys_hub_flow_output_bbda52e02b9c43506e05feb6d391bf8b</name>
-        <plural/>
-        <sys_class_name>sys_documentation</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-14 00:01:37</sys_created_on>
-        <sys_id>98ea52e02b9c43506e05feb6d391bffb</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Agents</sys_name>
-        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_update_name/>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-14 00:01:37</sys_updated_on>
-        <url/>
-        <url_target/>
-    </sys_documentation>
-    <sys_documentation action="INSERT_OR_UPDATE">
         <element>result</element>
         <help/>
         <hint/>
@@ -2068,6 +2045,29 @@
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
         <sys_updated_on>2026-04-14 01:45:11</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>agents</element>
+        <help/>
+        <hint/>
+        <label>Agents</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_bbda52e02b9c43506e05feb6d391bf8b</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-14 00:01:37</sys_created_on>
+        <sys_id>a38a46e2c3dc8710f6719d277d013122</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Agents</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-14 00:01:37</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>

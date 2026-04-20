@@ -4,7 +4,9 @@
         <application display_value="AI Discovery Claude">114acb202b9483506e05feb6d391bf60</application>
         <assessment/>
         <device_type/>
-        <filter>typeLIKEClaude^ORtypeLIKEMCP</filter>
+        <filter table="sn_ent_ai_tool">typeLIKEClaude^ORtypeLIKEMCP<item display_value="Claude" endquery="false" field="type" goto="false" newquery="false" operator="LIKE" or="false" value="Claude"/>
+            <item display_value="MCP" endquery="false" field="type" goto="false" newquery="false" operator="LIKE" or="true" value="MCP"/>
+        </filter>
         <hint/>
         <homepage/>
         <image/>

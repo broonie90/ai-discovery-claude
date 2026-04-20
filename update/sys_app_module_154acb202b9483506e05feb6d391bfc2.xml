@@ -4,7 +4,8 @@
         <application display_value="AI Discovery Claude">114acb202b9483506e05feb6d391bf60</application>
         <assessment/>
         <device_type/>
-        <filter>source_configuration.source=Anthropic Claude</filter>
+        <filter table="sn_ai_discovery_data_source">source_configuration.source=Anthropic Claude<item endquery="false" field="source_configuration.source" goto="false" newquery="false" operator="=" or="false" value="Anthropic Claude"/>
+        </filter>
         <hint/>
         <homepage/>
         <image/>
