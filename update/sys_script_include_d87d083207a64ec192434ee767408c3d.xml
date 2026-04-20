@@ -24,10 +24,21 @@ ClaudeDiscoveryConstants.prototype = {
     API_VERSION: '2023-06-01',
 
     /**
-     * Connection & Credential Alias ID for Anthropic Claude.
-     * Configured via Connections & Credentials module.
-     * The alias binds to an api_key_credentials record via a sys_connection.
+     * Anthropic exposes two separate key types that cannot be used interchangeably:
+     *   - Admin API key      (sk-ant-admin01-...)  for /v1/organizations/*
+     *     including usage_report, members, workspaces
+     *   - Analytics API key  (separate issuance)   for /v1/organizations/analytics/*
+     *
+     * We bind each to its own Connection & Credential alias so the steward can
+     * rotate them independently and see which endpoint a 401 came from.
+     *
+     * ADMIN_CONNECTION_ALIAS_ID is the legacy alias — kept on that name so
+     * existing installs keep working — and it still backs the admin endpoints.
      */
+    ADMIN_CONNECTION_ALIAS_ID: 'x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT',
+    ANALYTICS_CONNECTION_ALIAS_ID: 'x_agiro_ai_disc_cl.Anthropic_Claude_Analytics',
+
+    /** @deprecated — kept so older script includes referencing CONNECTION_ALIAS_ID still resolve. Maps to admin. */
     CONNECTION_ALIAS_ID: 'x_agiro_ai_disc_cl.Anthropic_Claude_for_AICT',
 
     PROPERTY: {

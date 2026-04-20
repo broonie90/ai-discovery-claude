@@ -175,49 +175,58 @@ ClaudeApiClient.prototype = {
      * Resolves credentials via the Connection & Credential Alias.
      */
     _makeAdminRequest: function(endpoint, params) {
-        var apiKey = this._resolveCredentialFromAlias();
+        var apiKey = this._resolveCredential('admin');
         if (!apiKey) {
-            return { success: false, error: 'Anthropic credential not configured. Create a Connection record binding the "' + this.constants.CONNECTION_ALIAS_ID + '" alias to an api_key_credentials record via Connections & Credentials module.' };
+            return { success: false, error: 'Anthropic Admin credential not configured. Create a Connection record binding the "' + this.constants.ADMIN_CONNECTION_ALIAS_ID + '" alias to an api_key_credentials record (Admin API key, sk-ant-admin01-...) via Connections & Credentials module.' };
         }
         return this._doRequest(endpoint, params, apiKey);
     },
 
     /**
      * Make an authenticated GET request to the Enterprise Analytics API.
-     * Uses the same connection alias — the credential should hold the analytics key
-     * or a separate alias can be configured in future.
+     * Uses the ANALYTICS_CONNECTION_ALIAS_ID alias. Falls back to the admin alias
+     * if the analytics alias is not yet configured — preserves backwards
+     * compatibility for installs where the steward has only provisioned one key.
      */
     _makeAnalyticsRequest: function(endpoint, params) {
-        var apiKey = this._resolveCredentialFromAlias();
+        var apiKey = this._resolveCredential('analytics');
         if (!apiKey) {
-            return { success: false, error: 'Anthropic credential not configured. Create a Connection record binding the "' + this.constants.CONNECTION_ALIAS_ID + '" alias to an api_key_credentials record via Connections & Credentials module.' };
+            // Fallback to admin key — keeps older single-key installs working
+            apiKey = this._resolveCredential('admin');
+        }
+        if (!apiKey) {
+            return { success: false, error: 'Anthropic Analytics credential not configured. Create a Connection record binding the "' + this.constants.ANALYTICS_CONNECTION_ALIAS_ID + '" alias to an api_key_credentials record via Connections & Credentials module.' };
         }
         return this._doRequest(endpoint, params, apiKey);
     },
 
     /**
-     * Resolve the API key from the Connection & Credential Alias.
+     * Resolve the API key for a given role ('admin' or 'analytics').
+     * Each role caches independently so both keys can coexist.
      *
      * Resolution order:
-     * 1. sn_cc.ConnectionInfoProvider — resolves via the alias binding (preferred)
-     * 2. Fallback: look up sys_connection record directly and read the credential
+     *   1. sn_cc.ConnectionInfoProvider via the alias binding (preferred)
+     *   2. Fallback — sys_connection + api_key_credentials GlideRecord lookup
      *
-     * @returns {string|null} The API key, or null if not configured
+     * @param {'admin'|'analytics'} role
+     * @returns {string|null}
      */
-    _resolveCredentialFromAlias: function() {
-        // Return cached key if already resolved this session
-        if (this._cachedApiKey) return this._cachedApiKey;
+    _resolveCredential: function(role) {
+        if (!this._cachedApiKeys) this._cachedApiKeys = {};
+        if (this._cachedApiKeys[role]) return this._cachedApiKeys[role];
 
-        var aliasSysId = this._getAliasSysId();
+        var aliasId = (role === 'analytics')
+            ? this.constants.ANALYTICS_CONNECTION_ALIAS_ID
+            : this.constants.ADMIN_CONNECTION_ALIAS_ID;
+
+        var aliasSysId = this._getAliasSysId(aliasId);
         if (!aliasSysId) return null;
 
-        // Method 1: Use ConnectionInfoProvider (standard sn_cc pattern)
+        // Method 1: sn_cc.ConnectionInfoProvider
         try {
             var provider = new sn_cc.ConnectionInfoProvider();
-            // Try all known method signatures across SN versions
             var connectionInfo = null;
             if (typeof provider.getConnectionInfo === 'function') {
-                // getConnectionInfo requires the alias sys_id, not the alias ID string
                 connectionInfo = provider.getConnectionInfo(aliasSysId);
             } else if (typeof provider.getConnectionInfos === 'function') {
                 var infos = provider.getConnectionInfos(aliasSysId);
@@ -226,15 +235,15 @@ ClaudeApiClient.prototype = {
             if (connectionInfo) {
                 var apiKey = connectionInfo.getCredentialAttribute('api_key');
                 if (apiKey) {
-                    this._cachedApiKey = apiKey;
+                    this._cachedApiKeys[role] = apiKey;
                     return apiKey;
                 }
             }
         } catch (e) {
-            gs.warn('[ClaudeApiClient] sn_cc.ConnectionInfoProvider failed: ' + e.message);
+            gs.warn('[ClaudeApiClient] sn_cc.ConnectionInfoProvider failed for ' + role + ' alias: ' + e.message);
         }
 
-        // Method 2: Fallback — resolve via sys_connection GlideRecord
+        // Method 2: sys_connection fallback
         try {
             var connGr = new GlideRecord('sys_connection');
             connGr.addQuery('connection_alias', aliasSysId);
@@ -247,46 +256,57 @@ ClaudeApiClient.prototype = {
                     if (credGr.get(credSysId)) {
                         var key = credGr.getValue('api_key');
                         if (key) {
-                            this._cachedApiKey = key;
+                            this._cachedApiKeys[role] = key;
                             return key;
                         }
                     }
                 }
             }
         } catch (e) {
-            gs.warn('[ClaudeApiClient] sys_connection fallback failed: ' + e.message);
+            gs.warn('[ClaudeApiClient] sys_connection fallback failed for ' + role + ' alias: ' + e.message);
         }
 
-        gs.error('[ClaudeApiClient] No credential found for alias: ' + this.constants.CONNECTION_ALIAS_ID);
+        gs.warn('[ClaudeApiClient] No credential found for ' + role + ' alias: ' + aliasId);
         return null;
     },
 
     /**
-     * Get the sys_id of the Connection & Credential Alias.
-     * Looks up by the alias ID string defined in constants.
+     * @deprecated Use _resolveCredential('admin') instead. Kept for any external callers.
+     */
+    _resolveCredentialFromAlias: function() {
+        return this._resolveCredential('admin');
+    },
+
+    /**
+     * Get the sys_id of a Connection & Credential Alias by its ID string.
+     * @param {string} [aliasId] - Optional alias ID string; defaults to the admin alias.
      * @returns {string|null}
      */
-    _getAliasSysId: function() {
-        if (this._aliasSysId) return this._aliasSysId;
+    _getAliasSysId: function(aliasId) {
+        var targetAliasId = aliasId || this.constants.ADMIN_CONNECTION_ALIAS_ID;
 
-        // Check if a sys_id override is set in system properties
-        var override = gs.getProperty(this.constants.PROPERTY.CONNECTION_ALIAS);
-        if (override) {
-            this._aliasSysId = override;
-            return override;
+        if (!this._aliasSysIdCache) this._aliasSysIdCache = {};
+        if (this._aliasSysIdCache[targetAliasId]) return this._aliasSysIdCache[targetAliasId];
+
+        // Property override applies only to the admin alias (legacy behaviour)
+        if (targetAliasId === this.constants.ADMIN_CONNECTION_ALIAS_ID) {
+            var override = gs.getProperty(this.constants.PROPERTY.CONNECTION_ALIAS);
+            if (override) {
+                this._aliasSysIdCache[targetAliasId] = override;
+                return override;
+            }
         }
 
-        // Look up alias by its ID string
         var gr = new GlideRecord('sys_alias');
-        gr.addQuery('id', this.constants.CONNECTION_ALIAS_ID);
+        gr.addQuery('id', targetAliasId);
         gr.setLimit(1);
         gr.query();
         if (gr.next()) {
-            this._aliasSysId = gr.getUniqueValue();
-            return this._aliasSysId;
+            this._aliasSysIdCache[targetAliasId] = gr.getUniqueValue();
+            return this._aliasSysIdCache[targetAliasId];
         }
 
-        gs.error('[ClaudeApiClient] Connection alias not found: ' + this.constants.CONNECTION_ALIAS_ID);
+        gs.warn('[ClaudeApiClient] Connection alias not found: ' + targetAliasId);
         return null;
     },
 
