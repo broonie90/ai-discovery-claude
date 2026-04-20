@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="ua_table_licensing_config">
+    <ua_table_licensing_config action="INSERT_OR_UPDATE">
+        <is_fulfillment>false</is_fulfillment>
+        <license_condition/>
+        <license_model>none</license_model>
+        <license_roles/>
+        <name>x_agiro_ai_disc_cl_model_usage</name>
+        <op_delete>true</op_delete>
+        <op_insert>true</op_insert>
+        <op_update>true</op_update>
+        <owner_condition/>
+        <sys_class_name>ua_table_licensing_config</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 02:27:47</sys_created_on>
+        <sys_id>bfd57126c3d88710f6719d277d01318b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_agiro_ai_disc_cl_model_usage</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>ua_table_licensing_config_bfd57126c3d88710f6719d277d01318b</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 02:27:47</sys_updated_on>
+    </ua_table_licensing_config>
+</record_update>
