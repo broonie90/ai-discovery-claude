@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="pa_indicators">
+<pa_indicators action="INSERT_OR_UPDATE">
+<aggregate>2</aggregate>
+<allow_multi_element_aggregation>false</allow_multi_element_aggregation>
+<calendar>standard</calendar>
+<collect_breakdown_matrix>false</collect_breakdown_matrix>
+<collect_records>true</collect_records>
+<conditions/>
+<cube>48aa72f7c8725615e2934cc0a7f1326d</cube>
+<default_chart_type>line</default_chart_type>
+<description>Total Claude output tokens produced per day.</description>
+<direction>3</direction>
+<display>true</display>
+<field>x_agiro_ai_disc_cl_output_tokens</field>
+<formula/>
+<frequency>10</frequency>
+<key>false</key>
+<label>Claude Model — Output Tokens (Daily)</label>
+<precision>0</precision>
+<render_continuous_lines>false</render_continuous_lines>
+<role_override>true</role_override>
+<scripted>false</scripted>
+<show_delta>true</show_delta>
+<show_realtime_score>false</show_realtime_score>
+<type>1</type>
+<unit/>
+<value_when_nil/>
+<visible_to>2</visible_to>
+<sys_id>46692c7eb10bb9151098fe889043c271</sys_id>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-04-20 04:30:00</sys_created_on>
+<sys_domain>global</sys_domain>
+<sys_domain_path>/</sys_domain_path>
+<sys_mod_count>0</sys_mod_count>
+<sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+<sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+<sys_update_name>pa_indicators_46692c7eb10bb9151098fe889043c271</sys_update_name>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-04-20 04:30:00</sys_updated_on>
+</pa_indicators>
+</record_update>
