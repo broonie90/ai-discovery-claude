@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="pa_widgets">
+<pa_widgets action="INSERT_OR_UPDATE">
+<alignment>left</alignment>
+<description>Headline daily skill invocations</description>
+<indicator>0936dc73b62701aa5b56d06fa2a8e2fd</indicator>
+<breakdown/>
+<name>Claude — Skill Invocations Today</name>
+<score_font_size>responsive</score_font_size>
+<type>scorecard</type>
+<visualization>scorecard</visualization>
+<sys_id>85f462f32afe0b83673a0715091ec0cc</sys_id>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-04-20 05:00:00</sys_created_on>
+<sys_domain>global</sys_domain>
+<sys_domain_path>/</sys_domain_path>
+<sys_mod_count>0</sys_mod_count>
+<sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+<sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+<sys_update_name>pa_widgets_85f462f32afe0b83673a0715091ec0cc</sys_update_name>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-04-20 05:00:00</sys_updated_on>
+</pa_widgets>
+</record_update>
