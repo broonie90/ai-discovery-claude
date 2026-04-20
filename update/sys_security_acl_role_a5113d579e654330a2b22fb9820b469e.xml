@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<record_update table="sys_security_acl_role">
+  <sys_security_acl_role action="INSERT_OR_UPDATE">
+    <sys_id>a5113d579e654330a2b22fb9820b469e</sys_id>
+    <sys_scope display_value="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_scope>
+    <sys_update_name>sys_security_acl_role_a5113d579e654330a2b22fb9820b469e</sys_update_name>
+    <sys_security_acl>e2ab69f89c024c609fc92cbd67c968f6</sys_security_acl>
+    <sys_user_role name="admin">10402efc72384014848c24445a40cc63</sys_user_role>
+  </sys_security_acl_role>
+</record_update>

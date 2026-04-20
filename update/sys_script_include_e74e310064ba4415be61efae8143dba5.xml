@@ -97,9 +97,10 @@ ClaudeDiscoveryUtil.prototype = {
             var date = this._getDateDaysAgo(lagDays);
             var usageTime = date + ' 00:00:00';
 
+            // ---------- STREAM 1: Per-user aggregate against Claude Platform (OOB usage table) ----------
+            // Captures "who used Claude today" — identity, no model/skill breakdown.
             var page = null;
             var hasMore = true;
-
             while (hasMore) {
                 var response = this.apiClient.getAnalyticsUsers(date, page);
                 if (!response.success) {
@@ -113,7 +114,6 @@ ClaudeDiscoveryUtil.prototype = {
                         var userRecord = data.data[i];
                         var email = (userRecord.user && userRecord.user.email_address) || '';
 
-                        // Calculate total activity
                         var count = 0;
                         var chat = userRecord.chat_metrics || {};
                         count += (chat.message_count || 0);
@@ -123,7 +123,6 @@ ClaudeDiscoveryUtil.prototype = {
                         count += (cowork.message_count || 0);
                         count += (userRecord.web_search_count || 0);
 
-                        // Build agent_usage_log matching OOB shape
                         result.agent_usage_logs.push({
                             asset_id: systemSysId,
                             asset_type: 'ai_system',
@@ -133,7 +132,6 @@ ClaudeDiscoveryUtil.prototype = {
                             user_id: email
                         });
 
-                        // Also write directly to sn_ai_disc_ai_usage
                         var writeResult = this._upsertUsageRecord(systemSysId, userRecord, usageTime);
                         if (writeResult === 'created') result.records_created++;
                         else if (writeResult === 'updated') result.records_updated++;
@@ -144,6 +142,27 @@ ClaudeDiscoveryUtil.prototype = {
                 hasMore = data.has_more === true;
                 page = data.next_page || null;
             }
+
+            // ---------- STREAM 2: Per-model usage (messages usage API) ----------
+            // Custom table x_agiro_ai_disc_cl_model_usage — tokens + cost per model per day.
+            var modelStats = this._writeModelUsage(date);
+            result.records_created += modelStats.created;
+            result.records_updated += modelStats.updated;
+            result.records_failed  += modelStats.failed;
+
+            // ---------- STREAM 3: Per-skill usage (analytics skills API) ----------
+            // Custom table x_agiro_ai_disc_cl_skill_usage — invocation + distinct user count per skill per day.
+            var skillStats = this._writeSkillUsage(date);
+            result.records_created += skillStats.created;
+            result.records_updated += skillStats.updated;
+            result.records_failed  += skillStats.failed;
+
+            // ---------- STREAM 4: Per-connector usage (analytics connectors API) ----------
+            // Custom table x_agiro_ai_disc_cl_connector_usage — invocation + distinct user count per connector per day.
+            var connectorStats = this._writeConnectorUsage(date);
+            result.records_created += connectorStats.created;
+            result.records_updated += connectorStats.updated;
+            result.records_failed  += connectorStats.failed;
 
             var total = result.records_created + result.records_updated;
             this._logRun('usage', result.error_message ? 'partial' : 'success',
@@ -158,6 +177,262 @@ ClaudeDiscoveryUtil.prototype = {
 
         if (executionSysId) this._updateExecutionRecord(executionSysId, result);
         return result;
+    },
+
+    /**
+     * Write per-model usage rows to x_agiro_ai_disc_cl_model_usage.
+     * Source: Anthropic /v1/organizations/usage_report/messages (group_by=model).
+     * @returns {{ created: number, updated: number, failed: number }}
+     */
+    _writeModelUsage: function(date) {
+        var stats = { created: 0, updated: 0, failed: 0 };
+        try {
+            var startIso = date + 'T00:00:00Z';
+            var page = null;
+            var hasMore = true;
+
+            while (hasMore) {
+                var response = this.apiClient.getMessagesUsage(startIso, null, '1d', page);
+                if (!response.success) {
+                    gs.warn('[ClaudeDiscoveryUtil] Messages usage API failed: ' + response.error);
+                    stats.failed++;
+                    return stats;
+                }
+                var data = response.data || {};
+                var buckets = data.data || [];
+                for (var b = 0; b < buckets.length; b++) {
+                    var results = buckets[b].results || [];
+                    for (var r = 0; r < results.length; r++) {
+                        var row = results[r];
+                        var modelId = row.model;
+                        if (!modelId) continue;
+
+                        var modelSysId = this._lookupModelAssetByExternalRefId(modelId);
+                        if (!modelSysId) {
+                            gs.info('[ClaudeDiscoveryUtil] No model asset for ' + modelId + ' — skipping usage row');
+                            continue;
+                        }
+
+                        var outcome = this._upsertModelUsage(modelSysId, date, row);
+                        if (outcome === 'created') stats.created++;
+                        else if (outcome === 'updated') stats.updated++;
+                        else stats.failed++;
+                    }
+                }
+                hasMore = data.has_more === true;
+                page = data.next_page || null;
+            }
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Model usage write failed: ' + e.message);
+            stats.failed++;
+        }
+        return stats;
+    },
+
+    /**
+     * Write per-skill usage rows to x_agiro_ai_disc_cl_skill_usage.
+     * Source: Anthropic /v1/organizations/analytics/skills.
+     */
+    _writeSkillUsage: function(date) {
+        var stats = { created: 0, updated: 0, failed: 0 };
+        try {
+            var page = null;
+            var hasMore = true;
+            while (hasMore) {
+                var response = this.apiClient.getAnalyticsSkills(date, page);
+                if (!response.success) {
+                    gs.warn('[ClaudeDiscoveryUtil] Skills analytics API failed: ' + response.error);
+                    stats.failed++;
+                    return stats;
+                }
+                var data = response.data || {};
+                var rows = data.data || [];
+                for (var i = 0; i < rows.length; i++) {
+                    var skill = rows[i];
+                    var skillName = skill.skill_name;
+                    if (!skillName) continue;
+
+                    var toolSysId = this._lookupAiToolByName(skillName, 'Claude Skill');
+                    if (!toolSysId) {
+                        gs.info('[ClaudeDiscoveryUtil] No sn_ent_ai_tool for skill ' + skillName + ' — skipping');
+                        continue;
+                    }
+
+                    var outcome = this._upsertSkillUsage(toolSysId, date, skill);
+                    if (outcome === 'created') stats.created++;
+                    else if (outcome === 'updated') stats.updated++;
+                    else stats.failed++;
+                }
+                hasMore = data.has_more === true;
+                page = data.next_page || null;
+            }
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Skill usage write failed: ' + e.message);
+            stats.failed++;
+        }
+        return stats;
+    },
+
+    /**
+     * Write per-connector usage rows to x_agiro_ai_disc_cl_connector_usage.
+     * Source: Anthropic /v1/organizations/analytics/connectors.
+     */
+    _writeConnectorUsage: function(date) {
+        var stats = { created: 0, updated: 0, failed: 0 };
+        try {
+            var page = null;
+            var hasMore = true;
+            while (hasMore) {
+                var response = this.apiClient.getAnalyticsConnectors(date, page);
+                if (!response.success) {
+                    gs.warn('[ClaudeDiscoveryUtil] Connectors analytics API failed: ' + response.error);
+                    stats.failed++;
+                    return stats;
+                }
+                var data = response.data || {};
+                var rows = data.data || [];
+                for (var i = 0; i < rows.length; i++) {
+                    var connector = rows[i];
+                    var connectorName = connector.connector_name;
+                    if (!connectorName) continue;
+
+                    var toolSysId = this._lookupAiToolByName(connectorName, 'MCP Connector');
+                    if (!toolSysId) {
+                        gs.info('[ClaudeDiscoveryUtil] No sn_ent_ai_tool for connector ' + connectorName + ' — skipping');
+                        continue;
+                    }
+
+                    var outcome = this._upsertConnectorUsage(toolSysId, date, connector);
+                    if (outcome === 'created') stats.created++;
+                    else if (outcome === 'updated') stats.updated++;
+                    else stats.failed++;
+                }
+                hasMore = data.has_more === true;
+                page = data.next_page || null;
+            }
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Connector usage write failed: ' + e.message);
+            stats.failed++;
+        }
+        return stats;
+    },
+
+    /**
+     * Upsert a row into x_agiro_ai_disc_cl_model_usage keyed on (ai_model, usage_date).
+     */
+    _upsertModelUsage: function(modelSysId, date, row) {
+        try {
+            var gr = new GlideRecord('x_agiro_ai_disc_cl_model_usage');
+            gr.addQuery('x_agiro_ai_disc_cl_ai_model', modelSysId);
+            gr.addQuery('x_agiro_ai_disc_cl_usage_date', date);
+            gr.setLimit(1);
+            gr.query();
+            var isNew = !gr.next();
+            if (isNew) {
+                gr.initialize();
+                gr.setValue('x_agiro_ai_disc_cl_ai_model', modelSysId);
+                gr.setValue('x_agiro_ai_disc_cl_usage_date', date);
+            }
+            gr.setValue('x_agiro_ai_disc_cl_input_tokens', row.input_tokens || 0);
+            gr.setValue('x_agiro_ai_disc_cl_output_tokens', row.output_tokens || 0);
+            gr.setValue('x_agiro_ai_disc_cl_cache_read_tokens', row.cache_read_input_tokens || row.cache_read_tokens || 0);
+            gr.setValue('x_agiro_ai_disc_cl_cache_creation_tokens', row.cache_creation_input_tokens || row.cache_creation_tokens || 0);
+            if (row.cost !== undefined) gr.setValue('x_agiro_ai_disc_cl_cost_usd', row.cost);
+            gr.setValue('x_agiro_ai_disc_cl_source', 'anthropic_messages_usage');
+            if (isNew) { gr.insert(); return 'created'; }
+            gr.update();
+            return 'updated';
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Model usage upsert failed: ' + e.message);
+            return 'failed';
+        }
+    },
+
+    /**
+     * Upsert a row into x_agiro_ai_disc_cl_skill_usage keyed on (skill, usage_date).
+     */
+    _upsertSkillUsage: function(toolSysId, date, skill) {
+        try {
+            var gr = new GlideRecord('x_agiro_ai_disc_cl_skill_usage');
+            gr.addQuery('x_agiro_ai_disc_cl_skill', toolSysId);
+            gr.addQuery('x_agiro_ai_disc_cl_usage_date', date);
+            gr.setLimit(1);
+            gr.query();
+            var isNew = !gr.next();
+            if (isNew) {
+                gr.initialize();
+                gr.setValue('x_agiro_ai_disc_cl_skill', toolSysId);
+                gr.setValue('x_agiro_ai_disc_cl_usage_date', date);
+            }
+            gr.setValue('x_agiro_ai_disc_cl_invocation_count', skill.invocation_count || skill.count || 0);
+            gr.setValue('x_agiro_ai_disc_cl_distinct_users', skill.distinct_user_count || 0);
+            gr.setValue('x_agiro_ai_disc_cl_source', 'anthropic_analytics_skills');
+            if (isNew) { gr.insert(); return 'created'; }
+            gr.update();
+            return 'updated';
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Skill usage upsert failed: ' + e.message);
+            return 'failed';
+        }
+    },
+
+    /**
+     * Upsert a row into x_agiro_ai_disc_cl_connector_usage keyed on (connector, usage_date).
+     */
+    _upsertConnectorUsage: function(toolSysId, date, connector) {
+        try {
+            var gr = new GlideRecord('x_agiro_ai_disc_cl_connector_usage');
+            gr.addQuery('x_agiro_ai_disc_cl_connector', toolSysId);
+            gr.addQuery('x_agiro_ai_disc_cl_usage_date', date);
+            gr.setLimit(1);
+            gr.query();
+            var isNew = !gr.next();
+            if (isNew) {
+                gr.initialize();
+                gr.setValue('x_agiro_ai_disc_cl_connector', toolSysId);
+                gr.setValue('x_agiro_ai_disc_cl_usage_date', date);
+            }
+            gr.setValue('x_agiro_ai_disc_cl_invocation_count', connector.invocation_count || connector.count || 0);
+            gr.setValue('x_agiro_ai_disc_cl_distinct_users', connector.distinct_user_count || 0);
+            gr.setValue('x_agiro_ai_disc_cl_source', 'anthropic_analytics_connectors');
+            if (isNew) { gr.insert(); return 'created'; }
+            gr.update();
+            return 'updated';
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Connector usage upsert failed: ' + e.message);
+            return 'failed';
+        }
+    },
+
+    /**
+     * Look up an alm_ai_model_digital_asset sys_id by Anthropic model id.
+     * Cached for the life of this instance.
+     */
+    _lookupModelAssetByExternalRefId: function(modelId) {
+        if (!this._modelAssetCache) this._modelAssetCache = {};
+        if (this._modelAssetCache[modelId] !== undefined) return this._modelAssetCache[modelId];
+        var gr = new GlideRecord('alm_ai_model_digital_asset');
+        gr.addQuery('external_ref_id', modelId);
+        gr.setLimit(1);
+        gr.query();
+        this._modelAssetCache[modelId] = gr.next() ? gr.getUniqueValue() : null;
+        return this._modelAssetCache[modelId];
+    },
+
+    /**
+     * Look up an sn_ent_ai_tool sys_id by name + type (Claude Skill / MCP Connector).
+     */
+    _lookupAiToolByName: function(name, type) {
+        if (!this._toolCache) this._toolCache = {};
+        var key = type + '::' + name;
+        if (this._toolCache[key] !== undefined) return this._toolCache[key];
+        var gr = new GlideRecord('sn_ent_ai_tool');
+        gr.addQuery('name', name);
+        gr.addQuery('type', type);
+        gr.setLimit(1);
+        gr.query();
+        this._toolCache[key] = gr.next() ? gr.getUniqueValue() : null;
+        return this._toolCache[key];
     },
 
     // ========== Flow Designer Integration ==========
