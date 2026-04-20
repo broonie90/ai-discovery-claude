@@ -1,1 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_alias"><sys_alias action="INSERT_OR_UPDATE"><configuration_template/><connection_type>http_connection</connection_type><id>x_agiro_ai_disc_cl.Anthropic_Claude_Analytics</id><is_internal>false</is_internal><multiple_connections>false</multiple_connections><name>Anthropic Claude Analytics</name><parent/><retry_policy/><sys_class_name>sys_alias</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-04-20 03:00:00</sys_created_on><sys_id>7c66346b3d997fc4db8f590ef0a30cd7</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_agiro_ai_disc_cl.Anthropic_Claude_Analytics</sys_name><sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package><sys_policy/><sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope><sys_update_name>sys_alias_7c66346b3d997fc4db8f590ef0a30cd7</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-04-20 03:00:00</sys_updated_on><type>connection</type></sys_alias></record_update>
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_alias">
+    <sys_alias action="INSERT_OR_UPDATE">
+        <configuration_template/>
+        <connection_type>http_connection</connection_type>
+        <id>x_agiro_ai_disc_cl.Anthropic_Claude_Analytics</id>
+        <is_internal>false</is_internal>
+        <multiple_connections>false</multiple_connections>
+        <name>Anthropic Claude Analytics</name>
+        <parent/>
+        <retry_policy/>
+        <sys_class_name>sys_alias</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-20 03:00:00</sys_created_on>
+        <sys_id>7c66346b3d997fc4db8f590ef0a30cd7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_agiro_ai_disc_cl.Anthropic_Claude_Analytics</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sys_alias_7c66346b3d997fc4db8f590ef0a30cd7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-20 03:00:00</sys_updated_on>
+        <type>connection</type>
+    </sys_alias>
+</record_update>

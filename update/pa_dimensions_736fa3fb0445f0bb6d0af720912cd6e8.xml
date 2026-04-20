@@ -1,20 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="pa_dimensions">
-<pa_dimensions action="INSERT_OR_UPDATE">
-<conditions>vendor=Anthropic</conditions>
-<facts_table>alm_ai_model_digital_asset</facts_table>
-<field>display_name</field>
-<name>Claude Models</name>
-<sys_id>736fa3fb0445f0bb6d0af720912cd6e8</sys_id>
-<sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-04-20 04:30:00</sys_created_on>
-<sys_domain>global</sys_domain>
-<sys_domain_path>/</sys_domain_path>
-<sys_mod_count>0</sys_mod_count>
-<sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
-<sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-<sys_update_name>pa_dimensions_736fa3fb0445f0bb6d0af720912cd6e8</sys_update_name>
-<sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-04-20 04:30:00</sys_updated_on>
-</pa_dimensions>
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_dimensions">
+    <pa_dimensions action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <conditions table="alm_ai_model_digital_asset">vendor=Anthropic<item endquery="false" field="vendor" goto="false" newquery="false" operator="=" or="false" value="Anthropic"/>
+        </conditions>
+        <description/>
+        <empty_value/>
+        <facts_table>alm_ai_model_digital_asset</facts_table>
+        <field>display_name</field>
+        <manual_breakdown/>
+        <name>Claude Models</name>
+        <security_type/>
+        <sys_class_name>pa_dimensions</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-20 04:30:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>736fa3fb0445f0bb6d0af720912cd6e8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Claude Models</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>pa_dimensions_736fa3fb0445f0bb6d0af720912cd6e8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-20 04:30:00</sys_updated_on>
+    </pa_dimensions>
+    <sys_translated_text action="delete_multiple" query="documentkey=736fa3fb0445f0bb6d0af720912cd6e8"/>
 </record_update>

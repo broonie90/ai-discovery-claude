@@ -1,17 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="pa_units">
-<pa_units action="INSERT_OR_UPDATE">
-<name>USD</name>
-<sys_id>71e32049840983cd727c954745d43c02</sys_id>
-<sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-04-20 05:00:00</sys_created_on>
-<sys_domain>global</sys_domain>
-<sys_domain_path>/</sys_domain_path>
-<sys_mod_count>0</sys_mod_count>
-<sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
-<sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-<sys_update_name>pa_units_71e32049840983cd727c954745d43c02</sys_update_name>
-<sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-04-20 05:00:00</sys_updated_on>
-</pa_units>
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_units">
+    <pa_units action="INSERT_OR_UPDATE">
+        <format/>
+        <name>USD</name>
+        <sys_class_name>pa_units</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-20 05:00:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>71e32049840983cd727c954745d43c02</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>USD</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>pa_units_71e32049840983cd727c954745d43c02</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-20 05:00:00</sys_updated_on>
+    </pa_units>
 </record_update>

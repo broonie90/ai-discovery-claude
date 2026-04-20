@@ -1,24 +1,123 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="pa_widgets">
-<pa_widgets action="INSERT_OR_UPDATE">
-<alignment>left</alignment>
-<description>Daily distinct users of skills</description>
-<indicator>3778c1d72a9f85226d654ccae12f087c</indicator>
-<breakdown/>
-<name>Claude — Skill Distinct Users Trend</name>
-<score_font_size>responsive</score_font_size>
-<type>time</type>
-<visualization>line</visualization>
-<sys_id>69c6d31f866c90f008ce424360c61012</sys_id>
-<sys_created_by>admin</sys_created_by>
-<sys_created_on>2026-04-20 05:00:00</sys_created_on>
-<sys_domain>global</sys_domain>
-<sys_domain_path>/</sys_domain_path>
-<sys_mod_count>0</sys_mod_count>
-<sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
-<sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-<sys_update_name>pa_widgets_69c6d31f866c90f008ce424360c61012</sys_update_name>
-<sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2026-04-20 05:00:00</sys_updated_on>
-</pa_widgets>
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_widgets">
+    <pa_widgets action="INSERT_OR_UPDATE">
+        <aggregate/>
+        <alignment>left</alignment>
+        <breakdown/>
+        <breakdown_level2/>
+        <breakdown_page_size/>
+        <chart_color/>
+        <color_scheme/>
+        <coloring_method/>
+        <column_bulletchart>false</column_bulletchart>
+        <column_change>false</column_change>
+        <column_change_perc>false</column_change_perc>
+        <column_current>false</column_current>
+        <column_gap>false</column_gap>
+        <column_gap_perc>false</column_gap_perc>
+        <column_multiple>false</column_multiple>
+        <column_steps/>
+        <column_stepsize/>
+        <column_target>false</column_target>
+        <column_trend>false</column_trend>
+        <compare_main_label/>
+        <compare_number_of_periods/>
+        <compare_period/>
+        <cube_facts_table/>
+        <cutoff/>
+        <cutoff_condition/>
+        <cutoff_type/>
+        <date_from>00000000</date_from>
+        <date_to>00000000</date_to>
+        <default_indicator/>
+        <description>Daily distinct users of skills</description>
+        <element/>
+        <element_level2/>
+        <elements_filter/>
+        <field/>
+        <filter/>
+        <flip_axes>false</flip_axes>
+        <follow_element>false</follow_element>
+        <follow_managed_element>false</follow_managed_element>
+        <followed_breakdown/>
+        <followed_breakdown_relation/>
+        <gauge_autoscale>false</gauge_autoscale>
+        <gauge_from/>
+        <gauge_to/>
+        <include_comments>false</include_comments>
+        <include_confidence>false</include_confidence>
+        <include_forecast>false</include_forecast>
+        <include_prediction_interval>false</include_prediction_interval>
+        <include_target>false</include_target>
+        <include_thresholds>false</include_thresholds>
+        <include_trend>false</include_trend>
+        <indicator display_value="">3778c1d72a9f85226d654ccae12f087c</indicator>
+        <is_compare_chart>false</is_compare_chart>
+        <lastscore_compare/>
+        <lastscore_periods_back/>
+        <limit/>
+        <lookup_name/>
+        <manual_elements>false</manual_elements>
+        <max_color/>
+        <multiple_elements_view/>
+        <name>Claude — Skill Distinct Users Trend</name>
+        <no_bulk_migration>false</no_bulk_migration>
+        <number_of_records/>
+        <overlap_data_labels>false</overlap_data_labels>
+        <percentages/>
+        <period/>
+        <pivot_breakdown/>
+        <pivot_elements_filter/>
+        <related_dashboards/>
+        <score_font_size>responsive</score_font_size>
+        <scorecard_options/>
+        <show_bar>false</show_bar>
+        <show_breakdown_selector>false</show_breakdown_selector>
+        <show_change>false</show_change>
+        <show_change_perc>false</show_change_perc>
+        <show_comparison_date>false</show_comparison_date>
+        <show_data_labels>false</show_data_labels>
+        <show_empty_elements>false</show_empty_elements>
+        <show_gap>false</show_gap>
+        <show_gap_perc>false</show_gap_perc>
+        <show_legend>false</show_legend>
+        <show_on_click_link_label>false</show_on_click_link_label>
+        <show_range_selector>false</show_range_selector>
+        <show_target>false</show_target>
+        <show_top_x/>
+        <show_total>false</show_total>
+        <show_trend>false</show_trend>
+        <show_visualization_selector>false</show_visualization_selector>
+        <sort_direction/>
+        <sort_on/>
+        <subtitle/>
+        <sys_class_name>pa_widgets</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-20 05:00:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>69c6d31f866c90f008ce424360c61012</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Claude — Skill Distinct Users Trend</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>pa_widgets_69c6d31f866c90f008ce424360c61012</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-04-20 05:00:00</sys_updated_on>
+        <tag/>
+        <template/>
+        <treemap_max_color/>
+        <treemap_min_color/>
+        <type>time</type>
+        <visualization>line</visualization>
+        <words_in_trendline/>
+        <yaxis2_from/>
+        <yaxis2_title/>
+        <yaxis2_to/>
+        <yaxis_from/>
+        <yaxis_title/>
+        <yaxis_to/>
+    </pa_widgets>
+    <sys_translated_text action="delete_multiple" query="documentkey=69c6d31f866c90f008ce424360c61012"/>
 </record_update>

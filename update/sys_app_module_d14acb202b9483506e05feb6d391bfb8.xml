@@ -4,7 +4,8 @@
         <application display_value="AI Discovery Claude">114acb202b9483506e05feb6d391bf60</application>
         <assessment/>
         <device_type/>
-        <filter>vendor=Anthropic</filter>
+        <filter table="alm_ai_model_digital_asset">vendor=Anthropic<item endquery="false" field="vendor" goto="false" newquery="false" operator="=" or="false" value="Anthropic"/>
+        </filter>
         <hint/>
         <homepage/>
         <image/>
