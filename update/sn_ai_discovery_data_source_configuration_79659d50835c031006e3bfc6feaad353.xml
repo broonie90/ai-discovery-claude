@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sn_ai_discovery_data_source_configuration">
+    <sn_ai_discovery_data_source_configuration action="INSERT_OR_UPDATE">
+        <source>Anthropic Claude</source>
+        <sub_flow display_value="Discover Claude Asset">dd059ae02b5c43506e05feb6d391bfe0</sub_flow>
+        <sys_class_name>sn_ai_discovery_data_source_configuration</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-04-13 06:00:00</sys_created_on>
+        <sys_id>79659d50835c031006e3bfc6feaad353</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Anthropic Claude</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>sn_ai_discovery_data_source_configuration_79659d50835c031006e3bfc6feaad353</sys_update_name>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 02:37:39</sys_updated_on>
+        <usage_sub_flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</usage_sub_flow>
+    </sn_ai_discovery_data_source_configuration>
+</record_update>
