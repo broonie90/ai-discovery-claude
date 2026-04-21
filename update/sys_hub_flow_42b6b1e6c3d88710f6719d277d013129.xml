@@ -4,7 +4,7 @@
         <acls/>
         <active>true</active>
         <annotation/>
-        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,labelCacheCleanUpExecuted=true,timeFromCreateToActivate=656000,viewActivatedIn=naturalLanguage</attributes>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,labelCacheCleanUpExecuted=true,timeFromCreateToActivate=68791000,viewActivatedIn=naturalLanguage</attributes>
         <authored_on_release_version>27800</authored_on_release_version>
         <callable_by_client_api>false</callable_by_client_api>
         <category/>
@@ -15,7 +15,7 @@
         <flow_priority>MEDIUM</flow_priority>
         <generation_source/>
         <internal_name>discover_claude_usage</internal_name>
-        <label_cache>[{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.result","label":"2 - Claude AI Discovery➛result","reference_display":"result","type":"string","base_type":"string","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["result-2"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"69e28d4b-01a8-4aa0-93ec-21667eb26c8d"}},{"name":"subflow.next_iterator","label":"Input➛Next Iterator","reference":"","reference_display":"","type":"string","base_type":"string","column_name":"","usedInstances":{"e4c029fb-7bcb-48da-97a8-d6081a785fca":["next_iterator"],"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["next_iterator"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"77959d4a-ea2d-4714-aac9-3ac2c8618212","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"subflow.ai_data_source.alias","label":"Input➛AI Data Source➛Connection alias","reference":"sys_alias","reference_display":"Connection \u0026 Credential Aliases","type":"reference","base_type":"reference","parent_table_name":"sn_ai_discovery_data_source","column_name":"alias","usedInstances":{"8e3a0e65-b064-4985-b708-bc19ebd78b4e":["connection_alias"],"e4c029fb-7bcb-48da-97a8-d6081a785fca":["connection_alias"],"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["connection_alias"]}},{"name":"subflow.ai_data_source","label":"Input➛AI Data Source","reference":"sn_ai_discovery_data_source","reference_display":"AI Data Source","type":"reference","base_type":"reference","column_name":"","usedInstances":{"8e3a0e65-b064-4985-b708-bc19ebd78b4e":["connection_alias"],"e4c029fb-7bcb-48da-97a8-d6081a785fca":["connection_alias"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"7d44c2af-c1c6-4592-8887-a02a53652302","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"8e3a0e65-b064-4985-b708-bc19ebd78b4e.agents","label":"1 - AWS Bedrock Discovery➛Agents","reference_display":"Agents","type":"array.object","base_type":"array.object","usedInstances":{"3a89eb53-0193-40a1-a4cc-19354561d40c":["agents-0"]},"attributes":{"sourceId":"f66963a5-60f7-4566-93e5-188ded3b1020","child_name":"agent_card","uiUniqueId":"f5696f21-67aa-4fad-9e3e-c7f49a50433b","uiTypeLabel":"Array.Object","co_type_name":"FD7b85c997aab12210bdc9b859fcb5652a","child_label":"Agent Card","child_type_label":"Object","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"b09e4fac-69f8-4f1d-9c2c-56fe1e894108","uiType":"array.object","child_type":"object","child_uiUniqueId":"57bc97fb-da7c-40dc-ba66-3f59f2c71112"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.agents","label":"2 - Claude AI Discovery➛Agents","reference_display":"Agents","type":"array.object","base_type":"array.object","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["agents-0"]},"attributes":{"sourceId":"f66963a5-60f7-4566-93e5-188ded3b1020","child_name":"agent_card","uiUniqueId":"c5713b8d-a446-419a-9f71-41c8337e196b","uiTypeLabel":"Array.Object","co_type_name":"FD7c89daecb05c435065f503f702929e94","child_label":"Agent Card","child_type_label":"Object","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"14829750-8a0b-4b91-b796-8f5da02f7b29","uiType":"array.object","child_type":"object","child_uiUniqueId":"ef90dc52-d7ff-4559-95f1-525cc72a186b"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.next_iterator","label":"2 - Claude AI Discovery➛Next Iterator","reference_display":"Next Iterator","type":"string","base_type":"string","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["next_iterator-1"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"72ff8b17-fd31-43eb-b4a6-4ece99ed9f4b"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.__action_status__.message","label":"2 - Claude AI Discovery➛Action Status➛Message","reference":"","reference_display":"Message","type":"string","base_type":"string","usedInstances":{"a4726d3b-1578-4e3c-8523-ed0e59ce1a5d":["error_message-0"]},"attributes":{}},{"name":"subflow.ai_data_execution.sys_id","label":"Input➛AI Data Execution➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_ai_discovery_data_execution","column_name":"sys_id","usedInstances":{"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["ai_data_execution"]}},{"name":"subflow.ai_data_execution","label":"Input➛AI Data Execution","reference":"sn_ai_discovery_data_execution","reference_display":"AI Data Execution","type":"reference","base_type":"reference","column_name":"","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["record"],"8e8ceaac-24d5-4269-abe0-5dfc72e7485c":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"67d76e14-e393-4e5f-8d6b-7797704920b5","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_created","label":"2 - Claude AI Discovery➛records_created","reference_display":"records_created","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_created"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"24f942c4-314c-4e4f-969c-075fc3335cb1"}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_failed","label":"2 - Claude AI Discovery➛records_failed","reference_display":"records_failed","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_failed"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"d16d631d-969d-4d81-a1ab-25d520bc2b9c"}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_updated","label":"2 - Claude AI Discovery➛records_updated","reference_display":"records_updated","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_updated"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"b34dca42-b400-46f0-8456-7b2b73854ed4"}}]</label_cache>
+        <label_cache>[{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.result","label":"2 - Claude AI Discovery➛result","reference_display":"result","type":"string","base_type":"string","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["result-2"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"69e28d4b-01a8-4aa0-93ec-21667eb26c8d"}},{"name":"subflow.next_iterator","label":"Input➛Next Iterator","reference":"","reference_display":"","type":"string","base_type":"string","column_name":"","usedInstances":{"e4c029fb-7bcb-48da-97a8-d6081a785fca":["next_iterator"],"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["next_iterator"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"77959d4a-ea2d-4714-aac9-3ac2c8618212","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"subflow.ai_data_source.alias","label":"Input➛AI Data Source➛Connection alias","reference":"sys_alias","reference_display":"Connection \u0026 Credential Aliases","type":"reference","base_type":"reference","parent_table_name":"sn_ai_discovery_data_source","column_name":"alias","usedInstances":{"8e3a0e65-b064-4985-b708-bc19ebd78b4e":["connection_alias"],"e4c029fb-7bcb-48da-97a8-d6081a785fca":["connection_alias"],"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["connection_alias"]}},{"name":"subflow.ai_data_source","label":"Input➛AI Data Source","reference":"sn_ai_discovery_data_source","reference_display":"AI Data Source","type":"reference","base_type":"reference","column_name":"","usedInstances":{"8e3a0e65-b064-4985-b708-bc19ebd78b4e":["connection_alias"],"e4c029fb-7bcb-48da-97a8-d6081a785fca":["connection_alias"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"7d44c2af-c1c6-4592-8887-a02a53652302","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"8e3a0e65-b064-4985-b708-bc19ebd78b4e.agents","label":"1 - AWS Bedrock Discovery➛Agents","reference_display":"Agents","type":"array.object","base_type":"array.object","usedInstances":{"3a89eb53-0193-40a1-a4cc-19354561d40c":["agents-0"]},"attributes":{"sourceId":"f66963a5-60f7-4566-93e5-188ded3b1020","child_name":"agent_card","uiUniqueId":"f5696f21-67aa-4fad-9e3e-c7f49a50433b","uiTypeLabel":"Array.Object","co_type_name":"FD7b85c997aab12210bdc9b859fcb5652a","child_label":"Agent Card","child_type_label":"Object","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"b09e4fac-69f8-4f1d-9c2c-56fe1e894108","uiType":"array.object","child_type":"object","child_uiUniqueId":"57bc97fb-da7c-40dc-ba66-3f59f2c71112"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.agents","label":"2 - Claude AI Discovery➛Agents","reference_display":"Agents","type":"array.object","base_type":"array.object","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["agents-0"]},"attributes":{"sourceId":"f66963a5-60f7-4566-93e5-188ded3b1020","child_name":"agent_card","uiUniqueId":"c5713b8d-a446-419a-9f71-41c8337e196b","uiTypeLabel":"Array.Object","co_type_name":"FD7c89daecb05c435065f503f702929e94","child_label":"Agent Card","child_type_label":"Object","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"14829750-8a0b-4b91-b796-8f5da02f7b29","uiType":"array.object","child_type":"object","child_uiUniqueId":"ef90dc52-d7ff-4559-95f1-525cc72a186b"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.next_iterator","label":"2 - Claude AI Discovery➛Next Iterator","reference_display":"Next Iterator","type":"string","base_type":"string","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["next_iterator-1"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"72ff8b17-fd31-43eb-b4a6-4ece99ed9f4b"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.__action_status__.message","label":"2 - Claude AI Discovery➛Action Status➛Message","reference":"","reference_display":"Message","type":"string","base_type":"string","usedInstances":{"a4726d3b-1578-4e3c-8523-ed0e59ce1a5d":["error_message-0"]},"attributes":{}},{"name":"subflow.ai_data_execution.sys_id","label":"Input➛AI Data Execution➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_ai_discovery_data_execution","column_name":"sys_id","usedInstances":{"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["ai_data_execution"]}},{"name":"subflow.ai_data_execution","label":"Input➛AI Data Execution","reference":"sn_ai_discovery_data_execution","reference_display":"AI Data Execution","type":"reference","base_type":"reference","column_name":"","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["record"],"8e8ceaac-24d5-4269-abe0-5dfc72e7485c":["record"],"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"67d76e14-e393-4e5f-8d6b-7797704920b5","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_created","label":"3 - Claude AI Asset Discovery➛records_created","reference_display":"records_created","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_created"],"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["values"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"24f942c4-314c-4e4f-969c-075fc3335cb1"}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_failed","label":"3 - Claude AI Asset Discovery➛records_failed","reference_display":"records_failed","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_failed"],"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["values"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"d16d631d-969d-4d81-a1ab-25d520bc2b9c"}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_updated","label":"3 - Claude AI Asset Discovery➛records_updated","reference_display":"records_updated","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_updated"],"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["values"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"b34dca42-b400-46f0-8456-7b2b73854ed4"}},{"name":"72c4e2d4-805d-43f4-9279-230e3b3aad08.record","label":"2 - Create Record➛AI Data Execution Record","reference":"sn_ai_discovery_data_execution","reference_display":"AI Data Execution","type":"reference","base_type":"reference","usedInstances":{"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["record"],"8e8ceaac-24d5-4269-abe0-5dfc72e7485c":["record"]},"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}}]</label_cache>
         <master_snapshot>d158fdeac3d88710f6719d277d0131ce</master_snapshot>
         <master_snapshot_digest/>
         <name>Discover Claude Usage</name>
@@ -44,7 +44,7 @@
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name>sys_hub_flow_42b6b1e6c3d88710f6719d277d013129</sys_update_name>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 04:04:22</sys_updated_on>
+        <sys_updated_on>2026-04-21 04:28:58</sys_updated_on>
         <type>subflow</type>
         <updation_source/>
         <version>2</version>
@@ -104,7 +104,7 @@
         <help/>
         <hint/>
         <internal_type display_value="Reference">reference</internal_type>
-        <label>AI Data Execution</label>
+        <label>ai_data_execution</label>
         <mandatory>false</mandatory>
         <max_length>32</max_length>
         <model display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</model>
@@ -130,14 +130,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:31:30</sys_created_on>
         <sys_id>06b6b1e6c3d88710f6719d277d013151</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:24</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:54</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -188,7 +188,7 @@
         <help/>
         <hint/>
         <internal_type display_value="String">string</internal_type>
-        <label>Next Iterator</label>
+        <label>next_iterator</label>
         <mandatory>false</mandatory>
         <max_length>8000</max_length>
         <model display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</model>
@@ -214,14 +214,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:31:29</sys_created_on>
         <sys_id>46b6b1e6c3d88710f6719d277d013143</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:29</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:54</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -272,7 +272,7 @@
         <help/>
         <hint/>
         <internal_type display_value="Reference">reference</internal_type>
-        <label>AI Data Source</label>
+        <label>ai_data_source</label>
         <mandatory>true</mandatory>
         <max_length>32</max_length>
         <model display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</model>
@@ -298,14 +298,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:31:30</sys_created_on>
         <sys_id>d6b6b1e6c3d88710f6719d277d013158</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:54</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -325,14 +325,14 @@
         <name>FD92b6b1e6b2d88710ad76ed17454b17ef</name>
         <namespace>FlowDesigner</namespace>
         <scope_name>d3a129148310431006e3bfc6feaad351</scope_name>
-        <serialized_content>{"FlowDesigner:FD92b6b1e6b2d88710ad76ed17454b17ef":{"$COCollectionField":[{"agent_card":{"short_description":"String","short_description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Short Description\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"9816e6d5-0263-43a8-8ebf-645a4caa3c3e\"}"},"agent_id":"String","agent_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agent Id\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"1e73f0bd-9ff9-4348-86a0-36ffe2942724\"}"},"agent_name":"String","agent_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agent Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"398e0abf-ca72-4463-b9f0-79944641ac1b\"}"},"install_status":"String","install_status.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Install Status\",\"mandatory\":\"false\",\"order\":\"6\",\"max_length\":\"0\",\"uiUniqueId\":\"d63ae783-19a8-493b-9078-2ab4e52b511c\"}"},"vendor":"String","vendor.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Vendor\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"3c91b7f4-ca83-4957-86e2-471c056e76b6\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\",\"uiUniqueId\":\"6e29502d-1135-44c0-bb5e-d8b99bf14988\"}"},"model":{"short_description":"String","short_description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Short Description\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"ec838f87-1305-4019-8af7-7ca1ba4a2bc2\"}"},"model_name":"String","model_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"93ccaf01-4122-4a07-ac58-c0a7778c027a\"}"},"vendor":"String","vendor.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Vendor\",\"mandatory\":\"false\",\"order\":\"6\",\"max_length\":\"0\",\"uiUniqueId\":\"6cacdbbe-32ec-4cac-9cf0-a6fca1803ec2\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\",\"uiUniqueId\":\"e3c3a9bf-4a25-44c0-a0dd-ac09f5d7e551\"}"},"model_id":"String","model_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Id\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"c08831cb-b339-46b3-bc5d-fefbeafead1a\"}"},"model_number":"String","model_number.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Number\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"e5aba2b4-877d-4794-8819-7166420ce92d\"}"},"version":"String","version.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Version\",\"mandatory\":\"false\",\"order\":\"7\",\"max_length\":\"0\",\"uiUniqueId\":\"cbfe0b56-4d38-40f5-9b1e-2f4215a08811\"}"},"manufacturer":"String","manufacturer.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Manufacturer\",\"mandatory\":\"false\",\"order\":\"8\",\"max_length\":\"0\",\"uiUniqueId\":\"8ce4f002-8aa2-4480-8cf6-ab159b320077\"}"}},"model.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"object\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model\",\"mandatory\":\"false\",\"order\":\"9\",\"max_length\":\"0\",\"uiUniqueId\":\"3c024562-0c38-442a-8ed8-7463a7e78b79\"}"},"prompt":{"prompt_info":"String","prompt_info.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Prompt Information\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"570caf2a-a32f-49bf-b5fc-438d6c6445e9\"}"}},"prompt.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"object\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Prompt\",\"mandatory\":\"false\",\"order\":\"10\",\"max_length\":\"0\",\"uiUniqueId\":\"b86aae61-b42f-435f-b202-3c2807b3882b\"}"},"tools":[{"$3_tools":{"name":"String","name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"49a01187-97c7-4e51-a548-5b8a50067c73\"}"},"active":"Boolean","active.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"True/False\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"boolean\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Active\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"e1047f66-216a-4d7e-a846-cad60155ffff\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"2057ea3d-61b6-42e1-b9cf-5a4948b7faaa\"}"},"tool_id":"String","tool_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Tool Id\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"79d768fd-dacb-4d9f-835a-ca209943e9f6\"}"}}}],"tools.$field_facets":{"SimpleMapFacet":"{\"max_rows\":null,\"choiceOption\":\"\",\"default_value\":\"\",\"child_hint\":\"\",\"child_maxsize\":\"\",\"label\":\"Tools\",\"mandatory\":\"false\",\"child_name\":\"tool_card\",\"uiUniqueId\":\"90734237-b0e1-4b81-a456-df7b53a41437\",\"uiTypeLabel\":\"Array.Object\",\"child_label\":\"Tool Card\",\"child_type_label\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_defaultValue\":\"\",\"child_type\":\"object\",\"order\":\"11\",\"max_length\":\"0\",\"child_uiUniqueId\":\"29e1dcd4-a12a-4473-815c-33f24304f3a1\"}"},"version":"String","version.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Version\",\"mandatory\":\"false\",\"order\":\"7\",\"max_length\":\"0\",\"uiUniqueId\":\"28b7efd1-6581-4ab7-96ed-24a82120b83d\"}"},"additional_id_list":["Any"],"additional_id_list.$field_facets":{"SimpleMapFacet":"{\"max_rows\":null,\"choiceOption\":\"\",\"default_value\":\"\",\"child_hint\":\"\",\"child_maxsize\":\"\",\"label\":\"Additional Id List\",\"mandatory\":\"false\",\"child_name\":\"additional_id\",\"uiUniqueId\":\"f6df7c3c-47b7-45ea-9f55-e85dda213876\",\"uiTypeLabel\":\"Array.String\",\"child_label\":\"Additional Id\",\"child_type_label\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.string\",\"child_defaultValue\":\"\",\"child_type\":\"string\",\"order\":\"8\",\"max_length\":\"0\",\"child_uiUniqueId\":\"f8ef9a81-c5ba-4ce3-b117-54df47d799d9\"}"}}}],"$COCollectionField.$type_facets":{"SimpleMapFacet":"{\"sourceId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"max_rows\":null,\"child_hint\":\"\",\"child_maxsize\":\"\",\"mandatory\":\"false\",\"child_name\":\"agent_card\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FD92b6b1e6b2d88710ad76ed17454b17ef\",\"child_label\":\"Agent Card\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"order\":\"4\",\"max_length\":\"65000\",\"pwd2droppable\":\"true\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agents\",\"uiUniqueId\":\"c17c0d77-6375-496a-b3cc-87ac257912b0\",\"child_type_label\":\"Object\",\"sourceType\":\"action\",\"sourceUiUniqueId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_defaultValue\":\"\",\"child_type\":\"object\",\"child_uiUniqueId\":\"ef90dc52-d7ff-4559-95f1-525cc72a186b\"}"},"$COCollectionField.$field_facets":{"SimpleMapFacet":"{\"up-shift-collection-level\":\"true\"}"}},"FlowDesigner:FD92b6b1e6b2d88710ad76ed17454b17ef.$type_facets":{"SimpleMapFacet":"{\"sourceId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"max_rows\":null,\"child_hint\":\"\",\"child_maxsize\":\"\",\"mandatory\":\"false\",\"child_name\":\"agent_card\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FD92b6b1e6b2d88710ad76ed17454b17ef\",\"child_label\":\"Agent Card\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"order\":\"4\",\"max_length\":\"65000\",\"pwd2droppable\":\"true\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agents\",\"uiUniqueId\":\"c17c0d77-6375-496a-b3cc-87ac257912b0\",\"child_type_label\":\"Object\",\"sourceType\":\"action\",\"sourceUiUniqueId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_defaultValue\":\"\",\"child_type\":\"object\",\"child_uiUniqueId\":\"ef90dc52-d7ff-4559-95f1-525cc72a186b\"}"}}</serialized_content>
+        <serialized_content>{"FlowDesigner:FD92b6b1e6b2d88710ad76ed17454b17ef":{"$COCollectionField":[{"agent_card":{"short_description":"String","short_description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Short Description\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"9816e6d5-0263-43a8-8ebf-645a4caa3c3e\"}"},"agent_id":"String","agent_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agent Id\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"1e73f0bd-9ff9-4348-86a0-36ffe2942724\"}"},"agent_name":"String","agent_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agent Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"398e0abf-ca72-4463-b9f0-79944641ac1b\"}"},"install_status":"String","install_status.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Install Status\",\"mandatory\":\"false\",\"order\":\"6\",\"max_length\":\"0\",\"uiUniqueId\":\"d63ae783-19a8-493b-9078-2ab4e52b511c\"}"},"vendor":"String","vendor.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Vendor\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"3c91b7f4-ca83-4957-86e2-471c056e76b6\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\",\"uiUniqueId\":\"6e29502d-1135-44c0-bb5e-d8b99bf14988\"}"},"model":{"short_description":"String","short_description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Short Description\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"ec838f87-1305-4019-8af7-7ca1ba4a2bc2\"}"},"model_name":"String","model_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"93ccaf01-4122-4a07-ac58-c0a7778c027a\"}"},"vendor":"String","vendor.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Vendor\",\"mandatory\":\"false\",\"order\":\"6\",\"max_length\":\"0\",\"uiUniqueId\":\"6cacdbbe-32ec-4cac-9cf0-a6fca1803ec2\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\",\"uiUniqueId\":\"e3c3a9bf-4a25-44c0-a0dd-ac09f5d7e551\"}"},"model_id":"String","model_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Id\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"c08831cb-b339-46b3-bc5d-fefbeafead1a\"}"},"model_number":"String","model_number.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Number\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"e5aba2b4-877d-4794-8819-7166420ce92d\"}"},"version":"String","version.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Version\",\"mandatory\":\"false\",\"order\":\"7\",\"max_length\":\"0\",\"uiUniqueId\":\"cbfe0b56-4d38-40f5-9b1e-2f4215a08811\"}"},"manufacturer":"String","manufacturer.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Manufacturer\",\"mandatory\":\"false\",\"order\":\"8\",\"max_length\":\"0\",\"uiUniqueId\":\"8ce4f002-8aa2-4480-8cf6-ab159b320077\"}"}},"model.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"object\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model\",\"mandatory\":\"false\",\"order\":\"9\",\"max_length\":\"0\",\"uiUniqueId\":\"3c024562-0c38-442a-8ed8-7463a7e78b79\"}"},"prompt":{"prompt_info":"String","prompt_info.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Prompt Information\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"570caf2a-a32f-49bf-b5fc-438d6c6445e9\"}"}},"prompt.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"object\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Prompt\",\"mandatory\":\"false\",\"order\":\"10\",\"max_length\":\"0\",\"uiUniqueId\":\"b86aae61-b42f-435f-b202-3c2807b3882b\"}"},"tools":[{"$3_tools":{"name":"String","name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"49a01187-97c7-4e51-a548-5b8a50067c73\"}"},"active":"Boolean","active.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"True/False\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"boolean\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Active\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"e1047f66-216a-4d7e-a846-cad60155ffff\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"2057ea3d-61b6-42e1-b9cf-5a4948b7faaa\"}"},"tool_id":"String","tool_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Tool Id\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"79d768fd-dacb-4d9f-835a-ca209943e9f6\"}"}}}],"tools.$field_facets":{"SimpleMapFacet":"{\"max_rows\":null,\"choiceOption\":\"\",\"default_value\":\"\",\"child_hint\":\"\",\"child_maxsize\":\"\",\"label\":\"Tools\",\"mandatory\":\"false\",\"child_name\":\"tool_card\",\"uiUniqueId\":\"90734237-b0e1-4b81-a456-df7b53a41437\",\"uiTypeLabel\":\"Array.Object\",\"child_label\":\"Tool Card\",\"child_type_label\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_defaultValue\":\"\",\"child_type\":\"object\",\"order\":\"11\",\"max_length\":\"0\",\"child_uiUniqueId\":\"29e1dcd4-a12a-4473-815c-33f24304f3a1\"}"},"version":"String","version.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Version\",\"mandatory\":\"false\",\"order\":\"7\",\"max_length\":\"0\",\"uiUniqueId\":\"28b7efd1-6581-4ab7-96ed-24a82120b83d\"}"},"additional_id_list":["Any"],"additional_id_list.$field_facets":{"SimpleMapFacet":"{\"max_rows\":null,\"choiceOption\":\"\",\"default_value\":\"\",\"child_hint\":\"\",\"child_maxsize\":\"\",\"label\":\"Additional Id List\",\"mandatory\":\"false\",\"child_name\":\"additional_id\",\"uiUniqueId\":\"f6df7c3c-47b7-45ea-9f55-e85dda213876\",\"uiTypeLabel\":\"Array.String\",\"child_label\":\"Additional Id\",\"child_type_label\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.string\",\"child_defaultValue\":\"\",\"child_type\":\"string\",\"order\":\"8\",\"max_length\":\"0\",\"child_uiUniqueId\":\"f8ef9a81-c5ba-4ce3-b117-54df47d799d9\"}"}}}],"$COCollectionField.$type_facets":{"SimpleMapFacet":"{\"sourceId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"max_rows\":null,\"child_hint\":\"\",\"child_maxsize\":\"\",\"mandatory\":\"false\",\"child_name\":\"agent_card\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FD92b6b1e6b2d88710ad76ed17454b17ef\",\"child_label\":\"Agent Card\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"order\":\"4\",\"max_length\":\"65000\",\"pwd2droppable\":\"true\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"agents\",\"uiUniqueId\":\"c17c0d77-6375-496a-b3cc-87ac257912b0\",\"child_type_label\":\"Object\",\"sourceType\":\"action\",\"sourceUiUniqueId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_defaultValue\":\"\",\"child_type\":\"object\",\"child_uiUniqueId\":\"ef90dc52-d7ff-4559-95f1-525cc72a186b\"}"},"$COCollectionField.$field_facets":{"SimpleMapFacet":"{\"up-shift-collection-level\":\"true\"}"}},"FlowDesigner:FD92b6b1e6b2d88710ad76ed17454b17ef.$type_facets":{"SimpleMapFacet":"{\"sourceId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"max_rows\":null,\"child_hint\":\"\",\"child_maxsize\":\"\",\"mandatory\":\"false\",\"child_name\":\"agent_card\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FD92b6b1e6b2d88710ad76ed17454b17ef\",\"child_label\":\"Agent Card\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"order\":\"4\",\"max_length\":\"65000\",\"pwd2droppable\":\"true\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"agents\",\"uiUniqueId\":\"c17c0d77-6375-496a-b3cc-87ac257912b0\",\"child_type_label\":\"Object\",\"sourceType\":\"action\",\"sourceUiUniqueId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_defaultValue\":\"\",\"child_type\":\"object\",\"child_uiUniqueId\":\"ef90dc52-d7ff-4559-95f1-525cc72a186b\"}"}}</serialized_content>
         <sys_class_name>sys_complex_object</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:31:30</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>96b6b1e6c3d88710f6719d277d0131ef</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name/>
         <sys_overrides/>
         <sys_package/>
@@ -340,7 +340,7 @@
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:24</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:37:59</sys_updated_on>
         <type>complex_object_collection</type>
     </sys_complex_object>
     <sys_hub_flow_output action="INSERT_OR_UPDATE">
@@ -381,7 +381,7 @@
         <hint/>
         <internal_link/>
         <internal_type display_value="String">string</internal_type>
-        <label>Agents</label>
+        <label>agents</label>
         <mandatory>false</mandatory>
         <max_length>65000</max_length>
         <model display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</model>
@@ -407,14 +407,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:31:30</sys_created_on>
         <sys_id>1eb6f1e6c3d88710f6719d277d01310e</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -466,7 +466,7 @@
         <hint/>
         <internal_link/>
         <internal_type display_value="String">string</internal_type>
-        <label>Next Iterator</label>
+        <label>next_iterator</label>
         <mandatory>false</mandatory>
         <max_length>8000</max_length>
         <model display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</model>
@@ -492,14 +492,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:31:30</sys_created_on>
         <sys_id>5ab6f1e6c3d88710f6719d277d013109</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -636,7 +636,7 @@
         <hint/>
         <internal_link/>
         <internal_type display_value="String">string</internal_type>
-        <label>Error Message</label>
+        <label>error_message</label>
         <mandatory>false</mandatory>
         <max_length>8000</max_length>
         <model display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</model>
@@ -662,14 +662,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:31:30</sys_created_on>
         <sys_id>deb6b1e6c3d88710f6719d277d0131f7</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -685,26 +685,26 @@
     <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=deb6b1e6c3d88710f6719d277d0131f7"/>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=42b6b1e6c3d88710f6719d277d013129"/>
     <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=42b6b1e6c3d88710f6719d277d013129"/>
-    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=42b6b1e6c3d88710f6719d277d013129^sys_idNOT IN4558fdeac3d88710f6719d277d01316d,8e393daec3d88710f6719d277d0131b5,06393daec3d88710f6719d277d0131be"/>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=42b6b1e6c3d88710f6719d277d013129^sys_idNOT IN4558fdeac3d88710f6719d277d01316d,06393daec3d88710f6719d277d0131be,fcec35f2c31c4b10f6719d277d013123,a82db136c31c4b10f6719d277d013193"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Claude AI Asset Discovery">2c899aec2b5c43506e05feb6d391bfdd</action_type>
         <action_type_parent display_value="Claude AI Asset Discovery">b52592242b5c43506e05feb6d391bf30</action_type_parent>
         <attributes/>
         <comment/>
-        <compiled_snapshot/>
+        <compiled_snapshot>2c899aec2b5c43506e05feb6d391bfdd</compiled_snapshot>
         <display_text/>
         <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
         <generation_source/>
-        <order>2</order>
+        <order>3</order>
         <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
         <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:31</sys_created_on>
         <sys_id>4558fdeac3d88710f6719d277d01316d</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:25</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
         <ui_id>9c0beb92-1224-4538-994a-8c03263ec4df</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/+1W207bQBD9FeTnOPJlfdm8RVRISC1IhfJCkTW7Ow4rbdbGl0CK+PeOEyeES9IIJMoDb/HMzpwzM+dIubx3tHJGTiBTzgFlICLJwsiL0YtyFLEKuS9yDJyBY2GK9FIW1qJsdGEzMBpqyszAtF0KQp9JUGkacsZC36MuochlnCMANVL0VOm6NDC/6CvuMpjoqshAZ5SRmTTDsW2uq6LUMjs00CrM8qLKxseH51Qtr7VRFVpndHk1cEqoiFKDlTO6f5Zq5iVmBgQaAvmJOVJGInXYd9hV7eF62oNxP+32PXSolKk28IpKdfz8gYN3DVqFhJ+DqXHgTMEqaIpq7oyaqqVAhaBOrZmvX1xr21A/p3t7V+s/1DwMBhv9R049r9fw63jWb/kp/9+t5wXxwWGFCm2jwSwnwnqx2EJLPC27h0vEBoR5DiAL007tyXL+7piYQ2ua1TEp0tYEjmU3aEe9nyM/uy5u11c40naxkz5pCglm/QVNU2nRNsSKjtrq85crXQa/v3JcNDgl3GwKZantJCurYqYXWER9OpwY+hjmprgljrWe2CEsNjOkM8DwiOLfFuELqHQ3/Q9qQ8Ud4i+rb1o87sQT+yIBhokrUz9yGaTSFUz4bpqmAYcEkIF0HhbXyG7abrTlqvqlZMsF04NaVrpsxkRhhv38D4PejuDtVKh4lKElXWWaTNBJacOLL732Zv+c0UnsZGWePaitCk+I28HxI7ctlHvb1CuY3jPBbs/0kX1Mk3qe99Q2W9yy0wn/1QDr5TxV//o0HyJ9GTIWCB64PijPZZInLkS578acDg8yDpPEe7f0eRizEKED8tIX+grVo45mPdmPUP0erFaFG7ReEt2i9fBL659M6xiJWIpIuRHLA5dFSeByyZTLRcqVF/tJzOH9Whe7VMU2/nV1f5CIfoZ3KNvFvT5C9P+mtyp8jd8O6ltswL5s8MlsEEvl86DTfZSGLst5SL9i7krFpMd9SJQSb7bB1V9F4b4rfgwAAA==</values>
@@ -715,51 +715,156 @@
         <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
         <attributes/>
         <comment/>
-        <compiled_snapshot/>
+        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
         <display_text/>
         <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
         <generation_source/>
-        <order>3</order>
-        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
+        <order>8</order>
+        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
         <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:42:25</sys_created_on>
-        <sys_id>8e393daec3d88710f6719d277d0131b5</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_id>06393daec3d88710f6719d277d0131be</sys_id>
+        <sys_mod_count>4</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:25</sys_updated_on>
-        <ui_id>67422d72-7b08-4671-8831-f0435c3b2e5b</ui_id>
+        <sys_updated_on>2026-04-20 21:38:00</sys_updated_on>
+        <ui_id>8e8ceaac-24d5-4269-abe0-5dfc72e7485c</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/+1VTWvbQBD9K0ZnW+grxvYt4AZyaAJpySVNxWp35CysVup+OHGN/3tnpZWjOG1qTKCU1iftaObNezPPq7ttwFmwCDJgUTyPpzSN0zSJomSWxcU0LeKEpQQgDsaBJBVgpgJaK4bnNRHWBbZbbYtS1I8h4TkjhuTwBNQaXsvdDvMY140gm1ufjhH6wAVTIIPF3f04aIhCZAMqWGwPXplNA7kgBQgsXNbUViDN6HKJGMey7qtvetqHMlwPPDOPnnMXxFeOTxyNA3gyIBlgu5IIDeOgIhJV1moTLIyyGFBA2LUUm33GA5emU1qRJ82/I34WubwSUBr1U9gfcz+hfjg1p3DduPl1EUMK0U+uFraSV50EN1soiRVmMFurEQ8aR9mR6BiWnx7qx5u+3wWXrTrPVtSUiP2JGKN4YQ1otw4Q0A6lIk3D5SpvVL3mbTFSqcKVwEPodo89NV/JkFDHO3Q2CC8wvmzDt0RxJ+IjwmDxrhWff7OubyfDE85bza3gvF0UpmqqeGPOEXgNnuZu7G1bnL1lADp/3vcA89m6WubOs1zTeg1qc+De1949vxwtMWX0YZBympk/Ozqjq47OsVJeFP9Cmrfzi5h389m7uXn2h9zsGf1ldv6diaPkzVtssOnWt3pg4O4W0znFrRlgX2wUpWy7ndOogGKeTOIkySbZWTqbzOcZmcxolCbTFGjGyvCgdrf72kdKwsWJYF3pAMs27GRmvhbRtMGHDkNbSkHr0orX/89/fRwn3kVQ4RANjLoxjo92ZQ9wwUEw/ROb9peRb5CvfYP95/XdbqR4GrW//1/Zd/zK3v8A1fHdtR4KAAA=</values>
+        <values>H4sIAAAAAAAA/+1UXWvbMBT9K8HPjpE/kiZ5K2SBPqyFbvSlK0aWrhOBLHuynCYL+e+7suU0/VwogTGY33R977nnHB10v/ME92ZeApyE03DM4jCOI0KiSRJm4zgLIx5TgNDzPUULwE4NrNQcz2sqG1vY7S4ilkDEk+GEjPgwifNkOI0upsMoJhBnMaWcTIJubr/HSS7qStLtnQPAClsJyTUob3b/4HsV1bjLgPZmuxe/zLaCVNIMJA7OS9YUoMzgao4Yp+rop297IS+F2R145g49FbaIvyyfkPgebAwoDrgup7IG3yuo4tSUeuvNjG6woIHyGyW3h46VUKZTWtBNLX4hfkJsXw4ojTkXDsfUOdSbUwoGN5URpeoqhmayd66UTaGuOwnWW8hpI82Rt02NeFBZypZExzD/tiofb/t9C6FadY6tLBmVhxM1RousMVDb6wAJrSkFrSqhlmmly7Voh5FKESwlHoJclo+4sxZLFVBmeQdoEA0WWJ+35TuqhRXxFWFweN+KT382dm8nwxFOW82t4LS9KGytmRaVuUTgNTiae98FORt9FAA2fbrvI8ynMNcqpcLaz8o16G1qaaewAda07r/K7uXVYI4tgy9HLZ8L83dLZ3Dd0TlVyrPhd6S5OD+ruTSPzpbmyV9Ks2P0j8X5TyEm0Yev2NFNt7mtjwNsqIEfDSExz6mQwF9n9q2WT2YWCgQ2MOig/ZPZ9wALAZLXb8jpQ+sWpGu34PAMny254Zi03//X+Iyv8cNv8SRzZFgIAAA=</values>
     </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=8e393daec3d88710f6719d277d0131b5"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=06393daec3d88710f6719d277d0131be"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
-        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
-        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
+        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
+        <action_type_parent display_value="Create Record">02f0b88cc3c632002841b63b12d3aeff</action_type_parent>
         <attributes/>
         <comment/>
         <compiled_snapshot/>
         <display_text/>
         <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
         <generation_source/>
-        <order>7</order>
-        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
+        <order>2</order>
+        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
         <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:42:25</sys_created_on>
-        <sys_id>06393daec3d88710f6719d277d0131be</sys_id>
+        <sys_created_on>2026-04-20 21:36:55</sys_created_on>
+        <sys_id>fcec35f2c31c4b10f6719d277d013123</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:25</sys_updated_on>
-        <ui_id>8e8ceaac-24d5-4269-abe0-5dfc72e7485c</ui_id>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
+        <ui_id>72c4e2d4-805d-43f4-9279-230e3b3aad08</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/+1UTWvjMBD9K0FnY+w4DW1uhWygh22hu/TSLUaWxolAlr36SJMN+e87suU0TT82lEAprG8znnnz3sxD9xsiOJmQEfAkvUjHLEuzbJgkw/NRWoyzIh3yjAKkJCKKVoCVGlitOcZLKp1PbDbGFaWsH2Mqck4tzWEFzFlRq+0W67gwjaTru1COGbYQkmtQZHL/EJGGakS2oMlkc/DLrhvIJS1AYuO0Zq4CZQdXU8Q4lnXffdvTPpThZ2DMA3oufBJ/eT5pEhFYWVAccFxJpYGIVFShylqvycRqhwkNlN8oud5VLISyndKKroz4g/ijxNeVgNJY2MIuzMOG+uXUgsFN4/fXZSwtZL+5WrpKXXcS/G6hpE7avd06g3jQeMqeRMew/LGoH2/7eTOhWnWBrawZlbuIWqtF4SwYfw6Q0C6lok0j1DxvdL0UbTNSqeK5xCD2t8eZRsxVTJnnHXsbxDPMT9v0HdXCi/iOMNi8bcXnv52f28kIhPNWcys4bw+FpYZp0dhLBF5CoLmNgm2Ls/cMwC6e7r2H+WRdo3LvWWFYvQS9PnDvS+9eXg2mWDL4tlfyMTP/9HQG1x2dY6U8a35DWrDzs1xw89nJ3Hz+SW4OjL6Ynf9l4mT47iu2d+nWt2bfwJZa+OWSJOMlFRL4S8++VvJBz0KFwBYGHXR0NPseYCZAcvOKnN60YUC+DAN2z/DJnJuOk/b7/xqf8DV++AvacHlKRggAAA==</values>
+        <values>H4sIAAAAAAAA/+1VUWvbMBD+K0HPJthxljR5C+0KfVgLW+lL0wpZOicCWfIkOU0W+t93ku00axsoYzAG85tOn777vtPpfL8nUpA5mWSQfpplE55neT5K09HZOCsmeZGNRM4AxiQhmlWASM8KBTQuErJhqglBpymTVEjHzQbsjgrmGYUt8MZLoxGIW7Viu7sOv7gaXCBk8PkIwtdSCQuazO8fElIziyk8WDLfv9ryuxqoYgUoZLoNcgbXrZyPWvnl8AlrIcvrmLEiCEoTAlsPWgDmK5lykJCKaTRt7I7MvW0wYIGJG612B8Raao+EJGC3Tv5A9rM04EpAaxzavcOSdiVrw3xtJIebOtYqRqKwbtOoptLXrYlQbChZo3xfbIw0DvmgDpKDiE5R+W1tnr72CS+lju66TWU4U4cV897KovHgwn2AggqJaMXqWuoVra3ZyHgYtVTDlcLFsFTmCZM6udJDxoPwYWiL4SXGL2L4jlkZXHxBGjz8HN3T703I2/roFNPWNAIct7L2C6TbQCfuOel7WEA6O3nxWfFy0bFt3XH/euZh2aRpLqQOdlYWnHt829PONJZ3yP2yb+slmS/JlrKVtKZ/CJSr4UL7tTW15PRcsUYALY2li6vz2yVJlm3yeHQ8nRYcJqhc8LNplpaTaTYTo+lUpFmepeMIjxce4e++tk5ZQLqdo1J8kPn5MXR66+hA+fbF/q/Qmwr95sCCCgviYdBWNvlw7/YElxKUcO80cz+xugR00yXoplb2p6ZWNknj93dmV6vzHxtdR3+RE0Ps4SeR6xONigcAAA==</values>
     </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=06393daec3d88710f6719d277d0131be"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=fcec35f2c31c4b10f6719d277d013123"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
+        <generation_source/>
+        <order>4</order>
+        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 21:37:59</sys_created_on>
+        <sys_id>a82db136c31c4b10f6719d277d013193</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 21:37:59</sys_updated_on>
+        <ui_id>07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1VXWvbMBT9K8HPsZE/ksZ5K2SBPqyFbvSl64wsXTcCWfYsOW0W8t93Zctpmm5dCYUxtjxZ17rnnnN0It9uPcG9uZcAJ2EaTlkcxnFESDRLwnwa52HEYwoQemNP0RJwZwOsajiu11S2trDdnkUsgYgn/oxMuJ/EReKn0VnqRzGBOI8p5WQW9H27HXZyoWtJNzcOACtsJSRvQHnz27uxV9MGZxlovPn26JXZ1JBJmoPExkXF2hKUGV0sEOOtOobu60HIsTA7A9fcoWfCFvGV5ROSsQePBhQHHFdQqWHslVRxaqpm481N02KhAcqvlNzsd6yEMr3Skj5q8R3xE2L3FYDSmHNhv8ycQ4M5lWBwVRtRqb5iaC4H5yrZluqyl2C9hYK20hx422rEg9pStiR6hsWnVfVwPcxbCtWpc2xlxajcr6gxjchbA9oeB0joTClpXQt1n9VNtRZdM1Ipg3uJi6CQ1QPO1OJeBZRZ3gEaRIMl1hdd+YY2wor4iDDYvOvEZ99aO7eX4QhnneZOcNYdFG7VrBG1OUfgNTiau7ELcj55LQAsfTrvA8ynMGuVUWHtZ9Uamk1maWfwCKzt3H+R3fOL0QK3jD4cbDktzJ8tndFlT+etUp41/0Kai/Ozmkvz5N3SPPtDaXaM/rI4/y7EJHr1Fjs46S63+iDA/S2mM4anZoB/aQmJ+XabMpJDnkZ+GEWJn0zimZ+mCfVnjMTRNAaW8CI46t3tvg6Vggp5IljfeoDV1vxkZq4X0bTBhx5Dt4yB1kUrX/4//3U7TryLoEQTDYx6G8dvTuUAsBQguf5JTIfLyA3I1m7A/vP6bjdSOCXd7/9X9h2/snc/AN9kQLUwCgAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=a82db136c31c4b10f6719d277d013193"/>
     <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=42b6b1e6c3d88710f6719d277d013129"/>
-    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=42b6b1e6c3d88710f6719d277d013129^sys_idNOT INdeb6f1e6c3d88710f6719d277d01311a,9eb6f1e6c3d88710f6719d277d013122,1ab6f1e6c3d88710f6719d277d01311e,5eb6f1e6c3d88710f6719d277d01311f,5ab6f1e6c3d88710f6719d277d013121"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=42b6b1e6c3d88710f6719d277d013129^sys_idNOT IN1ab6f1e6c3d88710f6719d277d01311e,5eb6f1e6c3d88710f6719d277d01311f,5ab6f1e6c3d88710f6719d277d013121,deb6f1e6c3d88710f6719d277d01311a,9eb6f1e6c3d88710f6719d277d013122"/>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">fd05dae02b5c43506e05feb6d391bff9</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
+        <order>5</order>
+        <outputs_assigned/>
+        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
+        <sys_id>1ab6f1e6c3d88710f6719d277d01311e</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 21:38:00</sys_updated_on>
+        <ui_id>e8d1e39f-dc2e-45f7-8753-31e2b0bb3ecb</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">f9051ee02b5c43506e05feb6d391bf07</block>
+        <comment/>
+        <connected_to>4d56b746-90eb-4fa3-a467-153f49df78dd</connected_to>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Catch">35d60003e6022010a5e40cdd1254dd21</logic_definition>
+        <order>6</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
+        <sys_id>5eb6f1e6c3d88710f6719d277d01311f</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 21:38:00</sys_updated_on>
+        <ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1YUW+jOBD+KyfUx5aDhDRt3qr2IvV0baVLti9HhQyeJN5zMAsmbTfKf78xNg6QdnfbzfblIkURzAzjmfk+zxjWjihlVspiKi6Kgs1TZ/TPw7HDUiXD67WTkiU4IyeKCklkWUSRc+ysCC+VcB06K8gLJtLQGYWO73qhcxw6iVhmHJ7u4s+QSNSslYiCvjpKVvVF9dBnsiIuJ+ncncicpfPKw9Gq0oXOZoN3SygKMn/n85tuQJNkAUuifYy5eLwClTfko/HVxeX0+u52Mr2Yfpq04g6d61TCHHKTHwX3aMaA02hGEpCFNp4wtcwNycZKWD22DsPQKdn0OYO/SAxc3Y7UX+0vVB7xLwdCI5HyZ2sxI7wAq1+wVFqVlWrPVs46TinMSMllVOG1+zRvRXSpUq1VJJGIagR5LvJIU8QayrzcGi5JSokU+Wtxi5zqgCqd33juKeKQzuXCKgNP/W/w18Ic67oF1oh/tvrG416LX7R9vqn2NybbX1z+3rfL71kAFALf2BvukcTMf6j6byrDRZX2b5Oq0+y/GCX7lLIvJVxTazA8D+KkH/ROzpNzehIEQXxC+rPeCaVBfEoGxPOH/Q7gbSaZJlebJCKqSqO6prXpNJbaFjgsIZXRkmQZMifKcrFiTbiwbblzjiJ3hlhEtALD1eVwMVPibjG6JzkjcYVA9p62kpacv8Rq0c7vDdv5dNAhVAEYImdfiYp/LPIl0Tz5c3J3iyY4VygrMk6e7w/j5TBeDuPlMF4O4+UwXvY4XpIF4zSHtHqvYRQnDArN+41quo03m7Y1vhEVSc4yqRi0Qn2VZS1EgmIAOx5NL/kZp2iSkRzdSchR0E6galHVdkBQlLbBH1zMTABc8wWCo15RG1thM7jvhNONvmRXel6rZdEDsytWHOU7gdQFqjWXuuZtBGTXWcUJZ+QfO/AkIaVAbWx2R1qJIuQd8tEKFAP1qsihgn1F34Gn7GaAiSQmc3sbmSNIjZZgCdxlqn5aItUmMErBy2V6q4NXhxfdiu639TSSq/apBhVlgQtBppJR0ZlQZ5OFePy7jmTM0ipvo+QiIdzeEYnTIC4lFBoYjD/6UioDva5xHemwFTm/wxY9sT6QLEW9YIsrNowuVW7sZtrZXbLj0PClt0e+eP87xjx0gNFzqAYmGZ7RoN+HQUzjnud78akPBC/6wzM/Gc68BnB/KCKZkbtFr/U1yQAo6iXqDa+qvicIzz4Owv0iZbZpszztjWuBaR4NUN4+FKD+teNA1XnfexBwfqD3vNQpVEcygUKq3NHGmPR33wSr/tNtKa+Nxi53p/jw72O1bM1fSoeefzZMkv4pKP4OBoN+PAw8QgOPUho3+LsNbydew9tYCA4k/TXE/ZhZ5b/aekzhP3xgvUiaB8URTb9C40whYer7wFTJruuP1krxjHCxpCl6FPm/it9b2eY/h/Brlv4WAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">39051ee02b5c43506e05feb6d391bf09</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>7</order>
+        <outputs_assigned>error_message</outputs_assigned>
+        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
+        <sys_id>5ab6f1e6c3d88710f6719d277d013121</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 21:38:00</sys_updated_on>
+        <ui_id>a4726d3b-1578-4e3c-8523-ed0e59ce1a5d</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/61TTYvbMBD9LzrHxk4c29nbQllYaLvQTfdSihhL40RUlrySnGwa8t87ip3sEij00OM8zcd7b0ZHZofQD8Gv7b33amPY3Y8jU5LdMYlN2eRYioWs6yrP2rLKV3JeVTLLF3lbsRkz0CFlonPW8Q69hw0SvAM9RPx4XJQtLjJoEoH1KilEnidNBXVSNBnmy6KExbxOOQcRlDXcBwiD5zydWp1O1Ewq32s4vPzPnmKrtHQYxf6csR4c6Qjo2N3x5ikceuQaGtQ0+jk4ZTZU/q/2XApv/fmLbXEYwf4yxjoZOc1nDN8CGok0tgXtccY6MBKCdYcr4hDkk9HvwFaZQN1YTH7z6je1rrMsi5ktkkCB4+s15JPTIyy2Vgl86qOJIxKg0VONsHrozNdRRtwRtjDocNkRIYOnfthH1pHGxKl93tr9t8vAB2XOAqdHbQXoawSBbGiGgD5uZVDrG3NG5PPtalBjRxN5B31PCO+d3anzFCLdpRtNQdpquyd28dzT8UxSchPSB8I/neEXcCrK/UJtqDiO+27U64CPcfVVuyjaku5uKRqRFGXeJIDzZYJFUbcAq3IpMnY6W8tfhyhqNGmyg4+OUoIXTvXhnijscFJ+oqtTJv7I8QJ3E5MplCiUJ8LriD1+yJMHuiolPkJ7635Fqe/Y6Q+/yPO57wMAAA==</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
         <attributes/>
         <block display_value="">bd05dae02b5c43506e05feb6d391bff5</block>
@@ -778,10 +883,10 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:31:30</sys_created_on>
         <sys_id>deb6f1e6c3d88710f6719d277d01311a</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:25</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:37:59</sys_updated_on>
         <ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
@@ -798,101 +903,20 @@
         <flow_variables_assigned/>
         <generation_source/>
         <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
-        <order>8</order>
+        <order>9</order>
         <outputs_assigned/>
         <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
         <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:31:30</sys_created_on>
         <sys_id>9eb6f1e6c3d88710f6719d277d013122</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:25</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:38:00</sys_updated_on>
         <ui_id>8e77bdee-38f0-4f1e-a894-3008a2de6e88</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
-        <workflow_reference/>
-    </sys_hub_flow_logic_instance_v2>
-    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes/>
-        <block display_value="">fd05dae02b5c43506e05feb6d391bff9</block>
-        <comment/>
-        <connected_to/>
-        <decision_table/>
-        <display_text/>
-        <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
-        <flow_variables_assigned/>
-        <generation_source/>
-        <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
-        <order>4</order>
-        <outputs_assigned/>
-        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
-        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>1ab6f1e6c3d88710f6719d277d01311e</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:25</sys_updated_on>
-        <ui_id>e8d1e39f-dc2e-45f7-8753-31e2b0bb3ecb</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
-        <workflow_reference/>
-    </sys_hub_flow_logic_instance_v2>
-    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes/>
-        <block display_value="">f9051ee02b5c43506e05feb6d391bf07</block>
-        <comment/>
-        <connected_to>4d56b746-90eb-4fa3-a467-153f49df78dd</connected_to>
-        <decision_table/>
-        <display_text/>
-        <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
-        <flow_variables_assigned/>
-        <generation_source/>
-        <logic_definition display_value="Catch">35d60003e6022010a5e40cdd1254dd21</logic_definition>
-        <order>5</order>
-        <outputs_assigned/>
-        <parent_ui_id/>
-        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>5eb6f1e6c3d88710f6719d277d01311f</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:25</sys_updated_on>
-        <ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/+1YUW+jOBD+KyfUx5aDhDRt3qr2IvV0baVLti9HhQyeJN5zMAsmbTfKf78xNg6QdnfbzfblIkURzAzjmfk+zxjWjihlVspiKi6Kgs1TZ/TPw7HDUiXD67WTkiU4IyeKCklkWUSRc+ysCC+VcB06K8gLJtLQGYWO73qhcxw6iVhmHJ7u4s+QSNSslYiCvjpKVvVF9dBnsiIuJ+ncncicpfPKw9Gq0oXOZoN3SygKMn/n85tuQJNkAUuifYy5eLwClTfko/HVxeX0+u52Mr2Yfpq04g6d61TCHHKTHwX3aMaA02hGEpCFNp4wtcwNycZKWD22DsPQKdn0OYO/SAxc3Y7UX+0vVB7xLwdCI5HyZ2sxI7wAq1+wVFqVlWrPVs46TinMSMllVOG1+zRvRXSpUq1VJJGIagR5LvJIU8QayrzcGi5JSokU+Wtxi5zqgCqd33juKeKQzuXCKgNP/W/w18Ic67oF1oh/tvrG416LX7R9vqn2NybbX1z+3rfL71kAFALf2BvukcTMf6j6byrDRZX2b5Oq0+y/GCX7lLIvJVxTazA8D+KkH/ROzpNzehIEQXxC+rPeCaVBfEoGxPOH/Q7gbSaZJlebJCKqSqO6prXpNJbaFjgsIZXRkmQZMifKcrFiTbiwbblzjiJ3hlhEtALD1eVwMVPibjG6JzkjcYVA9p62kpacv8Rq0c7vDdv5dNAhVAEYImdfiYp/LPIl0Tz5c3J3iyY4VygrMk6e7w/j5TBeDuPlMF4O4+UwXvY4XpIF4zSHtHqvYRQnDArN+41quo03m7Y1vhEVSc4yqRi0Qn2VZS1EgmIAOx5NL/kZp2iSkRzdSchR0E6galHVdkBQlLbBH1zMTABc8wWCo15RG1thM7jvhNONvmRXel6rZdEDsytWHOU7gdQFqjWXuuZtBGTXWcUJZ+QfO/AkIaVAbWx2R1qJIuQd8tEKFAP1qsihgn1F34Gn7GaAiSQmc3sbmSNIjZZgCdxlqn5aItUmMErBy2V6q4NXhxfdiu639TSSq/apBhVlgQtBppJR0ZlQZ5OFePy7jmTM0ipvo+QiIdzeEYnTIC4lFBoYjD/6UioDva5xHemwFTm/wxY9sT6QLEW9YIsrNowuVW7sZtrZXbLj0PClt0e+eP87xjx0gNFzqAYmGZ7RoN+HQUzjnud78akPBC/6wzM/Gc68BnB/KCKZkbtFr/U1yQAo6iXqDa+qvicIzz4Owv0iZbZpszztjWuBaR4NUN4+FKD+teNA1XnfexBwfqD3vNQpVEcygUKq3NHGmPR33wSr/tNtKa+Nxi53p/jw72O1bM1fSoeefzZMkv4pKP4OBoN+PAw8QgOPUho3+LsNbydew9tYCA4k/TXE/ZhZ5b/aekzhP3xgvUiaB8URTb9C40whYer7wFTJruuP1krxjHCxpCl6FPm/it9b2eY/h/Brlv4WAAA=</values>
-        <workflow_reference/>
-    </sys_hub_flow_logic_instance_v2>
-    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes/>
-        <block display_value="">39051ee02b5c43506e05feb6d391bf09</block>
-        <comment/>
-        <connected_to/>
-        <decision_table/>
-        <display_text/>
-        <flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</flow>
-        <flow_variables_assigned/>
-        <generation_source/>
-        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
-        <order>6</order>
-        <outputs_assigned>error_message</outputs_assigned>
-        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
-        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>5ab6f1e6c3d88710f6719d277d013121</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:25</sys_updated_on>
-        <ui_id>a4726d3b-1578-4e3c-8523-ed0e59ce1a5d</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/61TXWvbMBT9K0PPsbFjx3bzVtgKhXWFNevLKOJauk7EZMuV5KRZyH/fVeykJTDYwx7v0f0459yrAzOD7wfvVubWObXu2PLngSnJlkxiXdQpFiKTVVWmSVOU6Y2cl6VM0ixtSjZjHbRImWitsbxF52CNBG9BDwE/HLKiwSyBOhJY3US5SNOoLqGK8jrBdJEXkM2rmHMQXpmOOw9+cJzHU6vjkZpJ5XoN++f/2VNslJYWg9iXGevBkg6Pli0PV09+3yPXUKOm0U/eqm5N5f9qz7nwS/Dn08PFn7/YFoYR7M5jjJWB03zG8M1jJ5HGNqAdzlgLnQRv7P6CWAT52Ol3YKM6T91YSH5z6je1rpIkCZkNkkCB4+sl5JPTIyw2Rgl87IOJI+Kh1lONMHpou2+jjLAjbGDQ/rwjQgZH/bAPrAONiVPztDG77+eBd6o7CZwetRGgLxF4sqEePLqwlUGtrswZka/Xq0GNLU3kLfQ9Iby3ZqtOU4h0G681BXGjzY7YhXOPxzOJyU2I7wj/fIKfwaog94HaUHEY96NTrwPeh9WXTZY3Bd3dQtQiyou0jgDniwjzvGoAboqFSNjxZC1/HYKo0aTJDj46SglOWNX7W6KwxUn5ka5OdeFHjhe4nZhMoUShHBFeBez+Q57c01Up8RHaGfsrSH3Hjn8AB3bqNe8DAAA=</values>
         <workflow_reference/>
     </sys_hub_flow_logic_instance_v2>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=42b6b1e6c3d88710f6719d277d013129"/>
@@ -901,45 +925,22 @@
         <element>ai_data_source</element>
         <help/>
         <hint/>
-        <label>AI Data Source</label>
+        <label>ai_data_source</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_input_42b6b1e6c3d88710f6719d277d013129</name>
         <plural/>
         <sys_class_name>sys_documentation</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>1eb6b1e6c3d88710f6719d277d013176</sys_id>
+        <sys_created_on>2026-04-20 21:36:55</sys_created_on>
+        <sys_id>34ecf1f2c31c4b10f6719d277d0131b6</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>AI Data Source</sys_name>
+        <sys_name>ai_data_source</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_42b6b1e6c3d88710f6719d277d013129_ai_data_source_en</sys_update_name>
+        <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
-        <url/>
-        <url_target/>
-    </sys_documentation>
-    <sys_documentation action="INSERT_OR_UPDATE">
-        <element>ai_data_execution</element>
-        <help/>
-        <hint/>
-        <label>AI Data Execution</label>
-        <language>en</language>
-        <name>var__m_sys_hub_flow_input_42b6b1e6c3d88710f6719d277d013129</name>
-        <plural/>
-        <sys_class_name>sys_documentation</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>52b6b1e6c3d88710f6719d277d013157</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>AI Data Execution</sys_name>
-        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_42b6b1e6c3d88710f6719d277d013129_ai_data_execution_en</sys_update_name>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -947,49 +948,49 @@
         <element>next_iterator</element>
         <help/>
         <hint/>
-        <label>Next Iterator</label>
+        <label>next_iterator</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_input_42b6b1e6c3d88710f6719d277d013129</name>
         <plural/>
         <sys_class_name>sys_documentation</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>8eb6b1e6c3d88710f6719d277d01314f</sys_id>
+        <sys_created_on>2026-04-20 21:36:54</sys_created_on>
+        <sys_id>38ecf1f2c31c4b10f6719d277d0131ad</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>Next Iterator</sys_name>
+        <sys_name>next_iterator</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_42b6b1e6c3d88710f6719d277d013129_next_iterator_en</sys_update_name>
+        <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:54</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>ai_data_execution</element>
+        <help/>
+        <hint/>
+        <label>ai_data_execution</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_42b6b1e6c3d88710f6719d277d013129</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 21:36:54</sys_created_on>
+        <sys_id>fcecf1f2c31c4b10f6719d277d0131b1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ai_data_execution</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 21:36:54</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
     <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_42b6b1e6c3d88710f6719d277d013129"/>
-    <sys_documentation action="INSERT_OR_UPDATE">
-        <element>error_message</element>
-        <help/>
-        <hint/>
-        <label>Error Message</label>
-        <language>en</language>
-        <name>var__m_sys_hub_flow_output_42b6b1e6c3d88710f6719d277d013129</name>
-        <plural/>
-        <sys_class_name>sys_documentation</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>1eb6b1e6c3d88710f6719d277d0131fb</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Error Message</sys_name>
-        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_output_42b6b1e6c3d88710f6719d277d013129_error_message_en</sys_update_name>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
-        <url/>
-        <url_target/>
-    </sys_documentation>
     <sys_documentation action="INSERT_OR_UPDATE">
         <element>result</element>
         <help/>
@@ -1000,16 +1001,39 @@
         <plural/>
         <sys_class_name>sys_documentation</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>5ab6b1e6c3d88710f6719d277d0131f6</sys_id>
+        <sys_created_on>2026-04-20 21:36:55</sys_created_on>
+        <sys_id>b8ec35f2c31c4b10f6719d277d01310c</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>result</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_output_42b6b1e6c3d88710f6719d277d013129_result_en</sys_update_name>
+        <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>error_message</element>
+        <help/>
+        <hint/>
+        <label>error_message</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_42b6b1e6c3d88710f6719d277d013129</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 21:36:55</sys_created_on>
+        <sys_id>f4ec35f2c31c4b10f6719d277d013111</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>error_message</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -1017,22 +1041,22 @@
         <element>agents</element>
         <help/>
         <hint/>
-        <label>Agents</label>
+        <label>agents</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_output_42b6b1e6c3d88710f6719d277d013129</name>
         <plural/>
         <sys_class_name>sys_documentation</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>5eb6f1e6c3d88710f6719d277d013113</sys_id>
+        <sys_created_on>2026-04-20 21:36:55</sys_created_on>
+        <sys_id>f4ec35f2c31c4b10f6719d277d01311a</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>Agents</sys_name>
+        <sys_name>agents</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_output_42b6b1e6c3d88710f6719d277d013129_agents_en</sys_update_name>
+        <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -1040,22 +1064,22 @@
         <element>next_iterator</element>
         <help/>
         <hint/>
-        <label>Next Iterator</label>
+        <label>next_iterator</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_output_42b6b1e6c3d88710f6719d277d013129</name>
         <plural/>
         <sys_class_name>sys_documentation</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:31:30</sys_created_on>
-        <sys_id>96b6f1e6c3d88710f6719d277d01310d</sys_id>
+        <sys_created_on>2026-04-20 21:36:55</sys_created_on>
+        <sys_id>fcec35f2c31c4b10f6719d277d013115</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>Next Iterator</sys_name>
+        <sys_name>next_iterator</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_output_42b6b1e6c3d88710f6719d277d013129_next_iterator_en</sys_update_name>
+        <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:31:30</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:55</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -1074,7 +1098,7 @@
         <description>Discover Agents from Amazon Bedrock.</description>
         <flow_priority>MEDIUM</flow_priority>
         <internal_name>discover_claude_usage</internal_name>
-        <label_cache>[{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.result","label":"2 - Claude AI Discovery➛result","reference_display":"result","type":"string","base_type":"string","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["result-2"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"69e28d4b-01a8-4aa0-93ec-21667eb26c8d"}},{"name":"subflow.next_iterator","label":"Input➛Next Iterator","reference":"","reference_display":"","type":"string","base_type":"string","column_name":"","usedInstances":{"e4c029fb-7bcb-48da-97a8-d6081a785fca":["next_iterator"],"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["next_iterator"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"77959d4a-ea2d-4714-aac9-3ac2c8618212","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"subflow.ai_data_source.alias","label":"Input➛AI Data Source➛Connection alias","reference":"sys_alias","reference_display":"Connection \u0026 Credential Aliases","type":"reference","base_type":"reference","parent_table_name":"sn_ai_discovery_data_source","column_name":"alias","usedInstances":{"8e3a0e65-b064-4985-b708-bc19ebd78b4e":["connection_alias"],"e4c029fb-7bcb-48da-97a8-d6081a785fca":["connection_alias"],"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["connection_alias"]}},{"name":"subflow.ai_data_source","label":"Input➛AI Data Source","reference":"sn_ai_discovery_data_source","reference_display":"AI Data Source","type":"reference","base_type":"reference","column_name":"","usedInstances":{"8e3a0e65-b064-4985-b708-bc19ebd78b4e":["connection_alias"],"e4c029fb-7bcb-48da-97a8-d6081a785fca":["connection_alias"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"7d44c2af-c1c6-4592-8887-a02a53652302","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"8e3a0e65-b064-4985-b708-bc19ebd78b4e.agents","label":"1 - AWS Bedrock Discovery➛Agents","reference_display":"Agents","type":"array.object","base_type":"array.object","usedInstances":{"3a89eb53-0193-40a1-a4cc-19354561d40c":["agents-0"]},"attributes":{"sourceId":"f66963a5-60f7-4566-93e5-188ded3b1020","child_name":"agent_card","uiUniqueId":"f5696f21-67aa-4fad-9e3e-c7f49a50433b","uiTypeLabel":"Array.Object","co_type_name":"FD7b85c997aab12210bdc9b859fcb5652a","child_label":"Agent Card","child_type_label":"Object","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"b09e4fac-69f8-4f1d-9c2c-56fe1e894108","uiType":"array.object","child_type":"object","child_uiUniqueId":"57bc97fb-da7c-40dc-ba66-3f59f2c71112"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.agents","label":"2 - Claude AI Discovery➛Agents","reference_display":"Agents","type":"array.object","base_type":"array.object","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["agents-0"]},"attributes":{"sourceId":"f66963a5-60f7-4566-93e5-188ded3b1020","child_name":"agent_card","uiUniqueId":"c5713b8d-a446-419a-9f71-41c8337e196b","uiTypeLabel":"Array.Object","co_type_name":"FD7c89daecb05c435065f503f702929e94","child_label":"Agent Card","child_type_label":"Object","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"14829750-8a0b-4b91-b796-8f5da02f7b29","uiType":"array.object","child_type":"object","child_uiUniqueId":"ef90dc52-d7ff-4559-95f1-525cc72a186b"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.next_iterator","label":"2 - Claude AI Discovery➛Next Iterator","reference_display":"Next Iterator","type":"string","base_type":"string","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["next_iterator-1"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"72ff8b17-fd31-43eb-b4a6-4ece99ed9f4b"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.__action_status__.message","label":"2 - Claude AI Discovery➛Action Status➛Message","reference":"","reference_display":"Message","type":"string","base_type":"string","usedInstances":{"a4726d3b-1578-4e3c-8523-ed0e59ce1a5d":["error_message-0"]},"attributes":{}},{"name":"subflow.ai_data_execution.sys_id","label":"Input➛AI Data Execution➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_ai_discovery_data_execution","column_name":"sys_id","usedInstances":{"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["ai_data_execution"]}},{"name":"subflow.ai_data_execution","label":"Input➛AI Data Execution","reference":"sn_ai_discovery_data_execution","reference_display":"AI Data Execution","type":"reference","base_type":"reference","column_name":"","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["record"],"8e8ceaac-24d5-4269-abe0-5dfc72e7485c":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"67d76e14-e393-4e5f-8d6b-7797704920b5","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_created","label":"2 - Claude AI Discovery➛records_created","reference_display":"records_created","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_created"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"24f942c4-314c-4e4f-969c-075fc3335cb1"}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_failed","label":"2 - Claude AI Discovery➛records_failed","reference_display":"records_failed","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_failed"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"d16d631d-969d-4d81-a1ab-25d520bc2b9c"}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_updated","label":"2 - Claude AI Discovery➛records_updated","reference_display":"records_updated","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_updated"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"b34dca42-b400-46f0-8456-7b2b73854ed4"}}]</label_cache>
+        <label_cache>[{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.result","label":"2 - Claude AI Discovery➛result","reference_display":"result","type":"string","base_type":"string","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["result-2"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"69e28d4b-01a8-4aa0-93ec-21667eb26c8d"}},{"name":"subflow.next_iterator","label":"Input➛Next Iterator","reference":"","reference_display":"","type":"string","base_type":"string","column_name":"","usedInstances":{"e4c029fb-7bcb-48da-97a8-d6081a785fca":["next_iterator"],"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["next_iterator"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"77959d4a-ea2d-4714-aac9-3ac2c8618212","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"subflow.ai_data_source.alias","label":"Input➛AI Data Source➛Connection alias","reference":"sys_alias","reference_display":"Connection \u0026 Credential Aliases","type":"reference","base_type":"reference","parent_table_name":"sn_ai_discovery_data_source","column_name":"alias","usedInstances":{"8e3a0e65-b064-4985-b708-bc19ebd78b4e":["connection_alias"],"e4c029fb-7bcb-48da-97a8-d6081a785fca":["connection_alias"],"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["connection_alias"]}},{"name":"subflow.ai_data_source","label":"Input➛AI Data Source","reference":"sn_ai_discovery_data_source","reference_display":"AI Data Source","type":"reference","base_type":"reference","column_name":"","usedInstances":{"8e3a0e65-b064-4985-b708-bc19ebd78b4e":["connection_alias"],"e4c029fb-7bcb-48da-97a8-d6081a785fca":["connection_alias"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"7d44c2af-c1c6-4592-8887-a02a53652302","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"8e3a0e65-b064-4985-b708-bc19ebd78b4e.agents","label":"1 - AWS Bedrock Discovery➛Agents","reference_display":"Agents","type":"array.object","base_type":"array.object","usedInstances":{"3a89eb53-0193-40a1-a4cc-19354561d40c":["agents-0"]},"attributes":{"sourceId":"f66963a5-60f7-4566-93e5-188ded3b1020","child_name":"agent_card","uiUniqueId":"f5696f21-67aa-4fad-9e3e-c7f49a50433b","uiTypeLabel":"Array.Object","co_type_name":"FD7b85c997aab12210bdc9b859fcb5652a","child_label":"Agent Card","child_type_label":"Object","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"b09e4fac-69f8-4f1d-9c2c-56fe1e894108","uiType":"array.object","child_type":"object","child_uiUniqueId":"57bc97fb-da7c-40dc-ba66-3f59f2c71112"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.agents","label":"2 - Claude AI Discovery➛Agents","reference_display":"Agents","type":"array.object","base_type":"array.object","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["agents-0"]},"attributes":{"sourceId":"f66963a5-60f7-4566-93e5-188ded3b1020","child_name":"agent_card","uiUniqueId":"c5713b8d-a446-419a-9f71-41c8337e196b","uiTypeLabel":"Array.Object","co_type_name":"FD7c89daecb05c435065f503f702929e94","child_label":"Agent Card","child_type_label":"Object","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"14829750-8a0b-4b91-b796-8f5da02f7b29","uiType":"array.object","child_type":"object","child_uiUniqueId":"ef90dc52-d7ff-4559-95f1-525cc72a186b"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.next_iterator","label":"2 - Claude AI Discovery➛Next Iterator","reference_display":"Next Iterator","type":"string","base_type":"string","usedInstances":{"7c522458-4ffd-4d01-a108-2dffea4842c7":["next_iterator-1"]},"attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"72ff8b17-fd31-43eb-b4a6-4ece99ed9f4b"}},{"name":"36fe30ab-ce89-4c11-b7a8-4b0e1546a328.__action_status__.message","label":"2 - Claude AI Discovery➛Action Status➛Message","reference":"","reference_display":"Message","type":"string","base_type":"string","usedInstances":{"a4726d3b-1578-4e3c-8523-ed0e59ce1a5d":["error_message-0"]},"attributes":{}},{"name":"subflow.ai_data_execution.sys_id","label":"Input➛AI Data Execution➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_ai_discovery_data_execution","column_name":"sys_id","usedInstances":{"36fe30ab-ce89-4c11-b7a8-4b0e1546a328":["ai_data_execution"]}},{"name":"subflow.ai_data_execution","label":"Input➛AI Data Execution","reference":"sn_ai_discovery_data_execution","reference_display":"AI Data Execution","type":"reference","base_type":"reference","column_name":"","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["record"],"8e8ceaac-24d5-4269-abe0-5dfc72e7485c":["record"],"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"67d76e14-e393-4e5f-8d6b-7797704920b5","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_created","label":"3 - Claude AI Asset Discovery➛records_created","reference_display":"records_created","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_created"],"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["values"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"24f942c4-314c-4e4f-969c-075fc3335cb1"}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_failed","label":"3 - Claude AI Asset Discovery➛records_failed","reference_display":"records_failed","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_failed"],"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["values"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"d16d631d-969d-4d81-a1ab-25d520bc2b9c"}},{"name":"9c0beb92-1224-4538-994a-8c03263ec4df.records_updated","label":"3 - Claude AI Asset Discovery➛records_updated","reference_display":"records_updated","type":"integer","base_type":"integer","usedInstances":{"67422d72-7b08-4671-8831-f0435c3b2e5b":["records_updated"],"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["values"]},"attributes":{"uiType":"integer","uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"b34dca42-b400-46f0-8456-7b2b73854ed4"}},{"name":"72c4e2d4-805d-43f4-9279-230e3b3aad08.record","label":"2 - Create Record➛AI Data Execution Record","reference":"sn_ai_discovery_data_execution","reference_display":"AI Data Execution","type":"reference","base_type":"reference","usedInstances":{"07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f":["record"],"8e8ceaac-24d5-4269-abe0-5dfc72e7485c":["record"]},"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}}]</label_cache>
         <master>true</master>
         <name>Discover Claude Usage</name>
         <natlang/>
@@ -1091,7 +1115,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d158fdeac3d88710f6719d277d0131ce</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name/>
         <sys_overrides/>
         <sys_package/>
@@ -1099,7 +1123,7 @@
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:27</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:38:02</sys_updated_on>
         <type>subflow</type>
         <version>2</version>
     </sys_hub_flow_snapshot>
@@ -1158,7 +1182,7 @@
         <help/>
         <hint/>
         <internal_type display_value="Reference">reference</internal_type>
-        <label>AI Data Source</label>
+        <label>ai_data_source</label>
         <mandatory>true</mandatory>
         <max_length>32</max_length>
         <model display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</model>
@@ -1184,14 +1208,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>2958fdeac3d88710f6719d277d0131fb</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1242,7 +1266,7 @@
         <help/>
         <hint/>
         <internal_type display_value="String">string</internal_type>
-        <label>Next Iterator</label>
+        <label>next_iterator</label>
         <mandatory>false</mandatory>
         <max_length>8000</max_length>
         <model display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</model>
@@ -1268,14 +1292,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:32</sys_created_on>
         <sys_id>dd58fdeac3d88710f6719d277d0131d1</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:32</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1326,7 +1350,7 @@
         <help/>
         <hint/>
         <internal_type display_value="Reference">reference</internal_type>
-        <label>AI Data Execution</label>
+        <label>ai_data_execution</label>
         <mandatory>false</mandatory>
         <max_length>32</max_length>
         <model display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</model>
@@ -1352,14 +1376,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>e158fdeac3d88710f6719d277d0131ee</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:26</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1379,14 +1403,14 @@
         <name>FDa958312ed2d88710eeeb133cbe5a2617</name>
         <namespace>FlowDesigner</namespace>
         <scope_name>d3a129148310431006e3bfc6feaad351</scope_name>
-        <serialized_content>{"FlowDesigner:FDa958312ed2d88710eeeb133cbe5a2617":{"$COCollectionField":[{"agent_card":{"short_description":"String","short_description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Short Description\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"9816e6d5-0263-43a8-8ebf-645a4caa3c3e\"}"},"agent_id":"String","agent_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agent Id\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"1e73f0bd-9ff9-4348-86a0-36ffe2942724\"}"},"agent_name":"String","agent_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agent Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"398e0abf-ca72-4463-b9f0-79944641ac1b\"}"},"install_status":"String","install_status.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Install Status\",\"mandatory\":\"false\",\"order\":\"6\",\"max_length\":\"0\",\"uiUniqueId\":\"d63ae783-19a8-493b-9078-2ab4e52b511c\"}"},"vendor":"String","vendor.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Vendor\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"3c91b7f4-ca83-4957-86e2-471c056e76b6\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\",\"uiUniqueId\":\"6e29502d-1135-44c0-bb5e-d8b99bf14988\"}"},"model":{"short_description":"String","short_description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Short Description\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"ec838f87-1305-4019-8af7-7ca1ba4a2bc2\"}"},"model_name":"String","model_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"93ccaf01-4122-4a07-ac58-c0a7778c027a\"}"},"vendor":"String","vendor.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Vendor\",\"mandatory\":\"false\",\"order\":\"6\",\"max_length\":\"0\",\"uiUniqueId\":\"6cacdbbe-32ec-4cac-9cf0-a6fca1803ec2\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\",\"uiUniqueId\":\"e3c3a9bf-4a25-44c0-a0dd-ac09f5d7e551\"}"},"model_id":"String","model_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Id\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"c08831cb-b339-46b3-bc5d-fefbeafead1a\"}"},"model_number":"String","model_number.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Number\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"e5aba2b4-877d-4794-8819-7166420ce92d\"}"},"version":"String","version.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Version\",\"mandatory\":\"false\",\"order\":\"7\",\"max_length\":\"0\",\"uiUniqueId\":\"cbfe0b56-4d38-40f5-9b1e-2f4215a08811\"}"},"manufacturer":"String","manufacturer.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Manufacturer\",\"mandatory\":\"false\",\"order\":\"8\",\"max_length\":\"0\",\"uiUniqueId\":\"8ce4f002-8aa2-4480-8cf6-ab159b320077\"}"}},"model.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"object\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model\",\"mandatory\":\"false\",\"order\":\"9\",\"max_length\":\"0\",\"uiUniqueId\":\"3c024562-0c38-442a-8ed8-7463a7e78b79\"}"},"prompt":{"prompt_info":"String","prompt_info.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Prompt Information\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"570caf2a-a32f-49bf-b5fc-438d6c6445e9\"}"}},"prompt.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"object\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Prompt\",\"mandatory\":\"false\",\"order\":\"10\",\"max_length\":\"0\",\"uiUniqueId\":\"b86aae61-b42f-435f-b202-3c2807b3882b\"}"},"tools":[{"$3_tools":{"name":"String","name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"49a01187-97c7-4e51-a548-5b8a50067c73\"}"},"active":"Boolean","active.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"True/False\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"boolean\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Active\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"e1047f66-216a-4d7e-a846-cad60155ffff\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"2057ea3d-61b6-42e1-b9cf-5a4948b7faaa\"}"},"tool_id":"String","tool_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Tool Id\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"79d768fd-dacb-4d9f-835a-ca209943e9f6\"}"}}}],"tools.$field_facets":{"SimpleMapFacet":"{\"max_rows\":null,\"choiceOption\":\"\",\"default_value\":\"\",\"child_hint\":\"\",\"child_maxsize\":\"\",\"label\":\"Tools\",\"mandatory\":\"false\",\"child_name\":\"tool_card\",\"uiUniqueId\":\"90734237-b0e1-4b81-a456-df7b53a41437\",\"uiTypeLabel\":\"Array.Object\",\"child_label\":\"Tool Card\",\"child_type_label\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_defaultValue\":\"\",\"child_type\":\"object\",\"order\":\"11\",\"max_length\":\"0\",\"child_uiUniqueId\":\"29e1dcd4-a12a-4473-815c-33f24304f3a1\"}"},"version":"String","version.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Version\",\"mandatory\":\"false\",\"order\":\"7\",\"max_length\":\"0\",\"uiUniqueId\":\"28b7efd1-6581-4ab7-96ed-24a82120b83d\"}"},"additional_id_list":["Any"],"additional_id_list.$field_facets":{"SimpleMapFacet":"{\"max_rows\":null,\"choiceOption\":\"\",\"default_value\":\"\",\"child_hint\":\"\",\"child_maxsize\":\"\",\"label\":\"Additional Id List\",\"mandatory\":\"false\",\"child_name\":\"additional_id\",\"uiUniqueId\":\"f6df7c3c-47b7-45ea-9f55-e85dda213876\",\"uiTypeLabel\":\"Array.String\",\"child_label\":\"Additional Id\",\"child_type_label\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.string\",\"child_defaultValue\":\"\",\"child_type\":\"string\",\"order\":\"8\",\"max_length\":\"0\",\"child_uiUniqueId\":\"f8ef9a81-c5ba-4ce3-b117-54df47d799d9\"}"}}}],"$COCollectionField.$type_facets":{"SimpleMapFacet":"{\"sourceId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"pwd2droppable\":\"true\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agents\",\"mandatory\":\"false\",\"child_name\":\"agent_card\",\"uiUniqueId\":\"c17c0d77-6375-496a-b3cc-87ac257912b0\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FDa958312ed2d88710eeeb133cbe5a2617\",\"child_label\":\"Agent Card\",\"child_type_label\":\"Object\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"sourceType\":\"action\",\"sourceUiUniqueId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_type\":\"object\",\"order\":\"4\",\"max_length\":\"65000\",\"child_uiUniqueId\":\"ef90dc52-d7ff-4559-95f1-525cc72a186b\"}"},"$COCollectionField.$field_facets":{"SimpleMapFacet":"{\"up-shift-collection-level\":\"true\"}"}},"FlowDesigner:FDa958312ed2d88710eeeb133cbe5a2617.$type_facets":{"SimpleMapFacet":"{\"sourceId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"pwd2droppable\":\"true\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agents\",\"mandatory\":\"false\",\"child_name\":\"agent_card\",\"uiUniqueId\":\"c17c0d77-6375-496a-b3cc-87ac257912b0\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FDa958312ed2d88710eeeb133cbe5a2617\",\"child_label\":\"Agent Card\",\"child_type_label\":\"Object\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"sourceType\":\"action\",\"sourceUiUniqueId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_type\":\"object\",\"order\":\"4\",\"max_length\":\"65000\",\"child_uiUniqueId\":\"ef90dc52-d7ff-4559-95f1-525cc72a186b\"}"}}</serialized_content>
+        <serialized_content>{"FlowDesigner:FDa958312ed2d88710eeeb133cbe5a2617":{"$COCollectionField":[{"agent_card":{"short_description":"String","short_description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Short Description\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"9816e6d5-0263-43a8-8ebf-645a4caa3c3e\"}"},"agent_id":"String","agent_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agent Id\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"1e73f0bd-9ff9-4348-86a0-36ffe2942724\"}"},"agent_name":"String","agent_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Agent Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"398e0abf-ca72-4463-b9f0-79944641ac1b\"}"},"install_status":"String","install_status.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Install Status\",\"mandatory\":\"false\",\"order\":\"6\",\"max_length\":\"0\",\"uiUniqueId\":\"d63ae783-19a8-493b-9078-2ab4e52b511c\"}"},"vendor":"String","vendor.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Vendor\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"3c91b7f4-ca83-4957-86e2-471c056e76b6\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\",\"uiUniqueId\":\"6e29502d-1135-44c0-bb5e-d8b99bf14988\"}"},"model":{"short_description":"String","short_description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Short Description\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"ec838f87-1305-4019-8af7-7ca1ba4a2bc2\"}"},"model_name":"String","model_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"93ccaf01-4122-4a07-ac58-c0a7778c027a\"}"},"vendor":"String","vendor.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Vendor\",\"mandatory\":\"false\",\"order\":\"6\",\"max_length\":\"0\",\"uiUniqueId\":\"6cacdbbe-32ec-4cac-9cf0-a6fca1803ec2\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\",\"uiUniqueId\":\"e3c3a9bf-4a25-44c0-a0dd-ac09f5d7e551\"}"},"model_id":"String","model_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Id\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"c08831cb-b339-46b3-bc5d-fefbeafead1a\"}"},"model_number":"String","model_number.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model Number\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"e5aba2b4-877d-4794-8819-7166420ce92d\"}"},"version":"String","version.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Version\",\"mandatory\":\"false\",\"order\":\"7\",\"max_length\":\"0\",\"uiUniqueId\":\"cbfe0b56-4d38-40f5-9b1e-2f4215a08811\"}"},"manufacturer":"String","manufacturer.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Manufacturer\",\"mandatory\":\"false\",\"order\":\"8\",\"max_length\":\"0\",\"uiUniqueId\":\"8ce4f002-8aa2-4480-8cf6-ab159b320077\"}"}},"model.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"object\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Model\",\"mandatory\":\"false\",\"order\":\"9\",\"max_length\":\"0\",\"uiUniqueId\":\"3c024562-0c38-442a-8ed8-7463a7e78b79\"}"},"prompt":{"prompt_info":"String","prompt_info.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Prompt Information\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"570caf2a-a32f-49bf-b5fc-438d6c6445e9\"}"}},"prompt.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"object\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Prompt\",\"mandatory\":\"false\",\"order\":\"10\",\"max_length\":\"0\",\"uiUniqueId\":\"b86aae61-b42f-435f-b202-3c2807b3882b\"}"},"tools":[{"$3_tools":{"name":"String","name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\",\"uiUniqueId\":\"49a01187-97c7-4e51-a548-5b8a50067c73\"}"},"active":"Boolean","active.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"True/False\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"boolean\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Active\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\",\"uiUniqueId\":\"e1047f66-216a-4d7e-a846-cad60155ffff\"}"},"description":"String","description.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Description\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\",\"uiUniqueId\":\"2057ea3d-61b6-42e1-b9cf-5a4948b7faaa\"}"},"tool_id":"String","tool_id.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Tool Id\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\",\"uiUniqueId\":\"79d768fd-dacb-4d9f-835a-ca209943e9f6\"}"}}}],"tools.$field_facets":{"SimpleMapFacet":"{\"max_rows\":null,\"choiceOption\":\"\",\"default_value\":\"\",\"child_hint\":\"\",\"child_maxsize\":\"\",\"label\":\"Tools\",\"mandatory\":\"false\",\"child_name\":\"tool_card\",\"uiUniqueId\":\"90734237-b0e1-4b81-a456-df7b53a41437\",\"uiTypeLabel\":\"Array.Object\",\"child_label\":\"Tool Card\",\"child_type_label\":\"Object\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_defaultValue\":\"\",\"child_type\":\"object\",\"order\":\"11\",\"max_length\":\"0\",\"child_uiUniqueId\":\"29e1dcd4-a12a-4473-815c-33f24304f3a1\"}"},"version":"String","version.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"Version\",\"mandatory\":\"false\",\"order\":\"7\",\"max_length\":\"0\",\"uiUniqueId\":\"28b7efd1-6581-4ab7-96ed-24a82120b83d\"}"},"additional_id_list":["Any"],"additional_id_list.$field_facets":{"SimpleMapFacet":"{\"max_rows\":null,\"choiceOption\":\"\",\"default_value\":\"\",\"child_hint\":\"\",\"child_maxsize\":\"\",\"label\":\"Additional Id List\",\"mandatory\":\"false\",\"child_name\":\"additional_id\",\"uiUniqueId\":\"f6df7c3c-47b7-45ea-9f55-e85dda213876\",\"uiTypeLabel\":\"Array.String\",\"child_label\":\"Additional Id\",\"child_type_label\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.string\",\"child_defaultValue\":\"\",\"child_type\":\"string\",\"order\":\"8\",\"max_length\":\"0\",\"child_uiUniqueId\":\"f8ef9a81-c5ba-4ce3-b117-54df47d799d9\"}"}}}],"$COCollectionField.$type_facets":{"SimpleMapFacet":"{\"sourceId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"pwd2droppable\":\"true\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"agents\",\"mandatory\":\"false\",\"child_name\":\"agent_card\",\"uiUniqueId\":\"c17c0d77-6375-496a-b3cc-87ac257912b0\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FDa958312ed2d88710eeeb133cbe5a2617\",\"child_label\":\"Agent Card\",\"child_type_label\":\"Object\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"sourceType\":\"action\",\"sourceUiUniqueId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_type\":\"object\",\"order\":\"4\",\"max_length\":\"65000\",\"child_uiUniqueId\":\"ef90dc52-d7ff-4559-95f1-525cc72a186b\"}"},"$COCollectionField.$field_facets":{"SimpleMapFacet":"{\"up-shift-collection-level\":\"true\"}"}},"FlowDesigner:FDa958312ed2d88710eeeb133cbe5a2617.$type_facets":{"SimpleMapFacet":"{\"sourceId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"pwd2droppable\":\"true\",\"choiceOption\":\"\",\"default_value\":\"\",\"label\":\"agents\",\"mandatory\":\"false\",\"child_name\":\"agent_card\",\"uiUniqueId\":\"c17c0d77-6375-496a-b3cc-87ac257912b0\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FDa958312ed2d88710eeeb133cbe5a2617\",\"child_label\":\"Agent Card\",\"child_type_label\":\"Object\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"sourceType\":\"action\",\"sourceUiUniqueId\":\"36fe30ab-ce89-4c11-b7a8-4b0e1546a328\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_type\":\"object\",\"order\":\"4\",\"max_length\":\"65000\",\"child_uiUniqueId\":\"ef90dc52-d7ff-4559-95f1-525cc72a186b\"}"}}</serialized_content>
         <sys_class_name>sys_complex_object</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>ad58312ec3d88710f6719d277d013117</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name/>
         <sys_overrides/>
         <sys_package/>
@@ -1394,7 +1418,7 @@
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:27</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:38:02</sys_updated_on>
         <type>complex_object_collection</type>
     </sys_complex_object>
     <sys_hub_flow_output action="INSERT_OR_UPDATE">
@@ -1435,7 +1459,7 @@
         <hint/>
         <internal_link/>
         <internal_type display_value="String">string</internal_type>
-        <label>Agents</label>
+        <label>agents</label>
         <mandatory>false</mandatory>
         <max_length>65000</max_length>
         <model display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</model>
@@ -1461,14 +1485,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>2558312ec3d88710f6719d277d01315a</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1520,7 +1544,7 @@
         <hint/>
         <internal_link/>
         <internal_type display_value="String">string</internal_type>
-        <label>Error Message</label>
+        <label>error_message</label>
         <mandatory>false</mandatory>
         <max_length>8000</max_length>
         <model display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</model>
@@ -1546,14 +1570,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>6158312ec3d88710f6719d277d013123</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1690,7 +1714,7 @@
         <hint/>
         <internal_link/>
         <internal_type display_value="String">string</internal_type>
-        <label>Next Iterator</label>
+        <label>next_iterator</label>
         <mandatory>false</mandatory>
         <max_length>8000</max_length>
         <model display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</model>
@@ -1716,14 +1740,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>e158312ec3d88710f6719d277d01312c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1739,7 +1763,7 @@
     <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=e158312ec3d88710f6719d277d01312c"/>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=d158fdeac3d88710f6719d277d0131ce"/>
     <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=d158fdeac3d88710f6719d277d0131ce"/>
-    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=d158fdeac3d88710f6719d277d0131ce^sys_idNOT INb958312ec3d88710f6719d277d01317b,a2397daec3d88710f6719d277d01318f,ee397daec3d88710f6719d277d01318f"/>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=d158fdeac3d88710f6719d277d0131ce^sys_idNOT INb958312ec3d88710f6719d277d01317b,ee397daec3d88710f6719d277d01318f,e9ec75f2c31c4b10f6719d277d013114,892df136c31c4b10f6719d277d01317b"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Claude AI Asset Discovery">2c899aec2b5c43506e05feb6d391bfdd</action_type>
         <action_type_parent display_value="Claude AI Asset Discovery">b52592242b5c43506e05feb6d391bf30</action_type_parent>
@@ -1749,16 +1773,16 @@
         <display_text/>
         <flow display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</flow>
         <generation_source/>
-        <order>2</order>
+        <order>3</order>
         <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
         <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:34</sys_created_on>
         <sys_id>b958312ec3d88710f6719d277d01317b</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:34</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:58</sys_updated_on>
         <ui_id>9c0beb92-1224-4538-994a-8c03263ec4df</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/+2W227bMAyGX6XwdRz4IJ9yV2QoUGAHYN12sxUGJdGJAEX2ZLlrVuzdRyVOmrZr1wJtL4bdJZRE/vzJD/DXq0DJYBYkoqwqQJHwTLA0i3KMsgZ5LtMq5g0mwSQwsEK6KVpjUDjVmhq0gp5OLkAP/gjSmAmQZZlWjKVxRFlS3oi8QQBKJOmqVH2nYf1lfHFZw0LZtgZV04mohZ4eG7e0badEPdcwSKyb1tbHp/NP9FoslZYWTTD7ej4JOrAkyaENZle3jh7bkwaOmq7O900dHY9N3d+uW3f+xGKDVFDgGHo75vp4EG+t9PLiSYCXDo1E0tWA7nESrMBIcK1dBzNnBwpYBPnB6PX+xlIZR/kCf/eyVz+paJpMDurOgn7d72Xt4/Vo8s2+vg1RlORHc4sSjVOgt52if9q8AQdnJEO4weK2pli2StDpxk+JDQzazQ9j2wsfOp99+8QB17dViVYPK/N+a2awz7RbAIoMPSnGzrvj+x2bb86W7Y+9lSfKbIwcD3UrQB9cRbBieaJQ+7Erv2fgnFV8cF7sVTCoT3dntg3+aWqocUVa6hV0nTKLurPthdrUp3ZW04WmP9NGtz9Id68WZgobi6c0T5ieUPzNJvwFrPKOvKM09NhX/GzU9wFPvcw85gUwLEJRxlnIoBQhZzwOy7JMKigAGYjg18SbSSD0/bWF1ET9ffAGbA0drau3Y/BPhFWdOyZRFzi69Gsygg7Rg1Dw6803tLK1Irz8lh5QfpfiJ5P5CBE7Mt+TiqPTaxX3iBuZ7GnqZnELyLNdcKQxeZjGMfIYHMsoim4CeQ+Hz8/Y66B1D0Z7m28ytDf6VQASKWMJr5IwBhmFTFRFCFkTh3lFKwQiT4siegGAqjRnKYIvHZV3djeV1zt6Mcp/XnYeUX/HzoGAu5KeQkz6n5h/gRjMeC54JsOMNUnIsiIJK8FkWPGyklEeF3kFL0EMf2hj2cG3pf8MpIZqvEQxbCb4vOj8XcgOnT8peUDkU2Bi/2H6F2DKhYyrxNOTlWnImiqlX3kVCslEVMVQSMmfEabz36ighxeqDQAA</values>
@@ -1773,21 +1797,45 @@
         <display_text/>
         <flow display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</flow>
         <generation_source/>
-        <order>3</order>
-        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
+        <order>8</order>
+        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
         <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:42:27</sys_created_on>
-        <sys_id>a2397daec3d88710f6719d277d01318f</sys_id>
+        <sys_id>ee397daec3d88710f6719d277d01318f</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 21:38:02</sys_updated_on>
+        <ui_id>8e8ceaac-24d5-4269-abe0-5dfc72e7485c</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+VVy07jMBT9lcrrtsoLaLtDdJCQGJBgxAZQdGPfFEuOk7GdQqfqv4+dOG1UKgYkNtV0d1/2OdfnNI9rwhmZkQRZEE7DUxqHcRwFQTRJwuw0zsKIxYAYkiGRUKDtVEhLxWy8BFG7xHp9FtEEI5aMJsEJGyVxnoym0dl0FMUBxlkMwILJuJ3bbOwk47oSsHrwB9gMfeGCKZRk9vg8JBUoe5dBRWbrvdJnwQrIUNjWuw7tPnqzqlzMSloXKE3Ku+S1n5z7yuBqbit2yMEJgyHBN4OSoQWSg9A4JAVIBqZUKzIzqrYJhcBupVhtO164NC3RAt40/2NvTgLXl6NlRv0StmHqF9Sm8zkYuLcnU1Or7b5KTlG3O2GYQy3MRT/XNtxWhpeyHTGQiW66FHUhb9qNkO0BvfeotQWBlePpkLe08vuX8vWuA3nJZbMST1GUFMQ2AmMUz2rj4KwJCmx2XEBVcblIK1UueTNsoRTjhbDBOBflq71T84UcA3W4x3arML60+XmTfgDFHYmf9hg7vBkSvdIXArTeUbE7TH/XDklLzFNImy00K0gbJbhhqnhlzu1VS/TAN0Nvh+zkI4XR6U5QvTN3ltAyBe5ekZZLVKvUEUnxDWndvMc7B5xfDdwjD370Wr5miU8A7izxqxHCYQLeFe9y1/3ZwU1b8J44+TZPTI7JE57G0ZviX1YIog//bHtKatSv+zYwYPCpDoKY5cAFsvfKP9TyNeV/Al+n/EuOgukDgDvZY2GxGUxbAnvS98XBgy9uPwnfpv/wNGh+R+SC/+bL8PwXGckMUCoJAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=ee397daec3d88710f6719d277d01318f"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
+        <action_type_parent display_value="Create Record">02f0b88cc3c632002841b63b12d3aeff</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>2de05916c31332002841b63b12d3aee1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</flow>
+        <generation_source/>
+        <order>2</order>
+        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 21:36:57</sys_created_on>
+        <sys_id>e9ec75f2c31c4b10f6719d277d013114</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:27</sys_updated_on>
-        <ui_id>67422d72-7b08-4671-8831-f0435c3b2e5b</ui_id>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
+        <ui_id>72c4e2d4-805d-43f4-9279-230e3b3aad08</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/+VV207jMBD9lcrPbZUbVds3RBcJiQUJVrywEDn2BCw5l/Wl0I367ztOnBIVxALiBdGnem4+c3xmct0QwcmSJMCDcBHOWBzGcRQE0TwJs1mchRGPKUBIxqSkBWCkAlYpjuc1ldYZmkbbLJfVw5SKlFNDU3gEZo2oyu0W47jQtaSbKx+OFnYvJFdQkuX1zZjUVGFlA4osmz3XW6FJmoHE0Ise2z5Ws6ndmVfMFlCaVPTGU5+58p7RyQo9mOTghMGYwKOBkgMCyanUMCYFLbHJSm3I0iiLBgWUn5dys4u4F6XpGi3ooxZ/8eYkcHE5YGfMk7A7pp6gzpyvkMFLrMyMVTu+KsFAd5xwyKmV5mho6wLOa8d5l2JoJvvsStqiPOsYIbsCg/ewGkFA7fp0yLu28sv76uGiB3ksypYS36KsGJW7EzVGicwaB6chIKHluKB1Lcq7tFbVWrTJCKWY3kk8TJ1e8E4t7sopZQ731Elneoz2VWu+okq4Jn5iGUzejone6CNJtX5qBTlM/1iHpGvMt5C2LLQUpK0SXDJTojaHeNUaPPDt2Is/O3hNYWzxJKhBzacB0GXqlC80q9agNnsz8HwCDk9G7pFHPwYh7xuJNwDuR+JXK4SXG/BT8cx2OswdnXUOPxMHnzYT8680E76NLz8U/xuFIHp12Q6U1KpfD8agW7Y6Zfj4BvhvGwQxb5oFCzLIFtEkjKJkkhzE88likdDJnAVxNIuBJTyf7uVut7e9JadCfrBYlzqoZWv+YWQ+F6tpg3+6Gtoy1JvOrXw+5d+djvdttDfort9oxwIk1y8IsV9nUOA7GEg7Ye6tNO8cXXnn7lP/aXstnAXt7wttt2/zxb/5B2TXLF/wCgAA</values>
+        <values>H4sIAAAAAAAA/+1VTW/bMAz9K4HORmDHWdLmFqQrUGBrgbXopWkFWaITAbLkSXKaLOh/H2XLadAPrAN2KbDcRD6S7zEkfbcnUpAZmWSQfjnNJjzP8nyUpqOTcVZM8iIbiZwBjElCNKsAkZ4VCmj7SMiGqSYYnaZMUiEdNxuwOyqYZxS2wBsvjUYgumrFdrcRP78YnCFk8PUIwtdSCQuazO7uE1IziyU8WDLbv3B9lLBiBSiE3gTG7wjwu/pN27fj2MFl5zBWBD5pQmDrQQtAIiVTDhJSMY2ajd2RmbcNGiwwcaXV7oBYS+0xIQnYrZO/sOxJGnAloDIOne/wpLFjnbkM3brGzNw3NkL52kgOruuJgJI1yi+ObR3gqm7724a0MmO0UU2lL7uWkEOC/g9CS+OQBNRBZ2AeZZTXa/P4o2d5LnXbkuhUhjN1eDHvrSwaH/jsCSioMBGtWF1LvaK1NRvZBiOXarhS+BiWyjxiUSdXesh4ID4MozQ8R/tZa75lVgYV3zENBj8lxO3cQjHnnrVgE+nPJjDplEUNtGtDCOFW1n6OBTYQ6T4l/SYISE/fHayseB6kdvjd8RZ45mHZpGkupA4CVxace3i9Gc40lkfkftkvx5LMlmRL2Upa068T5Wo4135tTS05RZ2NAFoaS+cXi5slSZZd8TZ0PJ0WHCbIXPCTaZaWk2l2KkbTqUizPEvHLbwdgRb+5s5GZgGJfaVSfDDz00PYmk7RIeXrvf/foVcd+suz9+fp7M/euQQl3Bvj2t88qLCnHmg3vi/uXnQObqMz3r7sX92+bJK2v090ATtxn/4AHn3r3jmF978BsZJfPRYIAAA=</values>
     </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=a2397daec3d88710f6719d277d01318f"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=e9ec75f2c31c4b10f6719d277d013114"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
         <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
@@ -1797,50 +1845,23 @@
         <display_text/>
         <flow display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</flow>
         <generation_source/>
-        <order>7</order>
-        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
+        <order>4</order>
+        <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
         <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:42:27</sys_created_on>
-        <sys_id>ee397daec3d88710f6719d277d01318f</sys_id>
+        <sys_created_on>2026-04-20 21:38:02</sys_created_on>
+        <sys_id>892df136c31c4b10f6719d277d01317b</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:27</sys_updated_on>
-        <ui_id>8e8ceaac-24d5-4269-abe0-5dfc72e7485c</ui_id>
+        <sys_updated_on>2026-04-20 21:38:02</sys_updated_on>
+        <ui_id>07ad06c5-bcb8-467f-b9b6-f7e1bb85bf4f</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/+VVTW/iMBT8K8hnhBKgqOVWlUWq1G2ldsWlW0WO/QKWHCdrO5Qs4r/vc+KECFBLpV7QcvP7cGYmM+R1SwQnUzIGHoQ34YSNwtFoGATD63EYT0ZxOOQjChCSPlE0BZzUwDLN8bymsnCF7dYUcSKz9wEVEaeWRrABVliRqd0O57gwuaTlwo9jha2E5BoUmb6+9UlONd5sQZPp9qB1LjRJY5A4+txgO8Rqy9ydecaKFJSNRFN88Jsz3+ndz7CDSw5OGPQJbCwoDggkodJAn6RUIclMl2RqdYEFDZQ/KVm2EyuhbE00pRsj/uKTx4GbSwCZMS9Ce4y8QHU5maGCL3gzs4Vu9coEA1NrwiGhhbR33Vo98JQ7zesVS2PZbGeySNVjrQhpL+i8j8IgCMgdT4e8ppW8rLL35wbkXKhKEk9RZozK9kSt1SIurIOzJSCh0jileS7UMsp1thbVMkJJB0uJh4HzCz7TiKUaUOZwD5x1BnOsz6rygmrhSPzEa3B51yemNHeSGrOnghpGfwqHpCbmKUSVCpUEUeUEt8y0yO0tPmoNHviu780fX33kMHazN1Tnzn0AjIqc84Vh2Rp0eZCB4wTc3vfcS+796Ix8LRJnAG4i8asywmkCPhVHtYfubu+xbvhMXH1bJq4vKROexsWH4rMoBMMP/2w7Tqrcb7oxsNTC7yIIRjyhQgI/dv6pka85/wx8jfPnAiQ3JwA3tocUsVmIagIH1vfN3sI320/Ct/k/nATV74JS8N98Gd7+AQlfrjQYCQAA</values>
+        <values>H4sIAAAAAAAA/+VV207jMBD9lcrPTeRcWpq+IbpISCxIsOIF2MixJ2DJuawvhW7Uf18ncUpUEAuIF0Sf6hmf8ZnLmVw3iDO0RDEwHCTBnEZBFIUYh4s4yOZRFoQsIgABmqKSFGBvSqCVZPa8JsK0hqY5CGkMIYu9BZ4xL47y2EvCg8QLIwxRFhHC8MLvcdutRTKuakE2Vy6AtdB7LpiEEi2vb6eoJtK+pUGiZbPneitZQTIQ9urFwHafvd7U7ZlV1BRQ6pQPxlOHXDnP5GRlPRbU0gnwFMGjhpKBJZIToWCKClIyoiu5QUstjTVIIOy8FJvdjXte6j7Rgjwq/te+HOP2Xg42M+qKsDumrkC9OV8RTS5tZKqN3NWr4hRUXxMGOTFCH41t/YXzWvOq7CGaZGJAV8IU5VlfEbQLMOqHUZYE1G2eLfM+rfzyvnq4GEge87IriUtRVJSI3YloLXlmdEunQSCgq3FB6pqXd2ktqzXvwJZK4d8Je/BzUT3YNxW/K31CW96+rSrxj6191ZmviORtEj9tGAveTpHaqCNBlHpKxdYw/WNaJn1iLoW0q0JXgrSbhBZMJa/1oX1qDY74durkkM1emzCaPA3UKOaTJFSZEt52kVZrkJu0TSSFR6Cm68czBRyeTNomT36MrrxPEm8gPEjiVzcILyfgVPHMdjrGTs56h9PE7NM0sfhKmnBpfHlR/E8KOHx12Y4mqZt+NZJBv2xVSm3zNbAbg3HEmiahOIMsCb0gDGMvnkULL0li4i0ojsJ5BDRmub+H3W5/D5accPHBYD10FMvU7MPMHNZGU9r+6WMoQ+28qdyI5yr/7uV430Z7w9wNG+2Yg2DqhUEc1hkUtg8a0n4w91aac06unHP3qf+0vRbMcff7Qtvt23zxb/8BBh1APQILAAA=</values>
     </sys_hub_action_instance_v2>
-    <sys_hub_alias_mapping action="delete_multiple" query="source_id=ee397daec3d88710f6719d277d01318f"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=892df136c31c4b10f6719d277d01317b"/>
     <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=d158fdeac3d88710f6719d277d0131ce"/>
-    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=d158fdeac3d88710f6719d277d0131ce^sys_idNOT IN7558312ec3d88710f6719d277d01317a,7158312ec3d88710f6719d277d013176,7558312ec3d88710f6719d277d013177,7158312ec3d88710f6719d277d013179,b958312ec3d88710f6719d277d013174"/>
-    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes/>
-        <block display_value="">7d051ee02b5c43506e05feb6d391bf0a</block>
-        <comment/>
-        <connected_to/>
-        <decision_table/>
-        <display_text/>
-        <flow display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</flow>
-        <flow_variables_assigned/>
-        <generation_source/>
-        <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
-        <order>8</order>
-        <outputs_assigned/>
-        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
-        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
-        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
-        <sys_created_on>2026-04-20 02:38:34</sys_created_on>
-        <sys_id>7558312ec3d88710f6719d277d01317a</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
-        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:27</sys_updated_on>
-        <ui_id>8e77bdee-38f0-4f1e-a894-3008a2de6e88</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
-        <workflow_reference/>
-    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=d158fdeac3d88710f6719d277d0131ce^sys_idNOT IN7158312ec3d88710f6719d277d013176,7558312ec3d88710f6719d277d013177,7158312ec3d88710f6719d277d013179,7558312ec3d88710f6719d277d01317a,b958312ec3d88710f6719d277d013174"/>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
         <attributes/>
         <block display_value="">fd05dae02b5c43506e05feb6d391bff9</block>
@@ -1852,17 +1873,17 @@
         <flow_variables_assigned/>
         <generation_source/>
         <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
-        <order>4</order>
+        <order>5</order>
         <outputs_assigned/>
         <parent_ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</parent_ui_id>
         <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:34</sys_created_on>
         <sys_id>7158312ec3d88710f6719d277d013176</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:27</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:38:02</sys_updated_on>
         <ui_id>e8d1e39f-dc2e-45f7-8753-31e2b0bb3ecb</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
@@ -1879,17 +1900,17 @@
         <flow_variables_assigned/>
         <generation_source/>
         <logic_definition display_value="Catch">35d60003e6022010a5e40cdd1254dd21</logic_definition>
-        <order>5</order>
+        <order>6</order>
         <outputs_assigned/>
         <parent_ui_id/>
         <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:34</sys_created_on>
         <sys_id>7558312ec3d88710f6719d277d013177</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:27</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:38:02</sys_updated_on>
         <ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/+1ZUU/jOBD+K6eIx9JLaUqhbwiuEqeFStfuvlxQ5Nhu8a7rZG2nwFb97zeOHTdpYbWwRcdDJFQlM7YzM9/nb2KyDrJC54VWs+xCKbYQwejfu07AhLHB9ToQaEmDUZAkSiNdqCQJOsEK8cIY13GwolKxTMTBKA563TAOOnGAs2XO6eMk/UqxBs/amAi1V0d4VV2Uk76iFepyJBbdqZZMLMoVjlalLw42G7hbUqXQ4o3zN7sBTfE9XSK7xphnD1fU5E3laHx1cTm7ntxOZxezz9NG3HFwLTRdUOnyI7R7NGeUk2SOMNXKDp4y85gblI+NsZy2juM4KNjsKaefUEq5uR2Zn2q92KwIP5IikmSCP/kRc8QV9f57JrR3eatd2dvZzqKEzlHBdVLitT+bNyK6NKlWLoQ1oJpQKTOZWIr4gVoW24FLJAjSmXwp7kwSG1Dp69XmPSacioW+984oNL8b+GtgDnXdAuvMv1t9t+JBi6+aa76q9jcu23cu/8nPyx96AAwCP9kb3SMNmf9S9V9Vhosy7T+mpdIcvhgF+yzY94JeEz9geB6luB+dHJ/jc3IcRVF6jPrzk2NCovQUDVDYG/Z3AG8yyYlcNQRnSVkao5p+zI6wVGMpp0sqdLJEeQ7MSXKZrVgdLpCt7oKDqTsHLBJSgtG15ehCpqi7xegLkgylJQL5W2RFFJw/x+qsmd8rtvPpYIdQikKInP1AJv5xJpfI8uTv6eQWhkBfIUzlHD19adtL217a9tK2l7a9tO3lgO0F3zNOJBX1c40RW3DlSMK9phLYFpSbvyQapGsMNWRgitNWmPUMdcBvSAMi409J+40NLApLlmvDyBVYyqpVRnjiplOKrRSIf2Lim51SCx+OaAW7soua0GAA81GVDOF7wTJil6k8lzbzZh30c4vtJ17iFIx6nYA+aioIJT4Hv0u8xZBkAhzxBsMKGwvgqtgPeGIUmnFzCulhVyF/m7jqWfP8CpgJAltgXUhaVSZjmCpbGHszyQ001q0Nc93IjBdLcWtzNsBY/agB4yxXe4gVCiKhucnWhO9ymU/vs4d/qlDHTJSFcU6eYcT9HdIg4WmhTaAGYfWkLjlSahsNpJx8L8wUG4l7WGIT2TzLmk3Hc9l1r1fS2TarD8ZmVQXVILMPdZfLNz7zvVLoZxbcS93x+eSAfA5bRr+V0Xc7BG7odivOrTh/SCq3QtsK7Ydl552DEg/PSNTv00FK0pOwF6anPYrgoj886+HhPKxB/ZehpzssbfFufAdwkNuX+B3IJ5WxkiOD04FAPzsk6A61ywMS4bB4OxmpF7opLL7U9eMh2JsHQ/C/dCQsW8xbD4PBe7zKUmEeQGrfmnr7elgq5q7AvfTmUO0AQoZh72yIcf+Umh0wGAz66TAKEYlCQkha2wHbIPaicsxPs4xTJHaoP4O4/hybjN6H/gfsx4cmf+9FGXRg/f9S+OI758rR2pcGM/O/55mxXVcfRI3jCejAcN30kMlvZt9sbZv/AAUN3t1aHQAA</values>
@@ -1906,20 +1927,47 @@
         <flow_variables_assigned/>
         <generation_source/>
         <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
-        <order>6</order>
+        <order>7</order>
         <outputs_assigned>error_message</outputs_assigned>
         <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
         <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:34</sys_created_on>
         <sys_id>7158312ec3d88710f6719d277d013179</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:27</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:38:02</sys_updated_on>
         <ui_id>a4726d3b-1578-4e3c-8523-ed0e59ce1a5d</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/61TTU/bQBD9K9WeY8tOHNtwQ1AkJChSoVxQZY13x2HFetfsRyCN8t87GzsBFVXqoTfP2/l47814y0zwQ/Du3pw5J1eanT5umRTslAlsyzbHki9EXVd51pVVfiLmVSWyfJF3FZsxDT1SJlprbNOjc7BCgtegQsS320XZ4SKDNuFYnyQFz/OkraBOijbDfFmUsJjXadMA99LoxnnwwTVNOrXa7aiZkG5QsHn4nz35k1TCYhT7c8YGsKTDo2WnJF3ThwZ1LfUzjfuU/K/WKGhRUerX6M2Xm6M3f7HMb4YIO2+lXk3x9dTi7gAaKyLJ+Yzhm0ctkLh0oBzOWA9agDd2c0QsgrjV6h14Immjoh7enPxF8+osy2Jmh6SP4/h6DJvJ+hHuLsADUQncB4sHa4zk6EZnBHYQlD//iI0Jt0NcxVjioVWHaqNCr7+NhrBjg8OmCQmOSOAQpUbuk5Du7sm8fj+wvJR678r0qAwHdYzAk3dt8JHPlgV5/4fNI/LJaFTY08Smh2EgpBmsWcv9FCLdpytFQdop80rs4k+TjseW0gogvST8Yg8/gJVR7g21oeI47oeWLwGv4hFV3aLoSrreJW95UpR5mwDOlwkWRd0BnJRLnrHdjLmNO1fg3LtRtKHmJUSZo22TQc3ocSzhVg7+jEitcfJiF29Xxz993Mx64nZcHpeOJNxH7OpDntjQxUr+EXo19jmKf8d2vwG98289RwQAAA==</values>
+        <values>H4sIAAAAAAAA/61TTU/bQBD9L3uOLTtxbMMNgZCQaJEK5VJV1nh3HFasd81+JKRR/ntnsZMgaKUeevO8nY/33ox3zAQ/BO8ezIVzcqXZ+Y8dk4KdM4Ft2eZY8oWo6yrPurLKz8S8qkSWL/KuYjOmoUfKRGuNbXp0DlZI8BpUiPhutyg7XGTQJhzrs6TgeZ60FdRJ0WaYL4sSFvM6bRrgXhrdOA8+uKZJp1b7PTUT0g0Kto//syd/kkpYjGJ/ztgAlnR4tOycpGv60KBupX6mcZ+S/9UaBS2qP3jzF8v8doiw81bq1RTfTi3uD6CxIpKczxi+etQCiUsHyuGM9aAFeGO3R8QiiDutTsATSRsV9fDq5C+aV2dZFjM7JH0cx9dj2EzWj3B3BR6ISuA+WDxYYyRHNzojsIOg/OV7bEy4G+IqxhIPrTpUGxV6/XU0hB0bHDZNSHBEAocoNXKfhHT3T2bz7cDyWuo3V6ZHZTioYwSevGuDj3x2LMiHDzaPyCejUWFPE5sehoGQZrBmLd+mEOk+XSkK0k6ZDbGLP006HltKK4D0mvCrN/gRrIxyv1AbKo7jvmv5EvAmHlHVLYqupOtd8pYnRZm3CeB8mWBR1B3AWbnkGdvPmNu6SwXOnYyiDTUvIcocbZsMakaPYwm3cvAXRGqNkxf7eLs6/unjZtYTt+PyuHQk4SFiN+/yxJYuVvL30MbY5yj+hO1/A9eMqsVHBAAA</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">7d051ee02b5c43506e05feb6d391bf0a</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Discover Claude Usage">d158fdeac3d88710f6719d277d0131ce</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="End">d176605ea76103004f27b0d2187901c7</logic_definition>
+        <order>9</order>
+        <outputs_assigned/>
+        <parent_ui_id>81a9a734-b2e1-4ddc-a019-16d66fa0e806</parent_ui_id>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>rbrown@hesta.com.au</sys_created_by>
+        <sys_created_on>2026-04-20 02:38:34</sys_created_on>
+        <sys_id>7558312ec3d88710f6719d277d01317a</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
+        <sys_updated_on>2026-04-20 21:38:02</sys_updated_on>
+        <ui_id>8e77bdee-38f0-4f1e-a894-3008a2de6e88</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
         <workflow_reference/>
     </sys_hub_flow_logic_instance_v2>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
@@ -1940,10 +1988,10 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:34</sys_created_on>
         <sys_id>b958312ec3d88710f6719d277d013174</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:27</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:38:02</sys_updated_on>
         <ui_id>4d56b746-90eb-4fa3-a467-153f49df78dd</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/6tWyi8tKSgtKQ7JdywuzkzPU7KKjtVRyswDiUHYZYlFmYlJOalQbkpqcmZxZn5eCEjME0ldSmVeYm5mMrJQeX5RdlpOfjlCrBYAD1ouqHEAAAA=</values>
@@ -1955,7 +2003,7 @@
         <element>next_iterator</element>
         <help/>
         <hint/>
-        <label>Next Iterator</label>
+        <label>next_iterator</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_input_d158fdeac3d88710f6719d277d0131ce</name>
         <plural/>
@@ -1963,14 +2011,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>6958fdeac3d88710f6719d277d0131ea</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Next Iterator</sys_name>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>next_iterator</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -1978,7 +2026,7 @@
         <element>ai_data_source</element>
         <help/>
         <hint/>
-        <label>AI Data Source</label>
+        <label>ai_data_source</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_input_d158fdeac3d88710f6719d277d0131ce</name>
         <plural/>
@@ -1986,14 +2034,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>a158312ec3d88710f6719d277d013105</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>AI Data Source</sys_name>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>ai_data_source</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -2001,7 +2049,7 @@
         <element>ai_data_execution</element>
         <help/>
         <hint/>
-        <label>AI Data Execution</label>
+        <label>ai_data_execution</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_input_d158fdeac3d88710f6719d277d0131ce</name>
         <plural/>
@@ -2009,14 +2057,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>ad58fdeac3d88710f6719d277d0131f7</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>AI Data Execution</sys_name>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>ai_data_execution</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -2025,7 +2073,7 @@
         <element>error_message</element>
         <help/>
         <hint/>
-        <label>Error Message</label>
+        <label>error_message</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_output_d158fdeac3d88710f6719d277d0131ce</name>
         <plural/>
@@ -2033,14 +2081,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>6958312ec3d88710f6719d277d013128</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Error Message</sys_name>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>error_message</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -2048,7 +2096,7 @@
         <element>agents</element>
         <help/>
         <hint/>
-        <label>Agents</label>
+        <label>agents</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_output_d158fdeac3d88710f6719d277d0131ce</name>
         <plural/>
@@ -2056,14 +2104,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:34</sys_created_on>
         <sys_id>b158312ec3d88710f6719d277d013160</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Agents</sys_name>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>agents</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:34</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -2094,7 +2142,7 @@
         <element>next_iterator</element>
         <help/>
         <hint/>
-        <label>Next Iterator</label>
+        <label>next_iterator</label>
         <language>en</language>
         <name>var__m_sys_hub_flow_output_d158fdeac3d88710f6719d277d0131ce</name>
         <plural/>
@@ -2102,14 +2150,14 @@
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
         <sys_created_on>2026-04-20 02:38:33</sys_created_on>
         <sys_id>e958312ec3d88710f6719d277d013156</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Next Iterator</sys_name>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>next_iterator</sys_name>
         <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
         <sys_policy/>
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:38:33</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:36:57</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -2122,7 +2170,7 @@
     <sys_flow_trigger_plan action="delete_multiple" query="plan_id=42b6b1e6c3d88710f6719d277d013129"/>
     <sys_flow_subflow_plan action="delete_multiple" query="plan_id=42b6b1e6c3d88710f6719d277d013129^sys_idNOT INb958312ec3d88710f6719d277d01318c"/>
     <sys_flow_subflow_plan action="INSERT_OR_UPDATE">
-        <plan>com.snc.process_flow.engine.ProcessPlan@1d0edbf5</plan>
+        <plan>com.snc.process_flow.engine.ProcessPlan@2334060d</plan>
         <plan_id display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</plan_id>
         <snapshot>d158fdeac3d88710f6719d277d0131ce</snapshot>
         <sys_created_by>rbrown@hesta.com.au</sys_created_by>
@@ -2130,10 +2178,10 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>b958312ec3d88710f6719d277d01318c</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_overrides/>
         <sys_scope/>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:42:28</sys_updated_on>
+        <sys_updated_on>2026-04-20 21:38:03</sys_updated_on>
     </sys_flow_subflow_plan>
 </record_update>

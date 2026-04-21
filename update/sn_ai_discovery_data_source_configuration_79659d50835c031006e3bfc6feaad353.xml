@@ -13,7 +13,7 @@
         <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
         <sys_update_name>sn_ai_discovery_data_source_configuration_79659d50835c031006e3bfc6feaad353</sys_update_name>
         <sys_updated_by>rbrown@hesta.com.au</sys_updated_by>
-        <sys_updated_on>2026-04-20 02:37:39</sys_updated_on>
+        <sys_updated_on>2026-04-20 08:48:06</sys_updated_on>
         <usage_sub_flow display_value="Discover Claude Usage">42b6b1e6c3d88710f6719d277d013129</usage_sub_flow>
     </sn_ai_discovery_data_source_configuration>
 </record_update>
