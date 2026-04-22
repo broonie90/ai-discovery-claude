@@ -894,9 +894,14 @@ ClaudeDiscoveryUtil.prototype = {
     _ensureClaudeSystem: function() {
         if (this._claudeSystemSysId) return this._claudeSystemSysId;
 
+        // Match by vendor only. The OOB sn_value_engine BR rewrites display_name
+        // to "<Vendor> <Name>" on insert, so a display_name query like
+        // "Claude AI Platform" would never match the stored "Anthropic Claude AI
+        // Platform" on re-run and we'd create duplicates every time.
         var gr = new GlideRecord('alm_ai_system_digital_asset');
-        gr.addQuery('display_name', 'Claude AI Platform');
         gr.addQuery('vendor', this.constants.VENDOR);
+        gr.orderBy('sys_created_on');  // oldest first, in case duplicates exist
+        gr.setLimit(1);
         gr.query();
 
         if (gr.next()) {
@@ -904,7 +909,7 @@ ClaudeDiscoveryUtil.prototype = {
             return this._claudeSystemSysId;
         }
 
-        // Create it
+        // Create if missing
         gr.initialize();
         gr.setValue('display_name', 'Claude AI Platform');
         gr.setValue('vendor', this.constants.VENDOR);
@@ -919,7 +924,7 @@ ClaudeDiscoveryUtil.prototype = {
                 updateGr.setValue('display_name', 'Claude AI Platform');
                 updateGr.update();
             }
-            // Create governance record with "Assess" lifecycle phase
+            // Create governance record
             this._ensureGovernanceRecord(sysId);
         }
 
