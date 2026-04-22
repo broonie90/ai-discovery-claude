@@ -132,10 +132,10 @@ ClaudeDiscoveryUtil.prototype = {
                             user_id: email
                         });
 
-                        var writeResult = this._upsertUsageRecord(systemSysId, userRecord, usageTime);
-                        if (writeResult === 'created') result.records_created++;
-                        else if (writeResult === 'updated') result.records_updated++;
-                        else result.records_failed++;
+                        var channelStats = this._upsertUsageRecord(systemSysId, userRecord, usageTime);
+                        result.records_created += channelStats.created;
+                        result.records_updated += channelStats.updated;
+                        result.records_failed  += channelStats.failed;
                     }
                 }
 
@@ -775,10 +775,10 @@ ClaudeDiscoveryUtil.prototype = {
                 if (data.data && data.data.length > 0) {
                     for (var i = 0; i < data.data.length; i++) {
                         var userRecord = data.data[i];
-                        var result = this._upsertUsageRecord(systemSysId, userRecord, usageTime);
-                        if (result === 'created') counts.records_created++;
-                        else if (result === 'updated') counts.records_updated++;
-                        else counts.records_failed++;
+                        var channelStats = this._upsertUsageRecord(systemSysId, userRecord, usageTime);
+                        counts.records_created += channelStats.created;
+                        counts.records_updated += channelStats.updated;
+                        counts.records_failed  += channelStats.failed;
                     }
                 }
 
@@ -802,41 +802,71 @@ ClaudeDiscoveryUtil.prototype = {
     },
 
     /**
-     * Upsert a single usage record from Enterprise Analytics user data.
-     * Calculates total activity count across all channels.
+     * Upsert up to 4 usage rows for a user — one per activity channel.
+     *
+     * Mixed-units single 'count' is replaced with per-channel rows:
+     *   type = 'chat_messages'    (chat_metrics.message_count)
+     *   type = 'cc_sessions'      (claude_code_metrics.core_metrics.distinct_session_count)
+     *   type = 'cowork_messages'  (cowork_metrics.message_count)
+     *   type = 'web_searches'     (web_search_count)
+     *
+     * Upsert key = ai_system + time + user (or session_id) + type.
+     * Same-day re-runs update the existing row; new days insert fresh rows.
+     * Zero-count channels are skipped to keep the table clean.
+     *
+     * @returns {{ created: number, updated: number, failed: number }}
      */
     _upsertUsageRecord: function(systemSysId, userRecord, usageTime) {
+        var stats = { created: 0, updated: 0, failed: 0 };
+        var email = '';
         try {
-            var email = '';
-            if (userRecord.user) {
-                email = userRecord.user.email_address || '';
-            }
-
-            // Calculate total activity count
-            var count = 0;
-            var chat = userRecord.chat_metrics || {};
-            count += (chat.message_count || 0);
-
-            var cc = (userRecord.claude_code_metrics && userRecord.claude_code_metrics.core_metrics) || {};
-            count += (cc.distinct_session_count || 0);
-
-            var cowork = userRecord.cowork_metrics || {};
-            count += (cowork.message_count || 0);
-
-            count += (userRecord.web_search_count || 0);
-
-            // Look up ServiceNow user by email
+            if (userRecord.user) email = userRecord.user.email_address || '';
             var userSysId = this._lookupUser(email);
 
-            // Upsert: match on ai_system + time + user (or session_id for email)
+            var chat = userRecord.chat_metrics || {};
+            var cc = (userRecord.claude_code_metrics && userRecord.claude_code_metrics.core_metrics) || {};
+            var cowork = userRecord.cowork_metrics || {};
+
+            var channels = [
+                { type: 'chat_messages',   count: chat.message_count          || 0 },
+                { type: 'cc_sessions',     count: cc.distinct_session_count   || 0 },
+                { type: 'cowork_messages', count: cowork.message_count        || 0 },
+                { type: 'web_searches',    count: userRecord.web_search_count || 0 }
+            ];
+
+            for (var i = 0; i < channels.length; i++) {
+                var ch = channels[i];
+                if (ch.count === 0) continue;  // skip empty channels
+                var outcome = this._upsertUsageChannelRow(systemSysId, userSysId, email, usageTime, ch.type, ch.count);
+                if (outcome === 'created') stats.created++;
+                else if (outcome === 'updated') stats.updated++;
+                else stats.failed++;
+            }
+        } catch (e) {
+            gs.warn('[ClaudeDiscoveryUtil] Usage record failed for ' + (email || 'unknown') + ': ' + e.message);
+            stats.failed++;
+        }
+        return stats;
+    },
+
+    /**
+     * Upsert a single sn_ai_disc_ai_usage row keyed on
+     * ai_system + time + user (or session_id) + type.
+     *
+     * @returns {'created'|'updated'|'failed'}
+     */
+    _upsertUsageChannelRow: function(systemSysId, userSysId, email, usageTime, type, count) {
+        try {
             var gr = new GlideRecord('sn_ai_disc_ai_usage');
             gr.addQuery('ai_system', systemSysId);
             gr.addQuery('time', usageTime);
+            gr.addQuery('type', type);
             if (userSysId) {
                 gr.addQuery('user', userSysId);
             } else {
                 gr.addQuery('session_id', email);
             }
+            gr.setLimit(1);
             gr.query();
 
             var isNew = !gr.next();
@@ -845,21 +875,15 @@ ClaudeDiscoveryUtil.prototype = {
             gr.setValue('ai_system', systemSysId);
             gr.setValue('count', count);
             gr.setValue('time', usageTime);
-            gr.setValue('type', 'daily_activity');
-            if (userSysId) {
-                gr.setValue('user', userSysId);
-            }
+            gr.setValue('type', type);
+            if (userSysId) gr.setValue('user', userSysId);
             gr.setValue('session_id', email);
 
-            if (isNew) {
-                gr.insert();
-                return 'created';
-            } else {
-                gr.update();
-                return 'updated';
-            }
+            if (isNew) { gr.insert(); return 'created'; }
+            gr.update();
+            return 'updated';
         } catch (e) {
-            gs.warn('[ClaudeDiscoveryUtil] Usage record failed for ' + (email || 'unknown') + ': ' + e.message);
+            gs.warn('[ClaudeDiscoveryUtil] Channel row failed (' + type + '): ' + e.message);
             return 'failed';
         }
     },
