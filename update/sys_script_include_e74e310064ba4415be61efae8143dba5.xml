@@ -802,17 +802,52 @@ ClaudeDiscoveryUtil.prototype = {
     },
 
     /**
-     * Upsert up to 4 usage rows for a user — one per activity channel.
+     * Channel definitions for the /v1/organizations/analytics/users endpoint.
+     * Each row represents one engagement metric we extract from a user's daily record.
      *
-     * Mixed-units single 'count' is replaced with per-channel rows:
-     *   type = 'chat_messages'    (chat_metrics.message_count)
-     *   type = 'cc_sessions'      (claude_code_metrics.core_metrics.distinct_session_count)
-     *   type = 'cowork_messages'  (cowork_metrics.message_count)
-     *   type = 'web_searches'     (web_search_count)
+     * path[] walks userRecord. Unit noted so consumers know what the count represents
+     * — mixing messages, conversations, sessions, lines-of-code etc across rows, with
+     * `type` as the disambiguator.
      *
-     * Upsert key = ai_system + time + user (or session_id) + type.
-     * Same-day re-runs update the existing row; new days insert fresh rows.
-     * Zero-count channels are skipped to keep the table clean.
+     * Source: Claude Enterprise Analytics API reference
+     * https://support.claude.com/en/articles/13703965
+     */
+    USER_CHANNELS: [
+        { type: 'chat_messages',          path: ['chat_metrics', 'message_count'] },
+        { type: 'chat_conversations',     path: ['chat_metrics', 'distinct_conversation_count'] },
+        { type: 'cc_sessions',            path: ['claude_code_metrics', 'core_metrics', 'distinct_session_count'] },
+        { type: 'cc_lines_added',         path: ['claude_code_metrics', 'core_metrics', 'lines_of_code', 'added'] },
+        { type: 'cc_lines_removed',       path: ['claude_code_metrics', 'core_metrics', 'lines_of_code', 'removed'] },
+        { type: 'cc_commits',             path: ['claude_code_metrics', 'core_metrics', 'commits_by_claude_code'] },
+        { type: 'cc_prs',                 path: ['claude_code_metrics', 'core_metrics', 'pull_requests_by_claude_code'] },
+        { type: 'cowork_messages',        path: ['cowork_metrics', 'message_count'] },
+        { type: 'cowork_sessions',        path: ['cowork_metrics', 'distinct_session_count'] },
+        { type: 'office_excel_sessions',  path: ['office_metrics', 'excel', 'distinct_session_count'] },
+        { type: 'office_ppt_sessions',    path: ['office_metrics', 'powerpoint', 'distinct_session_count'] },
+        { type: 'office_word_sessions',   path: ['office_metrics', 'word', 'distinct_session_count'] },
+        { type: 'web_searches',           path: ['web_search_count'] }
+    ],
+
+    /**
+     * Walk a dotted path on an object. Returns 0 if any segment is missing or the
+     * leaf isn't a number — lets us tolerate API shape drift without throwing.
+     */
+    _getAtPath: function(obj, path) {
+        var v = obj;
+        for (var i = 0; i < path.length; i++) {
+            if (v == null) return 0;
+            v = v[path[i]];
+        }
+        return (typeof v === 'number') ? v : 0;
+    },
+
+    /**
+     * Upsert up to N usage rows for a user — one per activity channel defined in
+     * USER_CHANNELS.
+     *
+     * Mixed units (messages, conversations, sessions, LOC, commits, PRs, searches)
+     * distinguished by `type`. Upsert key = ai_system + time + user (or session_id)
+     * + type. Same-day re-runs update; new days insert. Zero-count channels skipped.
      *
      * @returns {{ created: number, updated: number, failed: number }}
      */
@@ -823,21 +858,11 @@ ClaudeDiscoveryUtil.prototype = {
             if (userRecord.user) email = userRecord.user.email_address || '';
             var userSysId = this._lookupUser(email);
 
-            var chat = userRecord.chat_metrics || {};
-            var cc = (userRecord.claude_code_metrics && userRecord.claude_code_metrics.core_metrics) || {};
-            var cowork = userRecord.cowork_metrics || {};
-
-            var channels = [
-                { type: 'chat_messages',   count: chat.message_count          || 0 },
-                { type: 'cc_sessions',     count: cc.distinct_session_count   || 0 },
-                { type: 'cowork_messages', count: cowork.message_count        || 0 },
-                { type: 'web_searches',    count: userRecord.web_search_count || 0 }
-            ];
-
-            for (var i = 0; i < channels.length; i++) {
-                var ch = channels[i];
-                if (ch.count === 0) continue;  // skip empty channels
-                var outcome = this._upsertUsageChannelRow(systemSysId, userSysId, email, usageTime, ch.type, ch.count);
+            for (var i = 0; i < this.USER_CHANNELS.length; i++) {
+                var ch = this.USER_CHANNELS[i];
+                var count = this._getAtPath(userRecord, ch.path);
+                if (count === 0) continue;  // skip empty channels to keep table clean
+                var outcome = this._upsertUsageChannelRow(systemSysId, userSysId, email, usageTime, ch.type, count);
                 if (outcome === 'created') stats.created++;
                 else if (outcome === 'updated') stats.updated++;
                 else stats.failed++;
