@@ -716,6 +716,136 @@ ClaudeDiscoveryUtil.prototype = {
     },
 
     /**
+     * runScheduledDiscovery
+     *
+     * Purpose : Entry point for the "Claude Discovery - Daily" sysauto_script job.
+     *           Creates an sn_ai_discovery_data_execution audit row, then runs
+     *           discoverAndLoad against it so state + counts land on the audit
+     *           record (matches the Flow Designer pattern this replaces).
+     * Story   : ad-hoc (HESTA Claude AI Discovery POC) — no rm_story
+     * Author  : agiro.ai.dev (agiro-ai-developer skill)
+     * Date    : 2026-04-26
+     * Scope   : x_agiro_ai_disc_cl
+     * Calls   : _lookupDataSource, _createExecutionRecord, discoverAndLoad
+     * Called by: sysauto_script "Claude Discovery - Daily"
+     *
+     * Notes   : Returns the same counts shape as discoverAndLoad. Safe to call
+     *           on instances where the sn_ai_discovery_data_source record is
+     *           missing — the execution record still gets created (without the
+     *           ai_discovery_data_source ref) and the discovery still runs.
+     *
+     * @returns {{ records_created: number, records_updated: number, records_failed: number, error_message: string, execution_sys_id: string }}
+     */
+    runScheduledDiscovery: function() {
+        return this._runScheduled('discovery', this.discoverAndLoad);
+    },
+
+    /**
+     * runScheduledUsage
+     *
+     * Purpose : Entry point for the "Claude Usage - Daily" sysauto_script job.
+     *           Creates an sn_ai_discovery_data_execution audit row, then runs
+     *           logUsageForFlow against it so the daily run is traceable
+     *           alongside discovery runs in AI Discovery → Executions.
+     * Story   : ad-hoc (HESTA Claude AI Discovery POC) — no rm_story
+     * Author  : agiro.ai.dev (agiro-ai-developer skill)
+     * Date    : 2026-04-26
+     * Scope   : x_agiro_ai_disc_cl
+     * Calls   : _lookupDataSource, _createExecutionRecord, logUsageForFlow
+     * Called by: sysauto_script "Claude Usage - Daily"
+     *
+     * Notes   : 4-day data lag per Anthropic processing pipeline. Idempotent:
+     *           same-day re-runs upsert existing rows.
+     *
+     * @returns {{ records_created: number, records_updated: number, records_failed: number, error_message: string, execution_sys_id: string }}
+     */
+    runScheduledUsage: function() {
+        return this._runScheduled('usage', this.logUsageForFlow);
+    },
+
+    /**
+     * _runScheduled
+     *
+     * Shared orchestration for runScheduledDiscovery / runScheduledUsage.
+     * Creates an execution record, invokes the worker fn(executionSysId), and
+     * tags the result with the execution sys_id so callers can audit later.
+     *
+     * @param {'discovery'|'usage'} type — written to sn_ai_discovery_data_execution.type
+     * @param {function} workerFn         — discoverAndLoad or logUsageForFlow
+     * @returns {object} worker result + execution_sys_id
+     */
+    _runScheduled: function(type, workerFn) {
+        var result = { records_created: 0, records_updated: 0, records_failed: 0, error_message: '', execution_sys_id: '' };
+        try {
+            var dsSysId   = this._lookupDataSource();
+            var execSysId = this._createExecutionRecord(dsSysId, type);
+            result.execution_sys_id = execSysId || '';
+            // Pass null if the execution record creation failed — workerFn tolerates null
+            // and will still write the run_log entry; we just lose the audit row.
+            var workerResult = workerFn.call(this, execSysId || null);
+            result.records_created = workerResult.records_created || 0;
+            result.records_updated = workerResult.records_updated || 0;
+            result.records_failed  = workerResult.records_failed  || 0;
+            result.error_message   = workerResult.error_message   || '';
+        } catch (ex) {
+            // Per Agiro standards § Pro-Code rules → 2. Error handling: actionable, source-identified message.
+            result.error_message = 'ClaudeDiscoveryUtil._runScheduled(' + type + '): ' + ex.message;
+            gs.error('ClaudeDiscoveryUtil._runScheduled(' + type + '): ' + ex.message, ex);
+        }
+        return result;
+    },
+
+    /**
+     * _lookupDataSource
+     *
+     * Locates the sn_ai_discovery_data_source record for our app so execution
+     * records can reference it. Looks up by source_configuration.source =
+     * SOURCE_NAME ("Anthropic Claude") which is the field the OOB sn_ai_disc
+     * data source configuration uses to tag a provider.
+     *
+     * @returns {string|null} sys_id of the data source, or null if not configured
+     */
+    _lookupDataSource: function() {
+        try {
+            var ds = new GlideRecord('sn_ai_discovery_data_source');
+            ds.addQuery('source_configuration.source', this.constants.SOURCE_NAME);
+            ds.setLimit(1);
+            ds.query();
+            if (ds.next()) return ds.getUniqueValue();
+            return null;
+        } catch (ex) {
+            gs.error('ClaudeDiscoveryUtil._lookupDataSource: ' + ex.message, ex);
+            return null;
+        }
+    },
+
+    /**
+     * _createExecutionRecord
+     *
+     * Creates the sn_ai_discovery_data_execution audit row that the run will
+     * update on completion. Mirrors the row Flow Designer's "Discover Data
+     * Source" subflow creates so the AI Discovery → Executions list shows
+     * scheduled-job runs alongside flow-triggered ones.
+     *
+     * @param {string|null} dataSourceSysId — sn_ai_discovery_data_source ref, or null
+     * @param {'discovery'|'usage'} type
+     * @returns {string|null} sys_id of the new execution row, or null on failure
+     */
+    _createExecutionRecord: function(dataSourceSysId, type) {
+        try {
+            var ex = new GlideRecord('sn_ai_discovery_data_execution');
+            ex.initialize();
+            if (dataSourceSysId) ex.setValue('ai_discovery_data_source', dataSourceSysId);
+            ex.setValue('type', type);
+            ex.setValue('state', 'in_progress');
+            return ex.insert();
+        } catch (ex) {
+            gs.error('ClaudeDiscoveryUtil._createExecutionRecord(' + type + '): ' + ex.message, ex);
+            return null;
+        }
+    },
+
+    /**
      * Update the sn_ai_discovery_data_execution record with results.
      */
     _updateExecutionRecord: function(executionSysId, counts) {

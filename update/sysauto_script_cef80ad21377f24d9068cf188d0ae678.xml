@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+<sysauto_script action="INSERT_OR_UPDATE">
+<active>true</active>
+<conditional>false</conditional>
+<description>Daily usage capture: per-user (13 channels), per-skill, per-connector and per-model usage from Anthropic Enterprise Analytics API. 4-day data lag per Anthropic processing pipeline. Runs after Discovery job to ensure assets exist.</description>
+<name>Claude Usage - Daily</name>
+<run_dayofmonth>1</run_dayofmonth>
+<run_dayofweek>1</run_dayofweek>
+<run_period/>
+<run_start>2026-04-22 00:00:00</run_start>
+<run_time>1970-01-01 02:30:00</run_time>
+<run_type>daily</run_type>
+<script>new x_agiro_ai_disc_cl.ClaudeDiscoveryUtil().runScheduledUsage();</script>
+<sys_class_name>sysauto_script</sys_class_name>
+<sys_id>cef80ad21377f24d9068cf188d0ae678</sys_id>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-04-22 00:00:00</sys_created_on>
+<sys_domain>global</sys_domain>
+<sys_domain_path>/</sys_domain_path>
+<sys_mod_count>0</sys_mod_count>
+<sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+<sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+<sys_update_name>sysauto_script_cef80ad21377f24d9068cf188d0ae678</sys_update_name>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-04-22 00:00:00</sys_updated_on>
+</sysauto_script>
+</record_update>
