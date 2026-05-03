@@ -988,6 +988,28 @@ ClaudeDiscoveryUtil.prototype = {
             if (userRecord.user) email = userRecord.user.email_address || '';
             var userSysId = this._lookupUser(email);
 
+            // -------- OOB compatibility row (sn_ai_disc v2.0.4+) --------
+            // The OOB EnterpriseAgents.Sessions cube on sn_ai_disc_ai_usage filters
+            // by type='invocation' and aggregates Sum(count). Writing one row per
+            // user per day with the user's session count makes this app's data
+            // visible on the OOB AICT Adoption widgets the moment hesta upgrades
+            // from sn_ai_disc 1.1.1 to 2.0.4+ — zero further code change needed.
+            //
+            // Definition of "session": distinct chat conversations + CC sessions +
+            // cowork sessions. Excludes message-level counts (those would
+            // over-count: 1 conversation typically has many messages).
+            var invocationSessions =
+                this._getAtPath(userRecord, ['chat_metrics', 'distinct_conversation_count']) +
+                this._getAtPath(userRecord, ['claude_code_metrics', 'core_metrics', 'distinct_session_count']) +
+                this._getAtPath(userRecord, ['cowork_metrics', 'distinct_session_count']);
+            if (invocationSessions > 0) {
+                var invOutcome = this._upsertUsageChannelRow(systemSysId, userSysId, email, usageTime, 'invocation', invocationSessions);
+                if (invOutcome === 'created') stats.created++;
+                else if (invOutcome === 'updated') stats.updated++;
+                else stats.failed++;
+            }
+
+            // -------- Detailed per-channel rows (our custom widgets) --------
             for (var i = 0; i < this.USER_CHANNELS.length; i++) {
                 var ch = this.USER_CHANNELS[i];
                 var count = this._getAtPath(userRecord, ch.path);
@@ -997,8 +1019,9 @@ ClaudeDiscoveryUtil.prototype = {
                 else if (outcome === 'updated') stats.updated++;
                 else stats.failed++;
             }
-        } catch (e) {
-            gs.warn('[ClaudeDiscoveryUtil] Usage record failed for ' + (email || 'unknown') + ': ' + e.message);
+        } catch (ex) {
+            // Per Agiro standards § Pro-Code rules → 2. Error handling: actionable, source-identified.
+            gs.error('ClaudeDiscoveryUtil._upsertUsageRecord(' + (email || 'unknown') + '): ' + ex.message, ex);
             stats.failed++;
         }
         return stats;
