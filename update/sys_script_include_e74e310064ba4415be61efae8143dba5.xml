@@ -73,7 +73,7 @@ ClaudeDiscoveryUtil.prototype = {
      * Also writes directly to sn_ai_disc_ai_usage as fallback.
      *
      * @param {string} [executionSysId] - execution record to update
-     * @returns {{ agent_usage_logs: Array, records_created: number, records_updated: number, records_failed: number, error_message: string }}
+     * @returns {{ agent_usage_logs: Array, records_created: number, records_updated: number, records_aborted: number, records_failed: number, error_message: string }}
      */
     logUsageForFlow: function(executionSysId) {
         var startTime = new Date().getTime();
@@ -81,6 +81,7 @@ ClaudeDiscoveryUtil.prototype = {
             agent_usage_logs: [],
             records_created: 0,
             records_updated: 0,
+            records_aborted: 0,
             records_failed: 0,
             error_message: ''
         };
@@ -88,7 +89,13 @@ ClaudeDiscoveryUtil.prototype = {
         try {
             var systemSysId = this._ensureClaudeSystem();
             if (!systemSysId) {
-                result.error_message = 'Could not create Claude AI Platform system record';
+                // _ensureClaudeSystem already logged a structured gs.error with the
+                // specific failure (missing property / missing record / ungoverned).
+                // Mirror it onto the run log so operators don't have to dig through
+                // syslog to find why the daily job did nothing.
+                result.error_message = 'Aborted: no governance-managed Claude AI Platform asset on this instance. ' +
+                                       'See gs.error log from ClaudeDiscoveryUtil._ensureClaudeSystem for the specific cause.';
+                this._logRun('usage', 'error', result.error_message, 0, 0, 0, startTime);
                 if (executionSysId) this._updateExecutionRecord(executionSysId, result);
                 return result;
             }
@@ -135,6 +142,7 @@ ClaudeDiscoveryUtil.prototype = {
                         var channelStats = this._upsertUsageRecord(systemSysId, userRecord, usageTime);
                         result.records_created += channelStats.created;
                         result.records_updated += channelStats.updated;
+                        result.records_aborted += (channelStats.aborted || 0);
                         result.records_failed  += channelStats.failed;
                     }
                 }
@@ -164,10 +172,21 @@ ClaudeDiscoveryUtil.prototype = {
             result.records_updated += connectorStats.updated;
             result.records_failed  += connectorStats.failed;
 
-            var total = result.records_created + result.records_updated;
-            this._logRun('usage', result.error_message ? 'partial' : 'success',
-                'Usage: ' + total + ' records (' + result.records_created + ' new, ' + result.records_updated + ' updated)',
-                0, 0, total, startTime);
+            // Aborted rows mean a BR vetoed our writes (typically the OOB
+            // governance check). They aren't `failed` (no exception thrown) and
+            // aren't `created`. Surface them on the run log so the symptom is
+            // immediately visible rather than hidden in a 0/N silent failure.
+            var summary = 'Usage: ' + (result.records_created + result.records_updated) +
+                          ' records (' + result.records_created + ' new, ' +
+                          result.records_updated + ' updated';
+            if (result.records_aborted > 0) summary += ', ' + result.records_aborted + ' aborted by BR';
+            if (result.records_failed > 0)  summary += ', ' + result.records_failed + ' failed';
+            summary += ')';
+            var status = result.error_message ? 'partial'
+                       : (result.records_aborted > 0 || result.records_failed > 0) ? 'partial'
+                       : 'success';
+            this._logRun('usage', status, summary, 0, 0,
+                         result.records_created + result.records_updated, startTime);
 
         } catch (e) {
             result.error_message = 'Usage logging failed: ' + e.message;
@@ -873,13 +892,13 @@ ClaudeDiscoveryUtil.prototype = {
      */
     logUsage: function(executionSysId) {
         var startTime = new Date().getTime();
-        var counts = { records_created: 0, records_updated: 0, records_failed: 0, error_message: '' };
+        var counts = { records_created: 0, records_updated: 0, records_aborted: 0, records_failed: 0, error_message: '' };
 
         try {
-            // Ensure the Claude AI Platform system record exists
             var systemSysId = this._ensureClaudeSystem();
             if (!systemSysId) {
-                counts.error_message = 'Could not create Claude AI Platform system record';
+                counts.error_message = 'Aborted: no governance-managed Claude AI Platform asset on this instance. ' +
+                                       'See gs.error log from ClaudeDiscoveryUtil._ensureClaudeSystem for the specific cause.';
                 this._logRun('usage', 'error', counts.error_message, 0, 0, 0, startTime);
                 if (executionSysId) this._updateExecutionRecord(executionSysId, counts);
                 return counts;
@@ -908,6 +927,7 @@ ClaudeDiscoveryUtil.prototype = {
                         var channelStats = this._upsertUsageRecord(systemSysId, userRecord, usageTime);
                         counts.records_created += channelStats.created;
                         counts.records_updated += channelStats.updated;
+                        counts.records_aborted += (channelStats.aborted || 0);
                         counts.records_failed  += channelStats.failed;
                     }
                 }
@@ -916,10 +936,17 @@ ClaudeDiscoveryUtil.prototype = {
                 page = data.next_page || null;
             }
 
-            var total = counts.records_created + counts.records_updated;
-            this._logRun('usage', counts.error_message ? 'partial' : 'success',
-                'Usage: ' + total + ' records (' + counts.records_created + ' new, ' + counts.records_updated + ' updated)',
-                0, 0, total, startTime);
+            var summary = 'Usage: ' + (counts.records_created + counts.records_updated) +
+                          ' records (' + counts.records_created + ' new, ' +
+                          counts.records_updated + ' updated';
+            if (counts.records_aborted > 0) summary += ', ' + counts.records_aborted + ' aborted by BR';
+            if (counts.records_failed > 0)  summary += ', ' + counts.records_failed + ' failed';
+            summary += ')';
+            var status = counts.error_message ? 'partial'
+                       : (counts.records_aborted > 0 || counts.records_failed > 0) ? 'partial'
+                       : 'success';
+            this._logRun('usage', status, summary, 0, 0,
+                         counts.records_created + counts.records_updated, startTime);
 
         } catch (e) {
             counts.error_message = 'Usage logging failed: ' + e.message;
@@ -982,18 +1009,25 @@ ClaudeDiscoveryUtil.prototype = {
      * @returns {{ created: number, updated: number, failed: number }}
      */
     _upsertUsageRecord: function(systemSysId, userRecord, usageTime) {
-        var stats = { created: 0, updated: 0, failed: 0 };
+        var stats = { created: 0, updated: 0, aborted: 0, failed: 0 };
         var email = '';
         try {
             if (userRecord.user) email = userRecord.user.email_address || '';
             var userSysId = this._lookupUser(email);
+            var self = this;
+
+            function recordOutcome(outcome) {
+                if (outcome === 'created') stats.created++;
+                else if (outcome === 'updated') stats.updated++;
+                else if (outcome === 'aborted') stats.aborted++;
+                else stats.failed++;
+            }
 
             // -------- OOB compatibility row (sn_ai_disc v2.0.4+) --------
             // The OOB EnterpriseAgents.Sessions cube on sn_ai_disc_ai_usage filters
             // by type='invocation' and aggregates Sum(count). Writing one row per
             // user per day with the user's session count makes this app's data
-            // visible on the OOB AICT Adoption widgets the moment hesta upgrades
-            // from sn_ai_disc 1.1.1 to 2.0.4+ — zero further code change needed.
+            // visible on the OOB AICT Adoption widgets.
             //
             // Definition of "session": distinct chat conversations + CC sessions +
             // cowork sessions. Excludes message-level counts (those would
@@ -1003,10 +1037,7 @@ ClaudeDiscoveryUtil.prototype = {
                 this._getAtPath(userRecord, ['claude_code_metrics', 'core_metrics', 'distinct_session_count']) +
                 this._getAtPath(userRecord, ['cowork_metrics', 'distinct_session_count']);
             if (invocationSessions > 0) {
-                var invOutcome = this._upsertUsageChannelRow(systemSysId, userSysId, email, usageTime, 'invocation', invocationSessions);
-                if (invOutcome === 'created') stats.created++;
-                else if (invOutcome === 'updated') stats.updated++;
-                else stats.failed++;
+                recordOutcome(self._upsertUsageChannelRow(systemSysId, userSysId, email, usageTime, 'invocation', invocationSessions));
             }
 
             // -------- Detailed per-channel rows (our custom widgets) --------
@@ -1014,10 +1045,7 @@ ClaudeDiscoveryUtil.prototype = {
                 var ch = this.USER_CHANNELS[i];
                 var count = this._getAtPath(userRecord, ch.path);
                 if (count === 0) continue;  // skip empty channels to keep table clean
-                var outcome = this._upsertUsageChannelRow(systemSysId, userSysId, email, usageTime, ch.type, count);
-                if (outcome === 'created') stats.created++;
-                else if (outcome === 'updated') stats.updated++;
-                else stats.failed++;
+                recordOutcome(self._upsertUsageChannelRow(systemSysId, userSysId, email, usageTime, ch.type, count));
             }
         } catch (ex) {
             // Per Agiro standards § Pro-Code rules → 2. Error handling: actionable, source-identified.
@@ -1031,7 +1059,15 @@ ClaudeDiscoveryUtil.prototype = {
      * Upsert a single sn_ai_disc_ai_usage row keyed on
      * ai_system + time + user (or session_id) + type.
      *
-     * @returns {'created'|'updated'|'failed'}
+     * Verifies the row actually persisted after insert. The OOB BR
+     * `sn_ai_disc.Insert only Managed asset's data` aborts via
+     * setAbortAction(true) on ungoverned ai_system records, but gr.insert()
+     * still returns a sys_id in that case — so the post-insert get() is the
+     * only reliable signal that the row landed. Returns 'aborted' for that
+     * case so the caller can surface accurate counts in the run log instead
+     * of the misleading 'created' the SDK lies about.
+     *
+     * @returns {'created'|'updated'|'aborted'|'failed'}
      */
     _upsertUsageChannelRow: function(systemSysId, userSysId, email, usageTime, type, count) {
         try {
@@ -1039,11 +1075,7 @@ ClaudeDiscoveryUtil.prototype = {
             gr.addQuery('ai_system', systemSysId);
             gr.addQuery('time', usageTime);
             gr.addQuery('type', type);
-            if (userSysId) {
-                gr.addQuery('user', userSysId);
-            } else {
-                gr.addQuery('session_id', email);
-            }
+            if (userSysId) gr.addQuery('user', userSysId); else gr.addQuery('session_id', email);
             gr.setLimit(1);
             gr.query();
 
@@ -1057,7 +1089,14 @@ ClaudeDiscoveryUtil.prototype = {
             if (userSysId) gr.setValue('user', userSysId);
             gr.setValue('session_id', email);
 
-            if (isNew) { gr.insert(); return 'created'; }
+            if (isNew) {
+                var sid = gr.insert();
+                if (!sid) return 'failed';
+                // Verify — gr.insert() returns a sys_id even when a before-insert BR aborts.
+                var verify = new GlideRecord('sn_ai_disc_ai_usage');
+                if (verify.get(sid)) return 'created';
+                return 'aborted';
+            }
             gr.update();
             return 'updated';
         } catch (e) {
@@ -1067,48 +1106,51 @@ ClaudeDiscoveryUtil.prototype = {
     },
 
     /**
-     * Find or create the "Claude AI Platform" system record on alm_ai_system_digital_asset.
+     * Resolve the canonical Anthropic AI system asset shipped with this app.
+     *
+     * Single source of truth: sys_property `x_agiro_ai_disc_cl.claude_system_asset_id`,
+     * populated at install time with the asset's fixed sys_id. The package also
+     * ships the alm_ai_system_digital_asset record (INSERT_OR_UPDATE) so the
+     * lookup is deterministic across install + upgrade.
+     *
+     * Returns null and logs a structured error if the property/asset/governance
+     * pre-conditions aren't met. Caller treats null as "abort run, fix
+     * configuration before re-running" — never auto-creates an unmanaged asset
+     * (which would land ungoverned and the OOB sn_ai_disc BR
+     * `Insert only Managed asset's data` would silently abort every downstream
+     * insert, the failure mode this design eliminates).
+     *
+     * @returns {string|null} sys_id of the canonical Claude system asset, or null.
      */
     _ensureClaudeSystem: function() {
         if (this._claudeSystemSysId) return this._claudeSystemSysId;
 
-        // Match by vendor only. The OOB sn_value_engine BR rewrites display_name
-        // to "<Vendor> <Name>" on insert, so a display_name query like
-        // "Claude AI Platform" would never match the stored "Anthropic Claude AI
-        // Platform" on re-run and we'd create duplicates every time.
-        var gr = new GlideRecord('alm_ai_system_digital_asset');
-        gr.addQuery('vendor', this.constants.VENDOR);
-        gr.orderBy('sys_created_on');  // oldest first, in case duplicates exist
-        gr.setLimit(1);
-        gr.query();
-
-        if (gr.next()) {
-            this._claudeSystemSysId = gr.getUniqueValue();
-            return this._claudeSystemSysId;
+        var assetSysId = gs.getProperty(this.constants.PROPERTY.CLAUDE_SYSTEM_ASSET_ID);
+        if (!assetSysId) {
+            gs.error('ClaudeDiscoveryUtil._ensureClaudeSystem: property ' +
+                     this.constants.PROPERTY.CLAUDE_SYSTEM_ASSET_ID +
+                     ' is empty. Reinstall the app or restore the property from the package XML.');
+            return null;
         }
 
-        // Create if missing
-        gr.initialize();
-        gr.setValue('display_name', 'Claude AI Platform');
-        gr.setValue('vendor', this.constants.VENDOR);
-        gr.setValue('install_status', this.constants.INSTALL_STATUS.DEPLOYED);
-        gr.setValue('quantity', 1);
-        var sysId = gr.insert();
-
-        // display_name may get dropped on insert from scoped app
-        if (sysId) {
-            var updateGr = new GlideRecord('alm_ai_system_digital_asset');
-            if (updateGr.get(sysId)) {
-                updateGr.setValue('display_name', 'Claude AI Platform');
-                updateGr.update();
-            }
-            // Create governance record
-            this._ensureGovernanceRecord(sysId);
+        var asset = new GlideRecord('alm_ai_system_digital_asset');
+        if (!asset.get(assetSysId)) {
+            gs.error('ClaudeDiscoveryUtil._ensureClaudeSystem: asset ' + assetSysId +
+                     ' (from property ' + this.constants.PROPERTY.CLAUDE_SYSTEM_ASSET_ID +
+                     ') not found. The shipped record was deleted — re-apply the package XML or run "Apply Remote Changes" in Studio.');
+            return null;
         }
 
-        gs.info('[ClaudeDiscoveryUtil] Created Claude AI Platform system: ' + sysId);
-        this._claudeSystemSysId = sysId;
-        return sysId;
+        if (!new sn_ai_governance.AssetGovernanceStatusUtilSNC().getAssetGovernanceStatus(assetSysId)) {
+            gs.error('ClaudeDiscoveryUtil._ensureClaudeSystem: asset ' + assetSysId +
+                     ' (' + asset.display_name + ') is not governance-managed. Open the asset in AI Asset Workspace ' +
+                     'and click "Start review" to complete AICT intake before re-running. The OOB BR ' +
+                     '"Insert only Managed asset\'s data" aborts inserts on ungoverned assets.');
+            return null;
+        }
+
+        this._claudeSystemSysId = assetSysId;
+        return assetSysId;
     },
 
     /**

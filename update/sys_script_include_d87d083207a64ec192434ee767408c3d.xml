@@ -46,6 +46,10 @@ ClaudeDiscoveryConstants.prototype = {
         DISCOVERY_ENABLED: 'x_agiro_ai_disc_cl.discovery_enabled',
         USAGE_ENABLED: 'x_agiro_ai_disc_cl.usage_enabled',
         ANALYTICS_ENABLED: 'x_agiro_ai_disc_cl.analytics_enabled',
+        // sys_id of the canonical Claude AI Platform asset on alm_ai_system_digital_asset.
+        // Shipped in the package XML with a fixed sys_id; runtime never auto-creates.
+        // See _ensureClaudeSystem in ClaudeDiscoveryUtil.
+        CLAUDE_SYSTEM_ASSET_ID: 'x_agiro_ai_disc_cl.claude_system_asset_id',
     },
 
     ENDPOINTS: {

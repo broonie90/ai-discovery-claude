@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Canonical Claude AI Platform asset record for AI Discovery Claude.
+
+  Shipped at install so _ensureClaudeSystem can read sys_id from the
+  x_agiro_ai_disc_cl.claude_system_asset_id property and resolve to a
+  deterministic record — never auto-creating duplicates on lookup miss.
+
+  INSERT_OR_UPDATE so the existing hestanonprod record (which has accumulated
+  governance state, AICT intake, and 5000+ usage row references on this sys_id)
+  is preserved across re-applies. Fresh instances get a clean record with the
+  same sys_id and require an AICT intake (Start review) before usage rows land.
+
+  Vendor is resolved by display_value="Anthropic" against core_company —
+  Anthropic exists by default on instances with the AI Control Tower /
+  sn_ai_disc plugin family installed.
+-->
+<record_update table="alm_ai_system_digital_asset">
+    <alm_ai_system_digital_asset action="INSERT_OR_UPDATE">
+        <display_name>Claude AI Platform</display_name>
+        <install_status>1</install_status>
+        <quantity>1</quantity>
+        <sys_class_name>alm_ai_system_digital_asset</sys_class_name>
+        <sys_id>e809e8ab2b9483506e05feb6d391bf4f</sys_id>
+        <sys_name>Claude AI Platform</sys_name>
+        <sys_package display_value="AI Discovery Claude" source="x_agiro_ai_disc_cl">d3a129148310431006e3bfc6feaad351</sys_package>
+        <sys_scope display_value="AI Discovery Claude">d3a129148310431006e3bfc6feaad351</sys_scope>
+        <sys_update_name>alm_ai_system_digital_asset_e809e8ab2b9483506e05feb6d391bf4f</sys_update_name>
+        <vendor display_value="Anthropic"/>
+    </alm_ai_system_digital_asset>
+</record_update>
